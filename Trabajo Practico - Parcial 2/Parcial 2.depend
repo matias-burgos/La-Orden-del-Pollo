@@ -1,0 +1,14 @@
+# depslib dependency file v1.0
+1478118516 source:c:\users\matias\documents\github\la-orden-del-pollo\trabajo practico - parcial 2\main.c
+	<stdio.h>
+	<stdlib.h>
+	"Archivo.h"
+
+1478118360 c:\users\matias\documents\github\la-orden-del-pollo\trabajo practico - parcial 2\archivo.h
+
+1478118499 source:c:\users\matias\documents\github\la-orden-del-pollo\trabajo practico - parcial 2\archivo.c
+	<stdio.h>
+	<stdlib.h>
+	"Archivo.h"
+	"string.h"
+

@@ -1,30 +1,17 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "Archivo.h"
-typedef struct
-{
-      char nombreApellido [40];
-      int cantArticulos;            // es el tiempo de ejecución
-      int tiempoDeEspera;     // es el tiempo de respuesta
-      int tiempoProcesado     // es el tiempo que ya fue procesado en la línea de caja
-      int tipo_cliente;              //  prioridad (1: embarazada, 2: jubilado y 3: común)
-      int tipo_pago;                //  1 efectivo, 2 crédito o débito, 3 todos
-} persona;
-
-typedef struct
-{
-      persona p;
-      struct nodoArbol * izq;
-      struct nodoArbol * der;
-} nodoArbol;
 
 
 int main()
 {
-    char
+    char nombre[]="archivo.dat";
+    int limite=2;
+    printf("\n Ingresar la informacion de las personas: ");
+    int validos=cargar_archivo(nombre, limite);
+    printf("\n Lista de las personas ingresadas: ");
+    mostrar_archivo(nombre);
+
+    return 0;
 }
 
-Metele pilas gillllllllll
-1
-203
-izi

@@ -7,8 +7,8 @@
 		<Option compiler="gcc" />
 		<Build>
 			<Target title="Debug">
-				<Option output="bin\Debug\Parcial 2" prefix_auto="1" extension_auto="1" />
-				<Option object_output="obj\Debug\" />
+				<Option output="bin/Debug/Parcial 2" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Debug/" />
 				<Option type="1" />
 				<Option compiler="gcc" />
 				<Compiler>
@@ -16,8 +16,8 @@
 				</Compiler>
 			</Target>
 			<Target title="Release">
-				<Option output="bin\Release\Parcial 2" prefix_auto="1" extension_auto="1" />
-				<Option object_output="obj\Release\" />
+				<Option output="bin/Release/Parcial 2" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Release/" />
 				<Option type="1" />
 				<Option compiler="gcc" />
 				<Compiler>
@@ -31,12 +31,17 @@
 		<Compiler>
 			<Add option="-Wall" />
 		</Compiler>
+		<Unit filename="Archivo.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Archivo.h" />
 		<Unit filename="main.c">
 			<Option compilerVar="CC" />
 		</Unit>
 		<Extensions>
 			<code_completion />
 			<debugger />
+			<envvars />
 		</Extensions>
 	</Project>
 </CodeBlocks_project_file>
