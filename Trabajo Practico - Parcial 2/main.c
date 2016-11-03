@@ -6,11 +6,12 @@
 int main()
 {
     char nombre[]="archivo.dat";
-    int limite=2;
+    int limite=30;
     printf("\n Ingresar la informacion de las personas: ");
-    int validos=cargar_archivo(nombre, limite);
+    int validos=cargar_archivo(nombre, limite);// Creación y asignación de las personas al archivo.
     printf("\n Lista de las personas ingresadas: ");
     mostrar_archivo(nombre);
+
 
     return 0;
 }
