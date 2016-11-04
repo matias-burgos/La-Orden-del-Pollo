@@ -26,7 +26,7 @@ borrarPrimero (para vaciar la fila)//
 
 fila* inicFila(fila*nuevo);
 Fila*agregar(Fila*fila, int dato);
-persona*quitar(Fila*fila)
+Fila*quitar(Fila*fila);
 void mostrar(Fila*fila);
 int filavacia(Fila*fila);
 

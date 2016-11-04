@@ -8,16 +8,16 @@ nodo2 * inicLista()
 }
 
 
-nodo2 * crearNodoLista(persona nuevo)
+nodo2 * crearNodoLista(int dato)
 {
     nodo2* aux= (nodo2 *)malloc(sizeof(nodo2));
-    aux->cliente=nuevo
+    aux->dato=dato;
     aux->ante=NULL;
     aux->ste=NULL;
     return aux;
 }
 
-nodo2 * agregarAlPrincipio(nodo2 * lista, nodo2 * nuevoNodo)
+nodo 2* agregarAlPrincipio(nodo2 * lista, nodo2 * nuevoNodo)
 {
     nuevoNodo->ste=lista;
     if(lista!=NULL)
@@ -197,13 +197,13 @@ Fila*agregar(Fila*fila, int dato)
     return fila;
 }
 
-persona*quitar(Fila*fila)
+Fila*quitar(Fila*fila)
 {
     int resp=0;
     if(fila->inicio!=NULL)
     {
         nodo2* aux=fila->inicio;
-        nodo2* sig=aux->siguiente;
+        nodo2* sig=aux->inicio;
         if(fila->inicio!=fila->cola)
         {
             sig->anterior=NULL;
@@ -213,7 +213,7 @@ persona*quitar(Fila*fila)
             fila->final=NULL;
             fila->inicio=NULL;
         }
-        resp=aux->persona;
+        resp=aux->dato;
         free(aux);
     }
     return resp;
