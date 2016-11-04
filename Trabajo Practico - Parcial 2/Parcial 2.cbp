@@ -35,6 +35,10 @@
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="Archivo.h" />
+		<Unit filename="Listas Dobles.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Listas Dobles.h" />
 		<Unit filename="main.c">
 			<Option compilerVar="CC" />
 		</Unit>
