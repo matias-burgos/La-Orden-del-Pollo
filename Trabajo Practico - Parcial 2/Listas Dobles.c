@@ -2,22 +2,22 @@
 #include <stdlib.h>
 #include "Listas Dobles.h"
 
-nodo * inicLista()
+nodo2 * inicLista()
 {
     return NULL;
 }
 
 
-nodo * crearNodoLista(int dato)
+nodo2 * crearNodoLista(int dato)
 {
-    nodo* aux= (nodo *)malloc(sizeof(nodo2));
+    nodo2* aux= (nodo2 *)malloc(sizeof(nodo2));
     aux->dato=dato;
     aux->ante=NULL;
     aux->ste=NULL;
     return aux;
 }
 
-nodo * agregarAlPrincipio(nodo * lista, nodo * nuevoNodo)
+nodo 2* agregarAlPrincipio(nodo2 * lista, nodo2 * nuevoNodo)
 {
     nuevoNodo->ste=lista;
     if(lista!=NULL)
@@ -28,9 +28,9 @@ nodo * agregarAlPrincipio(nodo * lista, nodo * nuevoNodo)
 }
 
 // recursivo
-nodo * buscarUltimo(nodo * lista)
+nodo2 * buscarUltimo(nodo2 * lista)
 {
-    nodo* rta=NULL;
+    nodo2* rta=NULL;
     if(lista!=NULL)
     {
         if(lista->ste==NULL)
@@ -60,7 +60,7 @@ nodo2 * agregarAlFinal(nodo2 * lista, nodo2 * nuevoNodo)
     return lista;
 }
 
-nodo2 * insertarNodo(nodo * lista, nodo * nuevoNodo)
+nodo2 * insertarNodo(nodo2 * lista, nodo2 * nuevoNodo)
 {
     if(lista==NULL)
     {
@@ -73,8 +73,8 @@ nodo2 * insertarNodo(nodo * lista, nodo * nuevoNodo)
     else
     {
 
-        nodo * anterior=lista;
-        nodo * seg=lista->ste;
+        nodo2 * anterior=lista;
+        nodo2 * seg=lista->ste;
 
         while(seg!=NULL && seg->dato < nuevoNodo->dato)
         {
@@ -97,7 +97,7 @@ nodo2 * insertarNodo(nodo * lista, nodo * nuevoNodo)
 
 
 
-void mostrarNodo(nodo * aux)
+void mostrarNodo(nodo2 * aux)
 {
     printf(" %d", aux->dato);
 }
@@ -114,7 +114,7 @@ void recorrerYmostrar(nodo2 * lista)
     printf("\n");
 }
 
-nodo2 * cargarLista(nodo * lista)
+nodo2 * cargarLista(nodo2 * lista)
 {
     char rta = 's';
     int dato;
@@ -131,10 +131,10 @@ nodo2 * cargarLista(nodo * lista)
     }
     return lista;
 }
-nodo2 * borrarNodo(nodo * lista, int dato)
+nodo2 * borrarNodo(nodo2 * lista, int dato)
 {
-    nodo * aBorrar=NULL;
-    nodo * seg=NULL;
+    nodo2 * aBorrar=NULL;
+    nodo2 * seg=NULL;
 
     if(lista!=NULL)
     {
@@ -164,7 +164,7 @@ nodo2 * borrarNodo(nodo * lista, int dato)
 
                 if(seg->ste) /// si existe el nodo siguiente
                 {
-                    nodo * siguiente = seg->ste;
+                    nodo2 * siguiente = seg->ste;
                     siguiente->ante=anterior;
                 }
                 free(seg); ///elimino el nodo.
@@ -185,8 +185,7 @@ Fila* inicFila(Fila*nuevo)
 
 Fila*agregar(Fila*fila, int dato)
 {
-    nodo*nuevo=malloc(sizeof(nodo*));
-    nuevo=crearNodoLista(dato);
+    nodo2*nuevo=crearNodoLista(dato);
     if(fila==NULL)
     {
         fila->inicio=nuevo;
@@ -201,14 +200,14 @@ Fila*agregar(Fila*fila, int dato)
 Fila*quitar(Fila*fila)
 {
     int resp=0;
-    if(fila->final!=NULL)
+    if(fila->inicio!=NULL)
     {
-        nodo* aux=fila->final;
-        nodo* sig=aux->final;
-        if(fila->final!=fila->cola)
+        nodo2* aux=fila->inicio;
+        nodo2* sig=aux->inicio;
+        if(fila->inicio!=fila->cola)
         {
             sig->anterior=NULL;
-            fila->final=sig;
+            fila->inicio=sig;
         }
         else{
             fila->final=NULL;
@@ -218,4 +217,20 @@ Fila*quitar(Fila*fila)
         free(aux);
     }
     return resp;
+}
+
+void mostrar(Fila*fila)
+{
+    printf("\n Inicio: %d", fila->inicio);
+    printf("\n Final: %d", fila->final);
+}
+
+int filavacia(Fila*fila)
+{
+    int i=0;
+    if(fila->final==NULL && fila->inicio==NULL)
+    {
+        i=1;
+    }
+   return i;
 }

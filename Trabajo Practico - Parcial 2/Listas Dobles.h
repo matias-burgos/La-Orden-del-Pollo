@@ -4,31 +4,31 @@ typedef struct{
  persona cliente;
  struct nodo * siguiente;
  struct nodo * anterior;
-} nodo;
+} nodo2;
 
 typedef struct{
- struct nodo * inicio;
- struct nodo * final;
+ struct nodo2 * inicio;
+ struct nodo2 * final;
 } Fila;
 
-nodo * inicLista();
-nodo * crearNodoLista(int dato);
-nodo * buscarUltimo(nodo * lista);
-nodo * agregarAlFinal(nodo * lista, nodo * nuevoNodo);
-nodo* insertarNodo(nodo * lista, nodo * nuevoNodo);;
-agregarEnOrdenTipoCli (por tipo de cliente)
-agregarEnOrdenPorCant (por cantidad de productos)
-void recorrerYmostrar(nodo2 * lista);
-nodo2 * borrarNodo(nodo * lista, int dato);
-nodo2 * cargarLista(nodo * lista);
-borrarPrimero (para vaciar la fila)
+nodo2 * inicLista();
+nodo2 * crearNodoLista(int dato);
+nodo2 * buscarUltimo(nodo2 * lista);
+nodo2 * agregarAlFinal(nodo2 * lista, nodo2 * nuevoNodo);
+nodo2* insertarNodo(nodo2 * lista, nodo2 * nuevoNodo);//
+agregarEnOrdenTipoCli (por tipo de cliente)//
+agregarEnOrdenPorCant (por cantidad de productos)//
+void recorrerYmostrar(nodo2 * lista);//
+nodo2 * borrarNodo(nodo2 * lista, int dato);//
+nodo2 * cargarLista(nodo2* lista);//
+borrarPrimero (para vaciar la fila)//
 
 
 fila* inicFila(fila*nuevo);
 Fila*agregar(Fila*fila, int dato);
 Fila*quitar(Fila*fila);
-mostrar
-filaVacia
+void mostrar(Fila*fila);
+int filavacia(Fila*fila);
 
 
 
