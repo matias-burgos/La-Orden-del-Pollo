@@ -13,14 +13,15 @@ typedef struct{
 
 nodo2 * inicLista();
 nodo2 * crearNodoLista(int dato);
+nodo2 * agregarAlPrincipio(nodo2 * lista, nodo2 * nuevoNodo)
 nodo2 * buscarUltimo(nodo2 * lista);
 nodo2 * agregarAlFinal(nodo2 * lista, nodo2 * nuevoNodo);
 nodo2* insertarNodo(nodo2 * lista, nodo2 * nuevoNodo);//
-agregarEnOrdenTipoCli (por tipo de cliente)//
+nodo2* agregarEnOrdenTipoCli (nodo2*lista, nodo2* nuevo);//
 agregarEnOrdenPorCant (por cantidad de productos)//
-void recorrerYmostrar(nodo2 * lista);//
-nodo2 * borrarNodo(nodo2 * lista, int dato);//
+void mostrarLista(nodo2 * lista);//
 nodo2 * cargarLista(nodo2* lista);//
+nodo2 * borrarNodo(nodo2 * lista, char nombre[]);//
 borrarPrimero (para vaciar la fila)//
 
 

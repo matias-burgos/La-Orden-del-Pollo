@@ -94,15 +94,36 @@ nodo2 * insertarNodo(nodo2 * lista, nodo2 * nuevoNodo)
     }
     return lista;
 }
-
-
+nodo2* agregarEnOrdenTipoCli (nodo2*lista, nodo2* nuevo)//se ordena por tipo de cliente desde el inicio hasta el final.
+{
+    nodo2*aux=lista;
+    while(aux->cliente.tipo_cliente<nuevo.cliente.tipo_cliente && aux!=NULL)
+    {
+        aux=aux->cliente;
+    }
+    if(aux!=NULL)
+    {
+        nuevo->siguiente=aux;
+        aux->anterior=nuevo;
+    }
+    else{
+        aux->siguiente=nuevo;
+        nuevo->anterior=nuevo;
+    }
+    return lista;
+}
+nodo2* agregarEnOrdenPorCant (nodo2*lista, nodo2*nuevo)
+{
+    nodo2*aux=lista;
+    while(aux)
+}
 
 void mostrarNodo(nodo2 * aux)
 {
     printf(" %d", aux->dato);
 }
 
-void recorrerYmostrar(nodo2 * lista)
+void mostrarLista(nodo2 * lista)
 {
     printf("\nContenido de la lista: ");
     nodo2 * seg = lista;
@@ -131,43 +152,37 @@ nodo2 * cargarLista(nodo2 * lista)
     }
     return lista;
 }
-nodo2 * borrarNodo(nodo2 * lista, int dato)
+nodo2 * borrarNodo(nodo2 * lista,char nombre[])
 {
-    nodo2 * aBorrar=NULL;
+    nodo2 * borrar=NULL;
     nodo2 * seg=NULL;
 
     if(lista!=NULL)
     {
-        if(lista->dato==dato)
+        if(lista->nombre==nombre)
         {
-            aBorrar=lista;
+            borrar=lista;
 
-            lista=lista->ste;
+            lista=lista->siguiente;
             if(lista!=NULL)
-                lista->ante=NULL;
-
-            free(aBorrar);
+            {
+                lista->anterior=NULL;
+            }
+            free(borrar);
         }
         else
         {
-            seg=lista->ste;
-            while(seg!=NULL && seg->dato!=dato)
+            seg=lista->siguiente;
+            while(seg!=NULL && seg->nombre!=nombre)
             {
-                seg=seg->ste;
+                seg=seg->siguiente;
             }
 
             if( seg!= NULL)
             {
-                nodo * anterior=seg->ante; /// bajo a una variable el anterior
-
-                anterior->ste = seg->ste; ///salteo el nodo que quiero eliminar.
-
-                if(seg->ste) /// si existe el nodo siguiente
-                {
-                    nodo2 * siguiente = seg->ste;
-                    siguiente->ante=anterior;
-                }
-                free(seg); ///elimino el nodo.
+                nodo * aux=seg->anterior; //Se crea un auxiliar donde se almacenara la lista sin el nodo que se busca borrar.
+                aux->siguiente = seg->siguiente;
+                free(seg);
             }
 
         }
