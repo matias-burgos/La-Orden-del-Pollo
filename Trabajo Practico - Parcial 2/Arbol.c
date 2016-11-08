@@ -138,11 +138,11 @@ nodoArbol *borrarNodo(nodoArbol *arbol, char nombre[])
 {
     if(arbol!=NULL)
     {
-        if(nombre>arbol->p.nombreApellido)
+        if(strcmp(nombre, arbol->p.nombreApellido)<0)// Revisar.
         {
             arbol->der=borrarNodo(arbol->der, nombre);
         }
-        else if(nombre<arbol->p.nombreApellido)
+        else if(strcmp(nombre<arbol->p.nombreApellido)<0)//Revisar.
         {
             arbol->izq=borrarNodo(arbol->izq, nombre);
         }
