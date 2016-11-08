@@ -97,7 +97,7 @@ nodo2 * insertarNodo(nodo2 * lista, nodo2 * nuevoNodo)
 nodo2* agregarEnOrdenTipoCli (nodo2*lista, nodo2* nuevo)//se ordena por tipo de cliente desde el inicio hasta el final.
 {
     nodo2*aux=lista;
-    while(aux->cliente.tipo_cliente<nuevo.cliente.tipo_cliente && aux!=NULL)
+    while(aux->cliente.tipo_cliente>nuevo.cliente.tipo_cliente && aux!=NULL)
     {
         aux=aux->cliente;
     }
@@ -115,7 +115,19 @@ nodo2* agregarEnOrdenTipoCli (nodo2*lista, nodo2* nuevo)//se ordena por tipo de 
 nodo2* agregarEnOrdenPorCant (nodo2*lista, nodo2*nuevo)
 {
     nodo2*aux=lista;
-    while(aux)
+    while(aux->cliente.cantArticulos>nuevo->cliente.cantArticulos && aux!=NULL)
+    {
+        aux=aux->siguiente;
+    }
+    if(aux!=NULL)
+    {
+        aux->anterior=nuevo;
+        nuevo->siguiente=aux;
+    }
+    else{
+        aux->siguiente=nuevo;
+    }
+    return aux;
 }
 
 void mostrarNodo(nodo2 * aux)
@@ -190,6 +202,18 @@ nodo2 * borrarNodo(nodo2 * lista,char nombre[])
 
     return lista;
 
+}
+
+Fila*borrarPrimero(Fila*fila)
+{
+
+    while(fila!=NULL)
+    {
+        nodo2* aux=fila;
+        fila=fila->inicio.siguiente;
+        free(aux);
+    }
+    return fila;
 }
 Fila* inicFila(Fila*nuevo)
 {

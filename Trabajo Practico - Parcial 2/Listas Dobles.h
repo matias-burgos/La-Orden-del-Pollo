@@ -16,13 +16,13 @@ nodo2 * crearNodoLista(int dato);
 nodo2 * agregarAlPrincipio(nodo2 * lista, nodo2 * nuevoNodo)
 nodo2 * buscarUltimo(nodo2 * lista);
 nodo2 * agregarAlFinal(nodo2 * lista, nodo2 * nuevoNodo);
-nodo2* insertarNodo(nodo2 * lista, nodo2 * nuevoNodo);//
-nodo2* agregarEnOrdenTipoCli (nodo2*lista, nodo2* nuevo);//
-agregarEnOrdenPorCant (por cantidad de productos)//
-void mostrarLista(nodo2 * lista);//
-nodo2 * cargarLista(nodo2* lista);//
-nodo2 * borrarNodo(nodo2 * lista, char nombre[]);//
-borrarPrimero (para vaciar la fila)//
+nodo2* insertarNodo(nodo2 * lista, nodo2 * nuevoNodo);
+nodo2* agregarEnOrdenTipoCli (nodo2*lista, nodo2* nuevo);
+nodo2* agregarEnOrdenPorCant (nodo2*lista, nodo2*nuevo);
+void mostrarLista(nodo2 * lista);
+nodo2 * cargarLista(nodo2* lista);
+nodo2 * borrarNodo(nodo2 * lista, char nombre[]);
+Fila*borrarPrimero(Fila*fila);
 
 
 fila* inicFila(fila*nuevo);

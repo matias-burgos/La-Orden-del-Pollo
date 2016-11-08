@@ -67,6 +67,15 @@ void postorder(nodoArbol * arbol)
         printf("%s ", arbol->p.nombreApellido);
     }
 }
+void mostrarArbol(nodoArbol*arbol)
+{
+    printf("\n Inorder: ");
+    inorder(arbol);
+    printf("\n Preorder: ");
+    preorder(arbol);
+    printf("\n Postorder: ");
+    preorder(arbol);
+}
 
 
 nodoArbol *buscarPorNombre(nodoArbol *arbol, persona p)
@@ -82,11 +91,11 @@ nodoArbol *buscarPorNombre(nodoArbol *arbol, persona p)
         {
             if(p.nombreApellido > arbol->p.nombreApellido)
             {
-                rta=buscar(arbol->der, p);
+                rta=buscarPorNombre(arbol->der, p);
             }
             else
             {
-                rta=buscar(arbol->izq, p);
+                rta=buscarPorNombre(arbol->izq, p);
             }
         }
     }
@@ -127,7 +136,7 @@ nodoArbol *nodoMasIzquierdo(nodoArbol *arbol)
 
 nodoArbol *borrarNodo(nodoArbol *arbol, char nombre[])
 {
-    if(arbol)
+    if(arbol!=NULL)
     {
         if(nombre>arbol->p.nombreApellido)
         {
@@ -159,5 +168,3 @@ nodoArbol *borrarNodo(nodoArbol *arbol, char nombre[])
     return arbol;
 }
 
- // Problemas del 2/11/16. Las carga o muestra mal
- // Resuelto el 2/11/16. Asignacion de datos sobre la misma variable

@@ -6,16 +6,18 @@ typedef struct
     struct nodoArbol *izq;
     struct nodoArbol *der;
 }nodoArbol;
-nodoArbol * inicArbol();
-nodoArbol * crearNodoArbol(persona p);
-nodoArbol * insertar (nodoArbol * arbol, persona p);
+
+nodoArbol * inicArbol();//
+nodoArbol * crearNodoArbol(persona p);//
+nodoArbol * insertar (nodoArbol * arbol, persona p);//
 void inorder(nodoArbol * arbol);
 void preorder(nodoArbol * arbol);
 void postorder(nodoArbol * arbol);
+void mostrarArbol(nodoArbol*arbol);
 nodoArbol *buscarPorNombre(nodoArbol *arbol, persona p);
 nodoArbol *nodoMasDerecho(nodoArbol *arbol);
 nodoArbol *nodoMasIzquierdo(nodoArbol *arbol);
 nodoArbol *borrarNodo(nodoArbol *arbol, char nombre[]);
-
+pasarDeArbolToLineaDeCajas();
 
 #endif // LISTAS_DOBLES_H_INCLUDED
