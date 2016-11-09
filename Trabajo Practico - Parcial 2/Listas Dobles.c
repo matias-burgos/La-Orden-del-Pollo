@@ -53,7 +53,7 @@ nodo2 * agregarAlFinal(nodo2 * lista, nodo2 * nuevoNodo)
     }
     else
     {
-        nodo2 * ultimo = buscarUltimoR(lista);
+        nodo2 * ultimo = buscarUltimo(lista);
         ultimo->ste = nuevoNodo;
         nuevoNodo->ante = ultimo;
     }
@@ -222,16 +222,18 @@ Fila* inicFila(Fila*nuevo)
     return nuevo;
 }
 
-Fila*agregar(Fila*fila, int dato)
+Fila*agregar(Fila*fila, persona cliente)
 {
-    nodo2*nuevo=crearNodoLista(dato);
+    nodo2*nuevo=crearNodoLista(cliente);
     if(fila==NULL)
     {
         fila->inicio=nuevo;
     }
     else
     {
-        fila->final=agregarAlFinal(fila->final, nuevo);
+        fila->inicio=agregarAlFinal(fila->inicio, nuevo);
+        cliente ultimo=buscarUltimo(fila);
+        fila->final=ultimo;
     }
     return fila;
 }
@@ -260,8 +262,14 @@ persona*quitar(Fila*fila)
 
 void mostrar(Fila*fila)
 {
-    printf("\n Inicio: %d", fila->inicio);
-    printf("\n Final: %d", fila->final);
+    Fila*aux=fila;
+    printf("\n Inicio: %d", aux->inicio);
+    while(aux->inicio.siguiente!=aux->final)
+    {
+        printf("| %d", fila->inicio);
+        aux=aux->inicio.siguiente;
+    }
+    printf("\n %d <-- Final", aux->final);
 }
 
 int filavacia(Fila*fila)

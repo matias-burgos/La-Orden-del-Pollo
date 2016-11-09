@@ -39,6 +39,10 @@
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="Archivo.h" />
+		<Unit filename="Caja.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Caja.h" />
 		<Unit filename="Listas Dobles.c">
 			<Option compilerVar="CC" />
 		</Unit>
