@@ -7,16 +7,8 @@
 
 Caja agregarCaja(Caja cajas)
 {
-    printf("\n Ingresar el numero de la caja: ");
-    scanf("%d",&cajas.numero_de_cajas );
-    printf("\n Ingrese el nombre del Cajero: ");
-    gets(cajas.nombreCajero);
-    printf("\n Ingresar el tipo de pago que acepta la caja: ");
-    scanf("%d",&cajas.tipo_pago);
-    printf("\n Ingrese el tipo de planificacion que se utilizara para esta caja: ");
-    gets(cajas.algoritmoPlanificacion);
-    cajas.filita=NULL;
-    return cajas;
+
+    //Necesito el archivo de cajas.
 }
 
 Caja abrirOcerrarCaja(Caja cajas[], int numeroCaja)
@@ -148,7 +140,7 @@ Caja agregarClienteACaja(Caja cajas[], int validos, persona*individuo)
 
     return cajas;
 }
-agregarTiempo(Caja cajas, persona nuevo, int tiempo)//Es cualquier cosa esto.
+Caja agregarTiempo(Caja cajas, persona nuevo, int tiempo)//Es cualquier cosa esto.
 {
     Caja aux=cajas;
     int suma=0;
@@ -160,14 +152,105 @@ agregarTiempo(Caja cajas, persona nuevo, int tiempo)//Es cualquier cosa esto.
     Caja auxi=aux;
     aux.filita.final.siguiente=nuevo;
     nuevo.filita.final.siguiente=auxi;
+    return cajas;
 }
 
-void agregarClienteACajaEnTiempoDeterminado(Caja cajas[], int validos, persona nuevo, int tiempo)
+Caja agregarClienteACajaEnTiempoDeterminado(Caja cajas[], int validos, persona nuevo, int tiempo)
 {
     int i=0;
     while(i<validos && cajas[i].tipo_pago!=nuevo.tipo_pago)
     {
         i++;
     }
-    agregarTiempo(Caja cajas, persona nuevo, int tiempo);
+    cajas[i]=agregarTiempo(Caja cajas[i], persona nuevo, int tiempo);
+    return cajas;
+}
+Caja FIFO(Caja cajas)
+{
+    while(cajas.filita.inicio!=NULL)
+    {
+        int i=0;
+        int tiempoEspera=0;
+        if(cajas.abiertaOcerrada==1)
+        {
+            while(cajas.filita.inicio!=NULL)
+            {
+                i=0;
+                cajas.filita.inicio.cliente.tiempoDeEspera=tiempoEspera;
+                while(i<cajas.filita.inicio.cliente.cantArticulos)
+                {
+                    tiempoEspera++;
+                    i++;
+                }
+                if(cajas.filita.inicio==cajas.filita.final)
+                {
+                    free(cajas.filita.final);
+                }
+                cajas.filita=quitar(cajas.filita);
+            }
+        }
+        else{
+               printf("\n La caja se encuentra cerrada ");
+        }
+    }
+    return cajas;
+}
+Caja cajas[i]=SRTF(cajas[i])
+{
+    while(cajas.filita.inicio!=NULL)
+    {
+        int i=0;
+        int tiempoEspera=0;
+        if(cajas.abiertaOcerrada==1)
+        {
+            while(cajas.filita.inicio!=NULL)
+            {
+                i=0;
+                cajas.filita.inicio.cliente.tiempoDeEspera=tiempoEspera;
+                while(i<cajas.filita.inicio.cliente.cantArticulos)
+                {
+                    tiempoEspera++;
+                    i++;
+                }
+                if(cajas.filita.inicio==cajas.filita.final)
+                {
+                    free(cajas.filita.final);
+                }
+                cajas.filita=quitar(cajas.filita);
+            }
+        }
+        else{
+               printf("\n La caja se encuentra cerrada ");
+        }
+    }
+    return cajas;
+}
+
+Caja antenderClientes(Caja cajas[], int validos)
+{
+    int i=0;
+    while(i<validos)
+    {
+        if(strstr(cajas[i].algoritmoPlanificacion, 'FIFO')!=NULL)
+        {
+            cajas[i]=FIFO(cajas[i]);
+        }
+
+        if(strstr(cajas[i].algoritmoPlanificacion, 'SRTF')!=NULL)
+        {
+            cajas[i]=SRTF(cajas[i]);
+        }
+
+        if(strstr(cajas[i].algoritmoPlanificacion, 'Prioridades')!=NULL)
+        {
+            cajas[i]=Prioridades(cajas[i]);
+        }
+
+        if(strstr(cajas[i].algoritmoPlanificacion, 'RR')!=NULL)
+        {
+            cajas[i]=RR(cajas[i]);
+        }
+
+    }
+    return cajas;
 }

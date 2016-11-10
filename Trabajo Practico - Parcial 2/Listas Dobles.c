@@ -238,26 +238,12 @@ Fila*agregar(Fila*fila, persona cliente)
     return fila;
 }
 
-persona*quitar(Fila*fila)
+Fila* quitar(Fila* filas)
 {
-    int resp=0;
-    if(fila->inicio!=NULL)
-    {
-        nodo2* aux=fila->inicio;
-        nodo2* sig=aux->siguiente;
-        if(fila->inicio!=fila->cola)
-        {
-            sig->anterior=NULL;
-            fila->inicio=sig;
-        }
-        else{
-            fila->final=NULL;
-            fila->inicio=NULL;
-        }
-        resp=aux->persona;
-        free(aux);
-    }
-    return resp;
+    persona aux=filas.inicio;
+    filas.inicio=filas.inicio.siguiente;
+    free(aux);
+    return filas;
 }
 
 void mostrar(Fila*fila)

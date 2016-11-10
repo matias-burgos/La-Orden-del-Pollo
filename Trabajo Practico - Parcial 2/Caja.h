@@ -16,7 +16,8 @@ Caja buscarCaja(Caja cajas[], int pago, int validos);
 void mostrarCaja(Caja cajas);
 Caja ingresarEnFila(Caja cajas, persona individuo, Fila fila);
 void agregarClienteACaja(Caja cajas[], int validos, nodo2*cliente);
-agregarClienteACajaEnTiempoDeterminado
+Caja agregarTiempo(Caja cajas, persona nuevo, int tiempo);
+Caja agregarClienteACajaEnTiempoDeterminado(Caja cajas[], int validos, persona nuevo, int tiempo);
 antenderClientes
 
 #endif // CAJA_H_INCLUDED
