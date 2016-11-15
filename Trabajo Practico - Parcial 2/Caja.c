@@ -214,7 +214,9 @@ Caja RR(Caja cajas)
                     if(i==q)
                     {
                         cajas.filita=agregarEnOrdenTipoCli(cajas.filita, cajas.filita.inicio);
-                        free(cajas.filita.inicio);
+                        nodo2* aux=cajas.filita.inicio;
+                        cajas.filita.inicio=cajas.filita.inicio.anterior;
+                        free(aux);
                     }
                     cajas.filita.inicio.cliente.tiempoProcesado++;
                     tiempoEspera++;
