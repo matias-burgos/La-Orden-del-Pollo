@@ -101,6 +101,7 @@ nodo2* agregarEnOrdenTipoCli (nodo2*lista, nodo2* nuevo)//se ordena por tipo de 
     {
         aux=aux->cliente;
     }
+
     if(aux!=NULL)
     {
         nuevo->siguiente=aux;

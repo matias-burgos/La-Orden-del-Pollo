@@ -165,7 +165,7 @@ Caja agregarClienteACajaEnTiempoDeterminado(Caja cajas[], int validos, persona n
     cajas[i]=agregarTiempo(Caja cajas[i], persona nuevo, int tiempo);
     return cajas;
 }
-Caja FIFO(Caja cajas)
+Caja AtenderAlgoritmos(Caja cajas)
 {
     while(cajas.filita.inicio!=NULL)
     {
@@ -179,6 +179,7 @@ Caja FIFO(Caja cajas)
                 cajas.filita.inicio.cliente.tiempoDeEspera=tiempoEspera;
                 while(i<cajas.filita.inicio.cliente.cantArticulos)
                 {
+                    cajas.filita.inicio.cliente.tiempoProcesado++;
                     tiempoEspera++;
                     i++;
                 }
@@ -195,8 +196,9 @@ Caja FIFO(Caja cajas)
     }
     return cajas;
 }
-Caja cajas[i]=SRTF(cajas[i])
+Caja RR(Caja cajas)
 {
+    int q=8;
     while(cajas.filita.inicio!=NULL)
     {
         int i=0;
@@ -209,6 +211,12 @@ Caja cajas[i]=SRTF(cajas[i])
                 cajas.filita.inicio.cliente.tiempoDeEspera=tiempoEspera;
                 while(i<cajas.filita.inicio.cliente.cantArticulos)
                 {
+                    if(i==q)
+                    {
+                        cajas.filita=agregarEnOrdenTipoCli(cajas.filita, cajas.filita.inicio);
+                        free(cajas.filita.inicio);
+                    }
+                    cajas.filita.inicio.cliente.tiempoProcesado++;
                     tiempoEspera++;
                     i++;
                 }
@@ -224,6 +232,7 @@ Caja cajas[i]=SRTF(cajas[i])
         }
     }
     return cajas;
+}
 }
 
 Caja antenderClientes(Caja cajas[], int validos)
@@ -231,24 +240,13 @@ Caja antenderClientes(Caja cajas[], int validos)
     int i=0;
     while(i<validos)
     {
-        if(strstr(cajas[i].algoritmoPlanificacion, 'FIFO')!=NULL)
-        {
-            cajas[i]=FIFO(cajas[i]);
-        }
-
-        if(strstr(cajas[i].algoritmoPlanificacion, 'SRTF')!=NULL)
-        {
-            cajas[i]=SRTF(cajas[i]);
-        }
-
-        if(strstr(cajas[i].algoritmoPlanificacion, 'Prioridades')!=NULL)
-        {
-            cajas[i]=Prioridades(cajas[i]);
-        }
 
         if(strstr(cajas[i].algoritmoPlanificacion, 'RR')!=NULL)
         {
             cajas[i]=RR(cajas[i]);
+        }
+        else{
+            cajas[i]=AtenderAlgoritmos(cajas[i]);
         }
 
     }
