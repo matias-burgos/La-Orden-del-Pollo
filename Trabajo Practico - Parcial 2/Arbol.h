@@ -1,5 +1,6 @@
 #ifndef ARCHIVO_H_INCLUDED
 #define ARCHIVO_H_INCLUDED
+#include "Archivo.h"
 typedef struct
 {
     persona p;

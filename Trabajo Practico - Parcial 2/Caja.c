@@ -5,10 +5,10 @@
 #include "Archivo.h"
 #include "string.h"
 
-Caja agregarCaja(Caja cajas)
+Caja agregarCaja(Caja cajas, char nombre[])
 {
 
-    //Necesito el archivo de cajas.
+
 }
 
 Caja abrirOcerrarCaja(Caja cajas[], int numeroCaja)
@@ -235,7 +235,7 @@ Caja RR(Caja cajas)
     }
     return cajas;
 }
-}
+
 
 Caja antenderClientes(Caja cajas[], int validos)
 {

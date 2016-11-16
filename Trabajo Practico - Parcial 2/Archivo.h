@@ -10,9 +10,6 @@ typedef struct
       int tipo_pago;                //  1 efectivo, 2 crédito o débito, 3 todos
 }persona;
 
-persona cargar_persona();
-int cargar_archivo(char nombre[], int limite);
-void mostrar_persona(persona aux);
 void mostrar_archivo(char nombre[]);
 
 
