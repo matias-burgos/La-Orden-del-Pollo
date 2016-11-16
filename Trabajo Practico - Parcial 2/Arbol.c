@@ -176,7 +176,7 @@ nodo2* preorderCliente(nodoArbol * arbol, Caja cajas[], int validos)
     persona aux;
     if(arbol!=NULL)
     {
-        aux=arbol.p;
+        aux=arbol.p;//El codeblocks tiene cancer y nose que pasa.
         agregarClienteACaja(cajas, validos, aux);
         preorder(arbol->izq);
         preorder(arbol->der);
@@ -185,11 +185,11 @@ nodo2* preorderCliente(nodoArbol * arbol, Caja cajas[], int validos)
 }
 nodo2* inorderCliente(nodoArbol * arbol, Caja cajas[], int validos)
 {
-    persona*aux=malloc(sizeof(persona));
+    persona aux;
     if(arbol!=NULL)
     {
         inorder(arbol->izq);
-        aux=arbol;
+        aux=arbol.p;//El codeblocks tiene cancer y nose que pasa.
         agregarClienteACaja(cajas, validos, aux);
         aux=aux->siguiente;
         inorder(arbol->der);
@@ -198,12 +198,12 @@ nodo2* inorderCliente(nodoArbol * arbol, Caja cajas[], int validos)
 }
 nodo2* postorderCliente(nodoArbol * arbol, Caja cajas[], int validos)
 {
-    persona*aux=malloc(sizeof(persona));
+    persona aux;
     if(arbol!=NULL)
     {
         postorder(arbol->izq);
         postorder(arbol->der);
-        aux=arbol;
+        aux=arbol.p;//El codeblocks tiene cancer y nose que pasa.
         agregarClienteACaja(cajas, validos, aux);
     }
     return cajas;

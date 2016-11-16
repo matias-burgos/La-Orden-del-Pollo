@@ -2,6 +2,7 @@
 #define ARBOL_H_INCLUDED
 #include "Archivo.h"
 #include "Caja.h"
+
 typedef struct
 {
     persona p;
@@ -25,4 +26,4 @@ nodo2* inorderCliente(nodoArbol * arbol, Caja cajas[], int validos);
 nodo2* postorderCliente(nodoArbol * arbol, Caja cajas[], int validos);
 void pasarDeArbolToLineaDeCajas(nodoArbol* arbol, int metodo, int validos, Caja cajas[]);
 
-#endif // LISTAS_DOBLES_H_INCLUDED
+#endif // ARBOL_H_INCLUDED
