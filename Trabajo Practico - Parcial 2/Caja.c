@@ -4,16 +4,17 @@
 #include "Listas Dobles.h"
 #include "Archivo.h"
 #include "string.h"
-
-Caja agregarCaja(Caja cajas, char nombre[])
+/*
+Caja* agregarCaja(Caja cajas, char nombre[])
 {
 
 
 }
 
-Caja abrirOcerrarCaja(Caja cajas[], int numeroCaja)
+
+void abrirOcerrarCaja(Caja cajas[], int numeroCaja)
 {
-    if(cajas[numeroCaja].filita==NULL)
+    if(cajas[numeroCaja].filita!=NULL)
     {
         printf("\n La caja no puede cerrarce, aun quedan clientes");
     }
@@ -29,13 +30,12 @@ Caja abrirOcerrarCaja(Caja cajas[], int numeroCaja)
             }
         }
     }
-    return cajas;
 }
 
 Caja buscarCaja(Caja cajas[], int pago, int validos)
 {
     int i=0;
-    Caja aux=NULL;
+    Caja aux;
     while(i<validos)
     {
         if(cajas[i].tipo_pago==pago)
@@ -65,25 +65,23 @@ void mostrarCaja(Caja cajas)
         mostrar(cajas.filita);
     }
 }
-Caja IngresarFilas(Caja cajas[], int validos)
+Caja* IngresarFilas(Caja cajas[], int validos)
 {
     int i=0;
-    whille(i<validos)
+    while(i<validos)
     {
-       Fila aux=malloc(sizeof(Fila));
-       inicFila(aux);
+       Fila* aux=inicFila(aux);
        cajas[i].filita=aux;
        i++;
     }
-    return cajas;
-
+    return cajas;//Codeblocks con cancer.
 }
 
-Caja ingresarEnFila(Caja cajas, persona individuo)//falta terminar el cliente que se ejecuta.
+Caja* ingresarEnFila(Caja cajas, persona individuo)
 {
     if(strstr(cajas.algoritmoPlanificacion,'FIFO')!=NULL)
     {
-        if(caja.filita==NULL)
+        if(cajas.filita==NULL)
         {
             cajas.filita.inicio=individuo;
         }
@@ -253,4 +251,4 @@ Caja antenderClientes(Caja cajas[], int validos)
 
     }
     return cajas;
-}
+}*/

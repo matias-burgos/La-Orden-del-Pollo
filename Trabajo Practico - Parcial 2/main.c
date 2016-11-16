@@ -9,7 +9,6 @@ int main()
     printf("\n Lista de las personas ingresadas: ");
     mostrar_archivo(Personas);
 /*
-    printf("Hello world!\n");
     nodoArbol * arbolito = inicArbol();
     persona p;
     persona p2;

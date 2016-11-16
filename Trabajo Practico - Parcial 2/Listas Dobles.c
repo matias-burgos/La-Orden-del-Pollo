@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include "Listas Dobles.h"
 
+/*
 nodo2 * inicLista()
 {
     return NULL;
@@ -261,10 +262,11 @@ void mostrar(Fila*fila)
 
 int filavacia(Fila*fila)
 {
+
     int i=0;
     if(fila->final==NULL && fila->inicio==NULL)
     {
         i=1;
     }
    return i;
-}
+}*/

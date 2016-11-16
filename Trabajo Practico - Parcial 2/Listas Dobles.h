@@ -3,14 +3,14 @@
 #include "Archivo.h"
 
 typedef struct{
- persona cliente;
- struct nodo * siguiente;
- struct nodo * anterior;
+    persona cliente;
+    struct nodo * siguiente;
+    struct nodo * anterior;
 } nodo2;
 
 typedef struct{
- struct nodo2 * inicio;
- struct nodo2 * final;
+    struct nodo2 * inicio;
+    struct nodo2 * final;
 } Fila;
 
 nodo2 * inicLista();

@@ -4,13 +4,13 @@
 	<stdlib.h>
 	"Archivo.h"
 
-1478118360 c:\users\matias\documents\github\la-orden-del-pollo\trabajo practico - parcial 2\archivo.h
+1479333501 c:\users\matias\documents\github\la-orden-del-pollo\trabajo practico - parcial 2\archivo.h
 
-1478118499 source:c:\users\matias\documents\github\la-orden-del-pollo\trabajo practico - parcial 2\archivo.c
+1479335091 source:c:\users\matias\documents\github\la-orden-del-pollo\trabajo practico - parcial 2\archivo.c
 	<stdio.h>
 	<stdlib.h>
-	"Archivo.h"
 	"string.h"
+	"Archivo.h"
 
 1478545648 source:c:\users\alumno\desktop\la-orden-del-pollo-master\trabajo practico - parcial 2\archivo.c
 	<stdio.h>
@@ -19,4 +19,34 @@
 	"string.h"
 
 1478618387 c:\users\alumno\desktop\la-orden-del-pollo-master\trabajo practico - parcial 2\archivo.h
+
+1479335075 source:c:\users\matias\documents\github\la-orden-del-pollo\trabajo practico - parcial 2\arbol.c
+	<stdio.h>
+	<stdlib.h>
+	"Arbol.h"
+	"Archivo.h"
+
+1479334255 c:\users\matias\documents\github\la-orden-del-pollo\trabajo practico - parcial 2\arbol.h
+	"Archivo.h"
+	"Caja.h"
+
+1479337093 c:\users\matias\documents\github\la-orden-del-pollo\trabajo practico - parcial 2\caja.h
+	"Listas Dobles.h"
+	"Archivo.h"
+
+1479336520 c:\users\matias\documents\github\la-orden-del-pollo\trabajo practico - parcial 2\listas dobles.h
+	"Archivo.h"
+
+1479337151 source:c:\users\matias\documents\github\la-orden-del-pollo\trabajo practico - parcial 2\caja.c
+	<stdio.h>
+	<stdlib.h>
+	"Caja.h"
+	"Listas Dobles.h"
+	"Archivo.h"
+	"string.h"
+
+1479337296 source:c:\users\matias\documents\github\la-orden-del-pollo\trabajo practico - parcial 2\listas dobles.c
+	<stdio.h>
+	<stdlib.h>
+	"Listas Dobles.h"
 

@@ -71,6 +71,7 @@ void postorder(nodoArbol * arbol)
         printf("%s ", arbol->p.nombreApellido);
     }
 }
+
 void mostrarArbol(nodoArbol*arbol)
 {
     printf("\n Inorder: ");
@@ -171,6 +172,7 @@ nodoArbol *borrarNodo(nodoArbol *arbol, char nombre[])
     }
     return arbol;
 }
+/*
 nodo2* preorderCliente(nodoArbol * arbol, Caja cajas[], int validos)
 {
     persona aux;
@@ -196,6 +198,7 @@ nodo2* inorderCliente(nodoArbol * arbol, Caja cajas[], int validos)
     }
     return cajas;
 }
+
 nodo2* postorderCliente(nodoArbol * arbol, Caja cajas[], int validos)
 {
     persona aux;
@@ -210,7 +213,7 @@ nodo2* postorderCliente(nodoArbol * arbol, Caja cajas[], int validos)
 }
 
 
-
+*/
 void pasarDeArbolToLineaDeCajas(nodoArbol* arbol, int metodo, int validos, Caja cajas[])
 {
     while(arbol!=NULL && metodo==1)
