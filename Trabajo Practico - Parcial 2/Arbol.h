@@ -1,6 +1,7 @@
-#ifndef ARCHIVO_H_INCLUDED
-#define ARCHIVO_H_INCLUDED
+#ifndef ARBOL_H_INCLUDED
+#define ARBOL_H_INCLUDED
 #include "Archivo.h"
+#include "Caja.h"
 typedef struct
 {
     persona p;
@@ -19,6 +20,9 @@ nodoArbol *buscarPorNombre(nodoArbol *arbol, persona p);
 nodoArbol *nodoMasDerecho(nodoArbol *arbol);
 nodoArbol *nodoMasIzquierdo(nodoArbol *arbol);
 nodoArbol *borrarNodo(nodoArbol *arbol, char nombre[]);
-pasarDeArbolToLineaDeCajas();
+nodo2* preorderCliente(nodoArbol * arbol, Caja cajas[], int validos);
+nodo2* inorderCliente(nodoArbol * arbol, Caja cajas[], int validos);
+nodo2* postorderCliente(nodoArbol * arbol, Caja cajas[], int validos);
+void pasarDeArbolToLineaDeCajas(nodoArbol* arbol, int metodo, int validos, Caja cajas[]);
 
 #endif // LISTAS_DOBLES_H_INCLUDED

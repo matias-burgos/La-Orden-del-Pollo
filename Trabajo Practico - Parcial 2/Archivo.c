@@ -1,8 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "Archivo.h"
 #include "string.h"
-void mostrar_persona(persona aux)
+#include "Archivo.h"
+void mostrar_persona(persona p)
 {
     printf("\m ------------O-O-O-O------------");
     printf("\n --Nombre y Apellido: _ %s", aux.nombreApellido);

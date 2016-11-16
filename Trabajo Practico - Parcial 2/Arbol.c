@@ -1,7 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "Arbol.h"
-#include "Caja.h"
 
 nodoArbol * inicArbol()
 {
@@ -154,7 +153,7 @@ nodoArbol *borrarNodo(nodoArbol *arbol, char nombre[])
         {
             if(arbol->izq!=NULL)
             {
-                arbol->p.nombreApellido=(nodoMasDerecho(arbol->izq))->p.nombreApellido;
+                arbol->p.nombreApellido=(nodoMasDerecho(arbol->izq))->p.nombreApellido);
                 arbol->izq=borrarNodo(arbol->izq, arbol->p.nombreApellido);
             }
             else if(arbol->der!=NULL)
@@ -171,7 +170,7 @@ nodoArbol *borrarNodo(nodoArbol *arbol, char nombre[])
     }
     return arbol;
 }
-nodo2* preorderCliente(nodoArbol * arbol, Caja cajas[], int calidos)
+nodo2* preorderCliente(nodoArbol * arbol, Caja cajas[], int validos)
 {
     persona*aux=cliente;
     if(arbol!=NULL)
@@ -184,7 +183,7 @@ nodo2* preorderCliente(nodoArbol * arbol, Caja cajas[], int calidos)
     }
     return cliente;
 }
-void inorder(nodoArbol * arbol, int validos, Caja cajas[])
+nodo2* inorderCliente(nodoArbol * arbol, Caja cajas[], int validos)
 {
     nodo2*aux=cliente;
     if(arbol!=NULL)
@@ -195,8 +194,9 @@ void inorder(nodoArbol * arbol, int validos, Caja cajas[])
         aux=aux->siguiente;
         inorder(arbol->der);
     }
+    return cliente;
 }
-nodo2* postorder(nodoArbol * arbol, nodo2*cliente)
+nodo2* postorderCliente(nodoArbol * arbol, Caja cajas[], int validos)
 {
     nodo2*aux=cliente;
     if(arbol!=NULL)
@@ -204,6 +204,8 @@ nodo2* postorder(nodoArbol * arbol, nodo2*cliente)
         postorder(arbol->izq);
         postorder(arbol->der);
         aux=arbol;
+        agregarClienteACaja(cajas, validos, aux);
+        aux=aux->siguiente;
         aux=aux->siguiente;
     }
     return cliente;
