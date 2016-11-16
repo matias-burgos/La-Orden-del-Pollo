@@ -126,7 +126,7 @@ Caja ingresarEnFila(Caja cajas, persona individuo)//falta terminar el cliente qu
     }
 }
 
-Caja agregarClienteACaja(Caja cajas[], int validos, persona*individuo)
+Caja agregarClienteACaja(Caja cajas[], int validos, persona individuo)
 {
     while(i<validos && cajas[i].tipo_pago!=individuo.tipo_pago)
     {

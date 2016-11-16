@@ -1,6 +1,7 @@
 #ifndef LISTAS_DOBLES_H_INCLUDED
 #define LISTAS_DOBLES_H_INCLUDED
 #include "Archivo.h"
+
 typedef struct{
  persona cliente;
  struct nodo * siguiente;

@@ -1,6 +1,7 @@
 #ifndef CAJA_H_INCLUDED
 #define CAJA_H_INCLUDED
 #include "Listas Dobles.h"
+#include "Archivo.h"
 
 typedef struct Caja
 {

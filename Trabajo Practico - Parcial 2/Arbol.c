@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "Arbol.h"
+#include "Archivo.h"
 
 nodoArbol * inicArbol()
 {
@@ -153,12 +154,12 @@ nodoArbol *borrarNodo(nodoArbol *arbol, char nombre[])
         {
             if(arbol->izq!=NULL)
             {
-                arbol->p.nombreApellido=(nodoMasDerecho(arbol->izq))->p.nombreApellido);
+                arbol->p=(nodoMasDerecho(arbol->izq))->p;
                 arbol->izq=borrarNodo(arbol->izq, arbol->p.nombreApellido);
             }
             else if(arbol->der!=NULL)
             {
-                arbol->p.nombreApellido=(nodoMasIzquierdo(arbol->der))->p.nombreApellido;
+                arbol->p=(nodoMasIzquierdo(arbol->der))->p;
                 arbol->der=borrarNodo(arbol->der, arbol->p.nombreApellido);
             }
             else
@@ -172,20 +173,19 @@ nodoArbol *borrarNodo(nodoArbol *arbol, char nombre[])
 }
 nodo2* preorderCliente(nodoArbol * arbol, Caja cajas[], int validos)
 {
-    persona*aux=cliente;
+    persona aux;
     if(arbol!=NULL)
     {
-        aux=arbol;
+        aux=arbol.p;
         agregarClienteACaja(cajas, validos, aux);
-        aux=aux->siguiente;
         preorder(arbol->izq);
         preorder(arbol->der);
     }
-    return cliente;
+    return cajas;
 }
 nodo2* inorderCliente(nodoArbol * arbol, Caja cajas[], int validos)
 {
-    nodo2*aux=cliente;
+    persona*aux=malloc(sizeof(persona));
     if(arbol!=NULL)
     {
         inorder(arbol->izq);
@@ -194,21 +194,19 @@ nodo2* inorderCliente(nodoArbol * arbol, Caja cajas[], int validos)
         aux=aux->siguiente;
         inorder(arbol->der);
     }
-    return cliente;
+    return cajas;
 }
 nodo2* postorderCliente(nodoArbol * arbol, Caja cajas[], int validos)
 {
-    nodo2*aux=cliente;
+    persona*aux=malloc(sizeof(persona));
     if(arbol!=NULL)
     {
         postorder(arbol->izq);
         postorder(arbol->der);
         aux=arbol;
         agregarClienteACaja(cajas, validos, aux);
-        aux=aux->siguiente;
-        aux=aux->siguiente;
     }
-    return cliente;
+    return cajas;
 }
 
 
@@ -217,16 +215,14 @@ void pasarDeArbolToLineaDeCajas(nodoArbol* arbol, int metodo, int validos, Caja 
 {
     while(arbol!=NULL && metodo==1)
     {
-        preorder(arbol, cliente);
+        cajas=preorderCliente(arbol, cajas, validos);
     }
     while(arbol!=NULL && metodo==2)
     {
-        cliente=inorder(arbol, cliente);
-        agregarClienteACaja(cajas, validos, cliente);
+        cajas=inorderCliente(arbol, cajas, validos);
     }
     while(arbol!=NULL && metodo==3)
     {
-        cliente=postorder(arbol, cliente);
-        agregarClienteACaja(cajas, validos, cliente);
+        cajas=postorderCliente(arbol, cajas, validos);
     }
 }
