@@ -19,7 +19,7 @@ Caja buscarCaja(Caja* cajas[], int pago, int validos);
 void mostrarCaja(Caja* cajas);
 Caja IngresarFilas(Caja* cajas[], int validos);
 Caja ingresarEnFila(Caja* cajas, persona individuo, Fila fila);
-void agregarClienteACaja(Caja* cajas[], int validos, nodo2*cliente);
+void agregarClienteACaja(Caja* cajas[], int validos, persona cliente);  //Originalmente era asi: void agregarClienteACaja(Caja* cajas[], int validos, nodo2*cliente);
 Caja agregarTiempo(Caja* cajas, persona nuevo, int tiempo);
 Caja agregarClienteACajaEnTiempoDeterminado(Caja cajas[], int validos, persona nuevo, int tiempo);
 Caja antenderClientes(Caja* cajas[], int validos);

@@ -4,17 +4,15 @@
 #include "Listas Dobles.h"
 #include "Archivo.h"
 #include "string.h"
+
 /*
 Caja* agregarCaja(Caja cajas, char nombre[])
+*/
+
+
+void abrirOcerrarCaja(Caja cajas[], int numeroCaja) //El error se va con un puntero, pero aparecen otros errores
 {
-
-
-}
-
-
-void abrirOcerrarCaja(Caja cajas[], int numeroCaja)
-{
-    if(cajas[numeroCaja].filita!=NULL)
+    if(cajas[numeroCaja].filita.inicio!=NULL) //El NULL era de filita.inicio, con filita solo al parecer no se puede
     {
         printf("\n La caja no puede cerrarce, aun quedan clientes");
     }
@@ -81,28 +79,28 @@ Caja* ingresarEnFila(Caja cajas, persona individuo)
 {
     if(strstr(cajas.algoritmoPlanificacion,'FIFO')!=NULL)
     {
-        if(cajas.filita==NULL)
+        if(cajas.filita.inicio==NULL)   //Aca tambien en vez de hacer filita==NULL hice filita.inicio
         {
             cajas.filita.inicio=individuo;
         }
         else{
-            cajas.filita.final.siguiente=individuo;
+            cajas.filita.final.siguiente=individuo;   //Aca final no tiene siguiente
         }
     }
     if(strstr(cajas.algoritmoPlanificacion, 'SRTF')!=NULL)
     {
-        if(cajas.filita==NULL)
+        if(cajas.filita.inicio==NULL)   //filita==NULL
         {
             cajas.filita.inicio=individuo;
         }
         else{
-            fila.inicio=agregarEnOrdenPorCant(fila.inicio, individuo);
+            cajas.filita.inicio=agregarEnOrdenPorCant(cajas.filita.inicio, individuo);  //Original: fila.inicio=agregarEnOrdenPorCant(fila.inicio, individuo);
             fila.final=buscarUltimo(fila.inicio);
         }
     }
     if(strstr(cajas.algoritmoPlanificacion, 'prioridades')!=NULL)
     {
-        if(cajas.filita==NULL)
+        if(cajas.filita.inicio==NULL)  //.inicio
         {
             cajas.filita.inicio=individuo;
         }
@@ -113,7 +111,7 @@ Caja* ingresarEnFila(Caja cajas, persona individuo)
     }
     if(strstr(cajas.algoritmoPlanificacion, 'RR')!=NULL)
     {
-        if(cajas.filita==NULL)
+        if(cajas.filita.inicio==NULL)  //.inicio
         {
             cajas.filita.inicio=individuo;
         }
@@ -126,6 +124,7 @@ Caja* ingresarEnFila(Caja cajas, persona individuo)
 
 Caja agregarClienteACaja(Caja cajas[], int validos, persona individuo)
 {
+    int i=0;
     while(i<validos && cajas[i].tipo_pago!=individuo.tipo_pago)
     {
         i++;
@@ -149,7 +148,7 @@ Caja agregarTiempo(Caja cajas, persona nuevo, int tiempo)//Es cualquier cosa est
     }
     Caja auxi=aux;
     aux.filita.final.siguiente=nuevo;
-    nuevo.filita.final.siguiente=auxi;
+    nuevo.filita.final.siguiente=aux; // decia auxi
     return cajas;
 }
 
@@ -160,7 +159,7 @@ Caja agregarClienteACajaEnTiempoDeterminado(Caja cajas[], int validos, persona n
     {
         i++;
     }
-    cajas[i]=agregarTiempo(Caja cajas[i], persona nuevo, int tiempo);
+    cajas[i]=agregarTiempo(cajas[i], nuevo, tiempo);  //Original: cajas[i]=agregarTiempo(Caja cajas[i], persona nuevo, int tiempo);
     return cajas;
 }
 Caja AtenderAlgoritmos(Caja cajas)
@@ -251,4 +250,4 @@ Caja antenderClientes(Caja cajas[], int validos)
 
     }
     return cajas;
-}*/
+}

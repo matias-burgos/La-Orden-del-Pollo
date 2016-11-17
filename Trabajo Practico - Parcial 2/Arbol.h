@@ -10,9 +10,10 @@ typedef struct
     struct nodoArbol *der;
 }nodoArbol;
 
-nodoArbol * inicArbol();//
-nodoArbol * crearNodoArbol(persona p);//
-nodoArbol * insertar (nodoArbol * arbol, persona p);//
+nodoArbol * inicArbol();
+nodoArbol * crearNodoArbol(persona p);
+nodoArbol * insertar (nodoArbol * arbol, persona p);
+nodoArbol* IngresarPersonas(nodoArbol*arbol, char nombre[]);
 void inorder(nodoArbol * arbol);
 void preorder(nodoArbol * arbol);
 void postorder(nodoArbol * arbol);
