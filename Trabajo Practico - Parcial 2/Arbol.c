@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "Arbol.h"
+#include "string.h"
 #include "Archivo.h"
 
 nodoArbol * inicArbol()
@@ -53,6 +54,17 @@ nodoArbol* IngresarPersonas(nodoArbol*arbol, char nombre[])
     fclose(archi);
     return arbol;
 }
+void preorder(nodoArbol * arbol)
+{
+    if(arbol!=NULL)
+    {
+        mostrar_persona(arbol->p);
+        printf("\n \n ");
+        preorder(arbol->izq);
+        preorder(arbol->der);
+    }
+}
+
 
 void inorder(nodoArbol * arbol)
 {
@@ -60,27 +72,20 @@ void inorder(nodoArbol * arbol)
     {
         inorder(arbol->izq);
         mostrar_persona(arbol->p);
+        printf("\n \n ");
         inorder(arbol->der);
-    }
-}
-
-void preorder(nodoArbol * arbol)
-{
-    if(arbol!=NULL)
-    {
-        mostrar_persona(arbol->p);
-        preorder(arbol->izq);
-        preorder(arbol->der);
     }
 }
 
 void postorder(nodoArbol * arbol)
 {
+
     if(arbol!=NULL)
     {
         postorder(arbol->izq);
         postorder(arbol->der);
         mostrar_persona(arbol->p);
+        printf("\n \n ");
     }
 }
 
@@ -97,7 +102,7 @@ void mostrarArbol(nodoArbol*arbol)
     system(" pause");
     system("cls");
     printf("\n Postorder: ");
-    preorder(arbol);
+    postorder(arbol);
     printf("\n \n ");
     system(" pause");
     system("cls");
@@ -162,13 +167,16 @@ nodoArbol *nodoMasIzquierdo(nodoArbol *arbol)
 
 nodoArbol *borrarNodo(nodoArbol *arbol, char nombre[])
 {
+
     if(arbol!=NULL)
     {
+
         if(strcmp(nombre, arbol->p.nombreApellido)<0)// Revisar.
         {
+
             arbol->der=borrarNodo(arbol->der, nombre);
         }
-        else if(strcmp(nombre<arbol->p.nombreApellido)<0)//Revisar.
+        else if(strcmp(nombre, arbol->p.nombreApellido)>=0)//Revisar.
         {
             arbol->izq=borrarNodo(arbol->izq, nombre);
         }

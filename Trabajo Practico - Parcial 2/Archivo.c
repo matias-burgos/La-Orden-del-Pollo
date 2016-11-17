@@ -4,11 +4,12 @@
 #include "Archivo.h"
 void mostrar_persona(persona p)
 {
-    printf("\m ------------O-O-O-O------------");
+    printf("\n ------------O-O-O-O------------");
     printf("\n --Nombre y Apellido: _ %s", p.nombreApellido);
     printf("\n --Cantidad de articulos que posee: _ %d", p.cantArticulos);
     printf("\n --Tipo de pago: _ %d", p.tipo_pago);
     printf("\n --Tipo de cliente: _ %d", p.tipo_cliente);
+    printf("\n \n ");
 }
 
 void mostrar_archivo(char Personas[])

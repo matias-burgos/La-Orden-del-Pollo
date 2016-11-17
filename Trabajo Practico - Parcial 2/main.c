@@ -18,9 +18,12 @@ int main()
     nodoArbol* arbol = inicArbol();
     arbol=IngresarPersonas(arbol, nombre);
     mostrarArbol(arbol);
-
-
-
+    printf("\n Ingresar nombre de la persona que desee borrar. ");
+    char persona[30];
+    fflush(stdin);
+    scanf("%s", &persona);
+    borrarNodo(arbol, persona);
+    mostrarArbol(arbol);
 
     return 0;
 }
