@@ -22,7 +22,11 @@ int main()
     char persona[30];
     fflush(stdin);
     scanf("%s", &persona);
+<<<<<<< HEAD
     arbol=borrarNodo(arbol, persona);
+=======
+    borrarNodo(arbol, persona);
+>>>>>>> origin/master
     mostrarArbol(arbol);
 
     return 0;

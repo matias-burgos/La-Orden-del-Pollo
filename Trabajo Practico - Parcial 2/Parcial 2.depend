@@ -131,6 +131,7 @@
 	"string.h"
 	"Archivo.h"
 
+<<<<<<< HEAD
 1479380808 source:d:\mis cosas\mis documentos\github\la-orden-del-pollo\trabajo practico - parcial 2\arbol.c
 	<stdio.h>
 	<stdlib.h>
@@ -176,3 +177,5 @@
 	"Archivo.h"
 	"Arbol.h"
 
+=======
+>>>>>>> origin/master

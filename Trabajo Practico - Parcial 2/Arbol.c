@@ -257,4 +257,8 @@ void pasarDeArbolToLineaDeCajas(nodoArbol* arbol, int metodo, int validos, Caja 
         cajas=postorderCliente(arbol, cajas, validos);
     }
 }
+<<<<<<< HEAD
 
+=======
+*/
+>>>>>>> origin/master
