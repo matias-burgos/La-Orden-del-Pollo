@@ -1,12 +1,13 @@
 # depslib dependency file v1.0
-1478118516 source:c:\users\matias\documents\github\la-orden-del-pollo\trabajo practico - parcial 2\main.c
+1479424071 source:c:\users\matias\documents\github\la-orden-del-pollo\trabajo practico - parcial 2\main.c
 	<stdio.h>
 	<stdlib.h>
 	"Archivo.h"
+	"Arbol.h"
 
 1479333501 c:\users\matias\documents\github\la-orden-del-pollo\trabajo practico - parcial 2\archivo.h
 
-1479335091 source:c:\users\matias\documents\github\la-orden-del-pollo\trabajo practico - parcial 2\archivo.c
+1479418841 source:c:\users\matias\documents\github\la-orden-del-pollo\trabajo practico - parcial 2\archivo.c
 	<stdio.h>
 	<stdlib.h>
 	"string.h"
@@ -20,24 +21,24 @@
 
 1479338077 c:\users\alumno\desktop\la-orden-del-pollo-master\trabajo practico - parcial 2\archivo.h
 
-1479335075 source:c:\users\matias\documents\github\la-orden-del-pollo\trabajo practico - parcial 2\arbol.c
+1479424414 source:c:\users\matias\documents\github\la-orden-del-pollo\trabajo practico - parcial 2\arbol.c
 	<stdio.h>
 	<stdlib.h>
 	"Arbol.h"
+	"string.h"
 	"Archivo.h"
 
-1479334255 c:\users\matias\documents\github\la-orden-del-pollo\trabajo practico - parcial 2\arbol.h
+1479426198 c:\users\matias\documents\github\la-orden-del-pollo\trabajo practico - parcial 2\arbol.h
 	"Archivo.h"
-	"Caja.h"
 
-1479337093 c:\users\matias\documents\github\la-orden-del-pollo\trabajo practico - parcial 2\caja.h
+1479426184 c:\users\matias\documents\github\la-orden-del-pollo\trabajo practico - parcial 2\caja.h
 	"Listas Dobles.h"
 	"Archivo.h"
 
-1479336520 c:\users\matias\documents\github\la-orden-del-pollo\trabajo practico - parcial 2\listas dobles.h
+1479423469 c:\users\matias\documents\github\la-orden-del-pollo\trabajo practico - parcial 2\listas dobles.h
 	"Archivo.h"
 
-1479337151 source:c:\users\matias\documents\github\la-orden-del-pollo\trabajo practico - parcial 2\caja.c
+1479424440 source:c:\users\matias\documents\github\la-orden-del-pollo\trabajo practico - parcial 2\caja.c
 	<stdio.h>
 	<stdlib.h>
 	"Caja.h"
@@ -45,7 +46,7 @@
 	"Archivo.h"
 	"string.h"
 
-1479337296 source:c:\users\matias\documents\github\la-orden-del-pollo\trabajo practico - parcial 2\listas dobles.c
+1479419794 source:c:\users\matias\documents\github\la-orden-del-pollo\trabajo practico - parcial 2\listas dobles.c
 	<stdio.h>
 	<stdlib.h>
 	"Listas Dobles.h"
@@ -131,7 +132,8 @@
 	"string.h"
 	"Archivo.h"
 
-<<<<<<< HEAD
+1479397570 D
+
 1479380808 source:d:\mis cosas\mis documentos\github\la-orden-del-pollo\trabajo practico - parcial 2\arbol.c
 	<stdio.h>
 	<stdlib.h>
@@ -177,5 +179,7 @@
 	"Archivo.h"
 	"Arbol.h"
 
-=======
->>>>>>> origin/master
+1479380808 
+
+1479380808 gin/master
+

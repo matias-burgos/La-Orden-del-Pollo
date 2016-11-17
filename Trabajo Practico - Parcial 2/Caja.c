@@ -5,11 +5,35 @@
 #include "Archivo.h"
 #include "string.h"
 
+
+Caja agregarCaja(Caja cajas, Caja nuevo)
+{
+    cajas=nuevo;
+    cajas.filita.inicio=NULL;
+    cajas.filita.final=NULL;
+    return cajas;
+}
+
+Caja ingresarCaja(Caja cajas[], char nombre[])
+{
+    FILE* archi=fopen(nombre, "r+b");
+    Caja nuevo;
+    int i=0;
+    if(archi!=NULL)
+    {
+        while(fread(&nuevo, sizeof(Caja),1, archi)!=0)
+            {
+                //cajas=agregarCaja(cajas[i], nuevo);//no se que pasa.
+                i++;
+            }
+    }
+    fclose(archi);
+    //return cajas;//no se que pasa.
+}
+
+
+
 /*
-Caja* agregarCaja(Caja cajas, char nombre[])
-*/
-
-
 void abrirOcerrarCaja(Caja cajas[], int numeroCaja) //El error se va con un puntero, pero aparecen otros errores
 {
     if(cajas[numeroCaja].filita.inicio!=NULL) //El NULL era de filita.inicio, con filita solo al parecer no se puede
@@ -47,6 +71,7 @@ Caja buscarCaja(Caja cajas[], int pago, int validos)
     }
     return aux;
 }
+*/
 void mostrarCaja(Caja cajas)
 {
     printf("\n Numero de caja: %d", cajas.numero_de_cajas);
@@ -60,64 +85,86 @@ void mostrarCaja(Caja cajas)
     }else{
         printf("\n La caja se encuentra abierta");
         printf("\n Clientes de la fila: ");
-        mostrar(cajas.filita);
+        //mostrar(cajas.filita);//Filas tiene un problema, nose que carajos es ni como usarla.
     }
 }
-Caja* IngresarFilas(Caja cajas[], int validos)
+
+void mostrarTodo(Caja cajas[])
+{
+    int i=0;
+    while(i<8)
+    {
+        printf("\n ----------O----------o----------O----------o----------O----------o----------O----------o");
+        mostrarCaja(cajas[i]);
+        i++;
+    }
+}
+
+Caja IngresarFilas(Caja cajas[], int validos)
 {
     int i=0;
     while(i<validos)
     {
-       Fila* aux=inicFila(aux);
+       Fila aux=inicFila(aux);
        cajas[i].filita=aux;
        i++;
     }
-    return cajas;//Codeblocks con cancer.
+    //return cajas;//Codeblocks con cancer.
 }
 
-Caja* ingresarEnFila(Caja cajas, persona individuo)
+Caja ingresarEnCajas(Caja cajas, persona individuo)
 {
     if(strstr(cajas.algoritmoPlanificacion,'FIFO')!=NULL)
     {
-        if(cajas.filita.inicio==NULL)   //Aca tambien en vez de hacer filita==NULL hice filita.inicio
+        if(cajas.filita.inicio==NULL)
         {
-            cajas.filita.inicio=individuo;
+           // cajas.filita.inicio.cliente=individuo;//Problema con Filas
         }
         else{
-            cajas.filita.final.siguiente=individuo;   //Aca final no tiene siguiente
+            nodo2*nuevo=inicLista();
+            nuevo=crearNodoLista(individuo);
+            agregarAlFinal(cajas.filita.inicio ,nuevo);
+            cajas.filita.final=buscarUltimo(cajas.filita.inicio);
+
         }
     }
     if(strstr(cajas.algoritmoPlanificacion, 'SRTF')!=NULL)
     {
-        if(cajas.filita.inicio==NULL)   //filita==NULL
+        if(cajas.filita.inicio==NULL)
         {
-            cajas.filita.inicio=individuo;
+           // cajas.filita.inicio.cliente=individuo;//Problema con Filas
         }
         else{
-            cajas.filita.inicio=agregarEnOrdenPorCant(cajas.filita.inicio, individuo);  //Original: fila.inicio=agregarEnOrdenPorCant(fila.inicio, individuo);
-            fila.final=buscarUltimo(fila.inicio);
+            nodo2*nuevo=inicLista();
+            nuevo=crearNodoLista(individuo);
+            cajas.filita.inicio=agregarEnOrdenPorCant(cajas.filita.inicio, nuevo);
+            cajas.filita.final=buscarUltimo(cajas.filita.inicio);
         }
     }
     if(strstr(cajas.algoritmoPlanificacion, 'prioridades')!=NULL)
     {
-        if(cajas.filita.inicio==NULL)  //.inicio
+        if(cajas.filita.inicio==NULL)
         {
-            cajas.filita.inicio=individuo;
+           // cajas.filita.inicio.cliente=individuo;//Problema con Filas
         }
         else{
-            fila.inicio=agregarEnOrdenTipoCli(fila.inicio, individuo);
-            fila.final=buscarUltimo(fila.inicio);
+            nodo2*nuevo=inicLista();
+            nuevo=crearNodoLista(individuo);
+            cajas.filita.inicio=agregarEnOrdenTipoCli(cajas.filita.inicio, nuevo);
+            cajas.filita.final=buscarUltimo(cajas.filita.inicio);
         }
     }
     if(strstr(cajas.algoritmoPlanificacion, 'RR')!=NULL)
     {
         if(cajas.filita.inicio==NULL)  //.inicio
         {
-            cajas.filita.inicio=individuo;
+            //cajas.filita.inicio.cliente=individuo;//Problema con Filas
         }
         else{
-            fila.inicio=agregarEnOrdenTipoCli(fila.inicio, individuo);
-            fila.final=buscarUltimo(fila.inicio);
+            nodo2*nuevo=inicLista();
+            nuevo=crearNodoLista(individuo);
+            cajas.filita.inicio=agregarEnOrdenTipoCli(cajas.filita.inicio, nuevo);
+            cajas.filita.final=buscarUltimo(cajas.filita.inicio);
         }
     }
 }
@@ -132,11 +179,12 @@ Caja agregarClienteACaja(Caja cajas[], int validos, persona individuo)
     }
     if(cajas[i].abiertaOcerrada==1)
     {
-        cajas[i]=ingresarEnCajas(cajas, individuo);
+        cajas[i]=ingresarEnCajas(cajas[i], individuo);
     }
 
-    return cajas;
+    //return cajas;//Problema.
 }
+
 Caja agregarTiempo(Caja cajas, persona nuevo, int tiempo)//Es cualquier cosa esto.
 {
     Caja aux=cajas;
@@ -251,3 +299,4 @@ Caja antenderClientes(Caja cajas[], int validos)
     }
     return cajas;
 }
+*/

@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include "Listas Dobles.h"
 
-/*
+
 nodo2 * inicLista()
 {
     return NULL;
@@ -12,12 +12,12 @@ nodo2 * inicLista()
 nodo2 * crearNodoLista(persona nuevo)
 {
     nodo2* aux= (nodo2 *)malloc(sizeof(nodo2));
-    aux->cliente=nuevo
+    aux->cliente=nuevo;
     aux->ante=NULL;
     aux->ste=NULL;
     return aux;
 }
-
+/*
 nodo2 * agregarAlPrincipio(nodo2 * lista, nodo2 * nuevoNodo)
 {
     nuevoNodo->ste=lista;
@@ -95,12 +95,13 @@ nodo2 * insertarNodo(nodo2 * lista, nodo2 * nuevoNodo)
     }
     return lista;
 }
+*/
 nodo2* agregarEnOrdenTipoCli (nodo2*lista, nodo2* nuevo)//se ordena por tipo de cliente desde el inicio hasta el final.
 {
     nodo2*aux=lista;
-    while(aux->cliente.tipo_cliente>nuevo.cliente.tipo_cliente && aux!=NULL)
+    //while(aux.cliente.tipo_cliente>nuevo.cliente.tipo_cliente && aux!=NULL)//El mismo problema de siempre
     {
-        aux=aux->cliente;
+     //   aux=aux.siguiente;////El mismo problema de siempre
     }
 
     if(aux!=NULL)
@@ -131,7 +132,7 @@ nodo2* agregarEnOrdenPorCant (nodo2*lista, nodo2*nuevo)
     }
     return aux;
 }
-
+/*
 void mostrarNodo(nodo2 * aux)
 {
     printf(" %d", aux->dato);
@@ -217,13 +218,14 @@ Fila*borrarPrimero(Fila*fila)
     }
     return fila;
 }
-Fila* inicFila(Fila*nuevo)
+*/
+Fila inicFila(Fila nuevo)
 {
-    nuevo->inicio=inicLista();
-    nuevo->final=inicLista();
+    nuevo.inicio=inicLista();
+    nuevo.final=inicLista();
     return nuevo;
 }
-
+/*
 Fila*agregar(Fila*fila, persona cliente)
 {
     nodo2*nuevo=crearNodoLista(cliente);
@@ -247,19 +249,25 @@ Fila* quitar(Fila* filas)
     free(aux);
     return filas;
 }
-
-void mostrar(Fila*fila)
+*/
+/*
+void mostrar(Fila fila)//Filas tiene un problema, nose que carajos es ni como usarla.
 {
-    Fila*aux=fila;
-    printf("\n Inicio: %d", aux->inicio);
-    while(aux->inicio.siguiente!=aux->final)
+    Fila aux=fila;
+    printf("\n Inicio: ");
+    mostrar_persona(aux.inicio.cliente);
+    while(aux.inicio.siguiente!=aux.final)
     {
-        printf("| %d", fila->inicio);
-        aux=aux->inicio.siguiente;
+        printf("|");
+        mostrar_persona(aux.inicio.cliente);
+        aux=aux.inicio.siguiente;
     }
-    printf("\n %d <-- Final", aux->final);
+    printf(" |")
+    mostrar_persona(aux.final.cliente);
+    printf("\n <-- Final");
 }
-
+*/
+/*
 int filavacia(Fila*fila)
 {
 

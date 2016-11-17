@@ -208,7 +208,7 @@ nodo2* preorderCliente(nodoArbol * arbol, Caja cajas[], int validos)
     if(arbol!=NULL)
     {
         aux=arbol->p;//El codeblocks tiene cancer y nose que pasa.
-        agregarClienteACaja(cajas, validos, aux);
+        //cajas=agregarClienteACaja(cajas, validos, aux);//Problema.
         preorder(arbol->izq);
         preorder(arbol->der);
     }
@@ -221,7 +221,7 @@ nodo2* inorderCliente(nodoArbol * arbol, Caja cajas[], int validos)
     {
         inorder(arbol->izq);
         aux=arbol->p;//El codeblocks tiene cancer y nose que pasa.
-        agregarClienteACaja(cajas, validos, aux);
+       //cajas=agregarClienteACaja(cajas, validos, aux);//Problema.
         inorder(arbol->der);
     }
     return cajas;
@@ -235,7 +235,7 @@ nodo2* postorderCliente(nodoArbol * arbol, Caja cajas[], int validos)
         postorder(arbol->izq);
         postorder(arbol->der);
         aux=arbol->p;//El codeblocks tiene cancer y nose que pasa.
-        agregarClienteACaja(cajas, validos, aux);
+        //cajas=agregarClienteACaja(cajas, validos, aux);//Problema.
     }
     return cajas;
 }
@@ -257,8 +257,4 @@ void pasarDeArbolToLineaDeCajas(nodoArbol* arbol, int metodo, int validos, Caja 
         cajas=postorderCliente(arbol, cajas, validos);
     }
 }
-<<<<<<< HEAD
 
-=======
-*/
->>>>>>> origin/master

@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include "Archivo.h"
 #include "Arbol.h"
+#include "Caja.h"
 
 int main()
 {
@@ -22,13 +23,19 @@ int main()
     char persona[30];
     fflush(stdin);
     scanf("%s", &persona);
-<<<<<<< HEAD
     arbol=borrarNodo(arbol, persona);
-=======
-    borrarNodo(arbol, persona);
->>>>>>> origin/master
     mostrarArbol(arbol);
 
+    char cajas[]="cajas.dat";
+    Caja filas[8];
+    //filas=ingresarCaja(filas, cajas);//Filas tiene un problema, nose que carajos es ni como usarla.
+    printf("\n Cajas");
+    mostrarTodo(cajas);
+    IngresarFilas(cajas, 8);
+    pasarDeArbolToLineaDeCajas(arbol, arbol->p.tipo_pago, limite, cajas);//Filas tiene un problema, nose que carajos es ni como usarla.
+    printf("\n Cajas con los clientes: ");
+    mostrarTodo(cajas);
+    antenderClientes(cajas, 8);
     return 0;
 }
 
