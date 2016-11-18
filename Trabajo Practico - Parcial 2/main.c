@@ -39,7 +39,7 @@ int main()
     pasarDeArbolToLineaDeCajas(arbol, metodo, limite, cajas);//Filas tiene un problema, nose que carajos es ni como usarla.
     printf("\n Cajas con los clientes: ");
     mostrarTodo(cajas);
-    antenderClientes(cajas, 8);*/
+    antenderClientes(cajas, 8);
     return 0;
 }
 

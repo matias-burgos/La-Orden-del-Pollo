@@ -3,64 +3,64 @@
 #include "Listas Dobles.h"
 
 
-nodo2 * inicLista()
+nodo2 * inicLista()//Bien.
 {
     return NULL;
 }
-/*
 
-nodo2 * crearNodoLista(persona nuevo)
+
+nodo2 * crearNodoLista(persona nuevo)//Bien.
 {
-    nodo2* aux= (nodo2 *)malloc(sizeof(nodo2));
+    nodo2* aux= malloc(sizeof(nodo2));
     aux->cliente=nuevo;
-    aux->ante=NULL;
-    aux->ste=NULL;
+    aux->anterior=NULL;
+    aux->siguiente=NULL;
     return aux;
 }
 
-nodo2 * agregarAlPrincipio(nodo2 * lista, nodo2 * nuevoNodo)
+nodo2 * agregarAlPrincipio(nodo2 * lista, nodo2 * nuevoNodo)//Bien.
 {
-    nuevoNodo->ste=lista;
+    nuevoNodo->siguiente=lista;
     if(lista!=NULL)
     {
-        lista->ante=nuevoNodo;
+        lista->anterior=nuevoNodo;
     }
     return nuevoNodo;
 }
 
-// recursivo
-nodo2 * buscarUltimo(nodo2 * lista)
+
+nodo2 * buscarUltimo(nodo2 * lista)//Bien.
 {
     nodo2* rta=NULL;
     if(lista!=NULL)
     {
-        if(lista->ste==NULL)
+        if(lista->siguiente==NULL)
         {
             rta=lista;
         }
         else
         {
-            rta=buscarUltimoR(lista->ste);
+            rta=buscarUltimo(lista->siguiente);
         }
     }
     return rta;
 }
 
-nodo2 * agregarAlFinal(nodo2 * lista, nodo2 * nuevoNodo)
+nodo2 * agregarAlFinal(nodo2 * lista, nodo2 * nuevo)//Bien.
 {
     if(lista==NULL)
     {
-        lista=nuevoNodo;
+        lista=nuevo;
     }
     else
     {
         nodo2 * ultimo = buscarUltimo(lista);
-        ultimo->ste = nuevoNodo;
-        nuevoNodo->ante = ultimo;
+        ultimo->siguiente = nuevo;
+        nuevo->anterior = ultimo;
     }
     return lista;
 }
-
+/*
 nodo2 * insertarNodo(nodo2 * lista, nodo2 * nuevoNodo)
 {
     if(lista==NULL)
@@ -96,60 +96,78 @@ nodo2 * insertarNodo(nodo2 * lista, nodo2 * nuevoNodo)
     return lista;
 }
 */
-nodo2* agregarEnOrdenTipoCli (nodo2*lista, nodo2* nuevo)//se ordena por tipo de cliente desde el inicio hasta el final.
+nodo2* agregarEnOrdenTipoCli (nodo2* lista, nodo2* nuevo)//Bien.//se ordena por tipo de cliente desde el inicio hasta el final.
 {
     nodo2*aux=lista;
-    //while(aux.cliente.tipo_cliente>nuevo.cliente.tipo_cliente && aux!=NULL)//El mismo problema de siempre
+    if(lista==NULL)
     {
-     //   aux=aux.siguiente;////El mismo problema de siempre
-    }
-
-    if(aux!=NULL)
-    {
-        nuevo->siguiente=aux;
-        aux->anterior=nuevo;
+        lista=nuevo;
     }
     else{
-        aux->siguiente=nuevo;
-        nuevo->anterior=nuevo;
+
+        while(aux->cliente.tipo_cliente>nuevo->cliente.tipo_cliente && aux!=NULL)
+        {
+            aux=aux->siguiente;
+        }
+
+        if(aux!=NULL)
+        {
+            nodo2* ante=aux->anterior;
+            nuevo->siguiente=aux;
+            nuevo->anterior=ante;
+            aux->anterior=nuevo;
+        }
+        else{
+            lista=agregarAlPrincipio(lista, nuevo);
+        }
     }
+
     return lista;
 }
-nodo2* agregarEnOrdenPorCant (nodo2*lista, nodo2*nuevo)
+nodo2* agregarEnOrdenPorCant (nodo2*lista, nodo2*nuevo)//Bien.
 {
     nodo2*aux=lista;
-    while(aux->cliente.cantArticulos>nuevo->cliente.cantArticulos && aux!=NULL)
+    if(lista==NULL)
     {
-        aux=aux->siguiente;
-    }
-    if(aux!=NULL)
-    {
-        aux->anterior=nuevo;
-        nuevo->siguiente=aux;
+        lista=nuevo;
     }
     else{
-        aux->siguiente=nuevo;
+        while(aux->cliente.cantArticulos>nuevo->cliente.cantArticulos && aux!=NULL)
+        {
+            aux=aux->siguiente;
+        }
+       if(aux!=NULL)
+        {
+            nodo2* ante=aux->anterior;
+            nuevo->siguiente=aux;
+            nuevo->anterior=ante;
+            aux->anterior=nuevo;
+        }
+        else{
+            lista=agregarAlPrincipio(lista, nuevo);
+        }
     }
-    return aux;
-}
-/*
-void mostrarNodo(nodo2 * aux)
-{
-    printf(" %d", aux->dato);
+
+    return lista;
 }
 
-void mostrarLista(nodo2 * lista)
+void mostrarNodo(nodo2 * aux)//Bien.
+{
+    mostrar_persona(aux->cliente);
+}
+
+void mostrarLista(nodo2 * lista)//Bien.
 {
     printf("\nContenido de la lista: ");
     nodo2 * seg = lista;
     while (seg != NULL)
     {
         mostrarNodo(seg);
-        seg= seg->ste;
+        seg= seg->siguiente;
     }
     printf("\n");
 }
-
+/*
 nodo2 * cargarLista(nodo2 * lista)
 {
     char rta = 's';
@@ -168,7 +186,7 @@ nodo2 * cargarLista(nodo2 * lista)
     return lista;
 }
 */
-nodo2 * borrarNodo(nodo2 * lista,char nombre[])
+nodo2 * borrarNodo(nodo2 * lista,char nombre[])//Bien.
 {
     nodo2 * borrar=NULL;
     nodo2 * seg=NULL;
@@ -207,19 +225,19 @@ nodo2 * borrarNodo(nodo2 * lista,char nombre[])
     return lista;
 
 }
-/*
-Fila*borrarPrimero(Fila*fila)
+
+nodo2*borrarPrimero(nodo2* lista)//Bien.
 {
 
-    while(fila!=NULL)
+    while(lista!=NULL)
     {
-        nodo2* aux=fila;
-        fila=fila->inicio.siguiente;
-        free(aux);
+        nodo2* borrar=lista;
+        lista=lista->siguiente;
+        free(borrar);
     }
-    return fila;
+    return lista;
 }
-*/
+
 Fila inicFila(Fila nuevo)//Bien.
 {
     nuevo.inicio=inicLista();
@@ -230,53 +248,46 @@ Fila inicFila(Fila nuevo)//Bien.
 Fila agregar(Fila fila, persona cliente)//Bien.
 {
     nodo2*nuevo=crearNodoLista(cliente);
-    if(fila==NULL)
+    if(fila.inicio==NULL)
     {
-        fila->inicio=nuevo;
-        fila->final=nuevo;
+        fila.inicio=nuevo;
+        fila.final=nuevo;
     }
     else
     {
-        fila->inicio=agregarAlFinal(fila->inicio, nuevo);
-        persona ultimo=buscarUltimo(fila);
-        fila->final=ultimo;
+        fila.inicio=agregarAlFinal(fila.inicio, nuevo);
+        nodo2* ultimo=buscarUltimo(fila.inicio);
+        fila.final=ultimo;
     }
     return fila;
 }
-/*
-Fila* quitar(Fila* filas)
+
+Fila quitar(Fila filas)//Bien.
 {
-    persona aux=filas.inicio;
-    filas.inicio=filas.inicio.siguiente;
-    free(aux);
+    if(filas.inicio!=NULL)
+    {
+        filas.inicio=borrarPrimero(filas.inicio);
+    }
+    else{
+        printf("\n !!!La Fila ya esta vacia.¡¡¡\n ");
+    }
+
     return filas;
 }
-*/
-/*
-void mostrar(Fila fila)//Filas tiene un problema, nose que carajos es ni como usarla.
+
+void mostrar(Fila fila)//Bien.
 {
-    Fila aux=fila;
-    printf("\n Inicio: ");
-    mostrar_persona(aux.inicio.cliente);
-    while(aux.inicio.siguiente!=aux.final)
-    {
-        printf("|");
-        mostrar_persona(aux.inicio.cliente);
-        aux=aux.inicio.siguiente;
-    }
-    printf(" |")
-    mostrar_persona(aux.final.cliente);
-    printf("\n <-- Final");
+    mostrarLista(fila.inicio);
 }
-*/
-/*
-int filavacia(Fila*fila)
+
+
+int filavacia(Fila fila)//Bien.
 {
 
     int i=0;
-    if(fila->final==NULL && fila->inicio==NULL)
+    if( fila.inicio==NULL)
     {
         i=1;
     }
    return i;
-}*/
+}

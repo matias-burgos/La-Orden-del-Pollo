@@ -4,13 +4,13 @@
 #include "string.h"
 #include "Archivo.h"
 
-nodoArbol * inicArbol()
+nodoArbol * inicArbol()//Bien.
 {
     return NULL;
 }
 
 
-nodoArbol * crearNodoArbol(persona p)
+nodoArbol * crearNodoArbol(persona p)//Bien.
 {
     nodoArbol * aux = (nodoArbol *) malloc(sizeof(nodoArbol));
 
@@ -22,7 +22,7 @@ nodoArbol * crearNodoArbol(persona p)
 }
 
 
-nodoArbol * insertar (nodoArbol * arbol, persona p)
+nodoArbol * insertar (nodoArbol * arbol, persona p)//Bien.
 {
     if(arbol==NULL)
     {
@@ -42,7 +42,7 @@ nodoArbol * insertar (nodoArbol * arbol, persona p)
     return arbol;
 }
 
-nodoArbol* IngresarPersonas(nodoArbol*arbol, char nombre[])
+nodoArbol* IngresarPersonas(nodoArbol*arbol, char nombre[])//Bien.
 {
     FILE*archi=fopen(nombre, "r+b");
     persona p;
@@ -54,7 +54,7 @@ nodoArbol* IngresarPersonas(nodoArbol*arbol, char nombre[])
     fclose(archi);
     return arbol;
 }
-void preorder(nodoArbol * arbol)
+void preorder(nodoArbol * arbol)//Bien.
 {
     if(arbol!=NULL)
     {
@@ -66,7 +66,7 @@ void preorder(nodoArbol * arbol)
 }
 
 
-void inorder(nodoArbol * arbol)
+void inorder(nodoArbol * arbol)//Bien.
 {
     if(arbol!=NULL)
     {
@@ -77,7 +77,7 @@ void inorder(nodoArbol * arbol)
     }
 }
 
-void postorder(nodoArbol * arbol)
+void postorder(nodoArbol * arbol)//Bien.
 {
 
     if(arbol!=NULL)
@@ -89,7 +89,7 @@ void postorder(nodoArbol * arbol)
     }
 }
 
-void mostrarArbol(nodoArbol*arbol)
+void mostrarArbol(nodoArbol*arbol)//Bien.
 {
     printf("\n Preorder: ");
     preorder(arbol);
@@ -109,7 +109,7 @@ void mostrarArbol(nodoArbol*arbol)
 }
 
 
-nodoArbol *buscarPorNombre(nodoArbol *arbol, persona p)
+nodoArbol *buscarPorNombre(nodoArbol *arbol, persona p)//Bien.
 {
     nodoArbol*rta=inicArbol();
     if(arbol)
@@ -135,7 +135,7 @@ nodoArbol *buscarPorNombre(nodoArbol *arbol, persona p)
 
 
 
-nodoArbol *nodoMasDerecho(nodoArbol *arbol)
+nodoArbol *nodoMasDerecho(nodoArbol *arbol)//Bien.
 {
     nodoArbol *aux;
     if(arbol->der==NULL)
@@ -150,7 +150,7 @@ nodoArbol *nodoMasDerecho(nodoArbol *arbol)
 }
 
 
-nodoArbol *nodoMasIzquierdo(nodoArbol *arbol)
+nodoArbol *nodoMasIzquierdo(nodoArbol *arbol)//Bien.
 {
     nodoArbol *aux;
     if(arbol->izq==NULL)
@@ -164,7 +164,7 @@ nodoArbol *nodoMasIzquierdo(nodoArbol *arbol)
     return aux;
 }
 
-nodoArbol *borrarUnNodoArbol(nodoArbol *arbol, char nombre[])
+nodoArbol *borrarUnNodoArbol(nodoArbol *arbol, char nombre[])//Bien.
 {
     if(arbol!=NULL)
     {
@@ -203,8 +203,8 @@ nodo2* preorderCliente(nodoArbol * arbol, Caja cajas[], int validos)
     persona aux;
     if(arbol!=NULL)
     {
-        aux=arbol->p;//El codeblocks tiene cancer y nose que pasa.
-        cajas=agregarClienteACaja(cajas, validos, aux);//Problema.
+        aux=arbol->p;
+        agregarClienteACaja(cajas, validos, aux);
         preorder(arbol->izq);
         preorder(arbol->der);
     }
@@ -216,8 +216,8 @@ nodo2* inorderCliente(nodoArbol * arbol, Caja cajas[], int validos)
     if(arbol!=NULL)
     {
         inorder(arbol->izq);
-        aux=arbol->p;//El codeblocks tiene cancer y nose que pasa.
-       //cajas=agregarClienteACaja(cajas, validos, aux);//Problema.
+        aux=arbol->p;
+        agregarClienteACaja(cajas, validos, aux);
         inorder(arbol->der);
     }
     return cajas;
@@ -230,15 +230,15 @@ nodo2* postorderCliente(nodoArbol * arbol, Caja cajas[], int validos)
     {
         postorder(arbol->izq);
         postorder(arbol->der);
-        aux=arbol->p;//El codeblocks tiene cancer y nose que pasa.
-        //cajas=agregarClienteACaja(cajas, validos, aux);//Problema.
+        aux=arbol->p;
+        agregarClienteACaja(cajas, validos, aux);
     }
     return cajas;
 }
 
 
 
-void pasarDeArbolToLineaDeCajas(nodoArbol* arbol, int metodo, int validos, Caja cajas[])
+void pasarDeArbolToLineaDeCajas(nodoArbol* arbol, int metodo, int validos, Caja cajas[])//Bien.
 {
     while(arbol!=NULL && metodo==1)
     {

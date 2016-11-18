@@ -21,11 +21,11 @@ void mostrarCaja(Caja cajas);
 void mostrarTodo(Caja cajas[]);
 Caja IngresarFilas(Caja cajas[], int validos);//Posiblemente se borre. No tiene funcion.
 Caja ingresarEnCaja(Caja cajas, persona individuo, Fila fila);
-Caja agregarClienteACaja(Caja cajas[], int validos, persona cliente);  //Originalmente era asi: void agregarClienteACaja(Caja cajas[], int validos, nodo2*cliente);
+void agregarClienteACaja(Caja cajas[], int validos, persona cliente);  //Originalmente era asi: void agregarClienteACaja(Caja cajas[], int validos, nodo2*cliente);
 Caja agregarTiempo(Caja cajas, persona nuevo, int tiempo);
 Caja agregarClienteACajaEnTiempoDeterminado(Caja cajas[], int validos, persona nuevo, int tiempo);
 Caja AtenderAlgoritmos(Caja cajas);
 Caja RR(Caja cajas);
-Caja antenderClientes(Caja cajas[], int validos);
+void antenderClientes(Caja cajas[], int validos);
 
 #endif // CAJA_H_INCLUDED

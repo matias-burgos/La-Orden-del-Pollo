@@ -15,7 +15,7 @@ Caja agregarCaja(Caja caja, Caja nuevo)//Ingresa una caja al arreglo//Bien
 }
 
 
-void ingresarCaja(Caja cajas[], char nombre[])//Ingresa todos las cajas al arreglo.
+void ingresarCaja(Caja cajas[], char nombre[])//Ingresa todos las cajas al arreglo.//Bien.
 {
     FILE* archi=fopen(nombre, "r+b");
     Caja nuevo;
@@ -85,7 +85,7 @@ void mostrarCaja(Caja cajas)//Bien.
     }else{
         printf("\n La caja se encuentra abierta");
         printf("\n Clientes de la fila: ");
-        mostrar(cajas.filita);//Filas tiene un problema, nose que carajos es ni como usarla.
+        mostrar(cajas.filita);
     }
 }
 
@@ -112,54 +112,31 @@ Caja IngresarFilas(Caja cajas[], int validos)
     //return cajas;//Codeblocks con cancer.
 }
 */
-Caja ingresarEnCajas(Caja cajas, persona individuo)
+Caja ingresarEnCajas(Caja cajas, persona individuo)//Bien.
 {
-    if(strstr(cajas.algoritmoPlanificacion,'FIFO')!=NULL)//bien
+    if(strstr(cajas.algoritmoPlanificacion,'FIFO')!=NULL)
     {
-        agregar(cajas.filita, individuo);
+        cajas.filita=agregar(cajas.filita, individuo);
     }
     if(strstr(cajas.algoritmoPlanificacion, 'SRTF')!=NULL)
     {
-        if(cajas.filita.inicio==NULL)
-        {
-            cajas.filita.inicio.cliente=individuo;//Problema con Filas
-        }
-        else{
-            nodo2*nuevo=inicLista();
-            nuevo=crearNodoLista(individuo);
-            cajas.filita.inicio=agregarEnOrdenPorCant(cajas.filita.inicio, nuevo);
-            cajas.filita.final=buscarUltimo(cajas.filita.inicio);
-        }
+        nodo2*aux=crearNodoLista(individuo);
+        cajas.filita.inicio=agregarEnOrdenPorCant(cajas.filita.inicio, aux);
+        nodo2* ultimo=buscarUltimo(cajas.filita.inicio);
+        cajas.filita.final=ultimo;
     }
-    if(strstr(cajas.algoritmoPlanificacion, 'prioridades')!=NULL)
+    if((strstr(cajas.algoritmoPlanificacion, 'prioridades')!=NULL)|| strstr(cajas.algoritmoPlanificacion, 'RR')!=NULL)
     {
-        if(cajas.filita.inicio==NULL)
-        {
-           // cajas.filita.inicio.cliente=individuo;//Problema con Filas
-        }
-        else{
-            nodo2*nuevo=inicLista();
-            nuevo=crearNodoLista(individuo);
-            cajas.filita.inicio=agregarEnOrdenTipoCli(cajas.filita.inicio, nuevo);
-            cajas.filita.final=buscarUltimo(cajas.filita.inicio);
-        }
+
+        nodo2*nuevo=crearNodoLista(individuo);
+        cajas.filita.inicio=agregarEnOrdenTipoCli(cajas.filita.inicio, nuevo);
+        nodo2* ultimo=buscarUltimo(cajas.filita.inicio);
+        cajas.filita.final=ultimo;
     }
-    if(strstr(cajas.algoritmoPlanificacion, 'RR')!=NULL)
-    {
-        if(cajas.filita.inicio==NULL)  //.inicio
-        {
-            //cajas.filita.inicio.cliente=individuo;//Problema con Filas
-        }
-        else{
-            nodo2*nuevo=inicLista();
-            nuevo=crearNodoLista(individuo);
-            cajas.filita.inicio=agregarEnOrdenTipoCli(cajas.filita.inicio, nuevo);
-            cajas.filita.final=buscarUltimo(cajas.filita.inicio);
-        }
-    }
+    return cajas;
 }
 
-Caja agregarClienteACaja(Caja cajas[], int validos, persona individuo)
+void agregarClienteACaja(Caja cajas[], int validos, persona individuo)//Bien.
 {
     int i=0;
     while(i<validos && cajas[i].tipo_pago!=individuo.tipo_pago)
@@ -175,7 +152,6 @@ Caja agregarClienteACaja(Caja cajas[], int validos, persona individuo)
         printf("\n La caja esta cerrada.");
     }
 
-    //return cajas;//Problema.
 }
 /*
 Caja agregarTiempo(Caja caja, persona nuevo, int tiempo)//Es cualquier cosa esto.
@@ -206,6 +182,7 @@ Caja agregarClienteACajaEnTiempoDeterminado(Caja cajas[], int validos, persona n
     cajas[i]=agregarTiempo(cajas[i], nuevo, tiempo);  //Original: cajas[i]=agregarTiempo(Caja cajas[i], persona nuevo, int tiempo);
     return cajas;
 }
+*/
 Caja AtenderAlgoritmos(Caja cajas)
 {
     while(cajas.filita.inicio!=NULL)
@@ -217,10 +194,12 @@ Caja AtenderAlgoritmos(Caja cajas)
             while(cajas.filita.inicio!=NULL)
             {
                 i=0;
-                cajas.filita.inicio.cliente.tiempoDeEspera=tiempoEspera;
-                while(i<cajas.filita.inicio.cliente.cantArticulos)
+                Fila filita=cajas.filita;
+                nodo2*aux=filita.inicio;
+                aux->cliente.tiempoDeEspera=tiempoEspera;
+                while(i<aux->cliente.cantArticulos)
                 {
-                    cajas.filita.inicio.cliente.tiempoProcesado++;
+                    aux->cliente.tiempoProcesado++;
                     tiempoEspera++;
                     i++;
                 }
@@ -249,17 +228,19 @@ Caja RR(Caja cajas)
             while(cajas.filita.inicio!=NULL)
             {
                 i=0;
-                cajas.filita.inicio.cliente.tiempoDeEspera=tiempoEspera;
-                while(i<cajas.filita.inicio.cliente.cantArticulos)
+                Fila filita=cajas.filita;//Por problemas del codeblocks decidimos "modularizar" la caja.
+                nodo2*inicio=filita.inicio;
+                inicio->cliente.tiempoDeEspera=tiempoEspera;
+                while(i<inicio->cliente.cantArticulos)
                 {
                     if(i==q)
                     {
-                        cajas.filita=agregarEnOrdenTipoCli(cajas.filita, cajas.filita.inicio);
+                        inicio=agregarEnOrdenTipoCli(filita.inicio, filita.inicio);
                         nodo2* aux=cajas.filita.inicio;
-                        cajas.filita.inicio=cajas.filita.inicio.anterior;
+                        inicio=inicio->anterior;
                         free(aux);
                     }
-                    cajas.filita.inicio.cliente.tiempoProcesado++;
+                    inicio->cliente.tiempoProcesado++;
                     tiempoEspera++;
                     i++;
                 }
@@ -278,7 +259,7 @@ Caja RR(Caja cajas)
 }
 
 
-Caja antenderClientes(Caja cajas[], int validos)
+void antenderClientes(Caja cajas[], int validos)
 {
     int i=0;
     while(i<validos)
@@ -293,6 +274,6 @@ Caja antenderClientes(Caja cajas[], int validos)
         }
 
     }
-    return cajas;
+
 }
-*/
+
