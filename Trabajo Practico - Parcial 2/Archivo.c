@@ -28,3 +28,4 @@ void mostrar_archivo(char Personas[])//Bien.
     }
     fclose(archi);
 }
+

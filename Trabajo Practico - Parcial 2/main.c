@@ -19,27 +19,37 @@ int main()
     nodoArbol* arbol = inicArbol();
     arbol=IngresarPersonas(arbol, nombre);
     mostrarArbol(arbol);
-    printf("\n Ingresar nombre de la persona que desee borrar. ");
+    /*printf("\n Ingresar nombre de la persona que desee borrar. ");
     char persona[30];
     fflush(stdin);
     scanf("%s", &persona);
     arbol=borrarUnNodoArbol(arbol, persona);
-    mostrarArbol(arbol);
+    mostrarArbol(arbol);*/
 
     char cajas[]="cajas.dat";
     Caja filas[8];
     ingresarCaja(filas, cajas);
     printf("\n Cajas");
-    mostrarTodo(cajas);
-
+    mostrarTodo(filas);
+    system("pause");
+    system("cls");
+    int i=0;
+    while(i<8)
+    {
+        abrirOcerrarCaja(filas, i);
+        i++;
+    }
     printf("\n Ingresar la forma en que se recorra para pasarlo: ");
     int metodo;
+
     fflush(stdin);
-    scanf(" %s", &metodo);
-    pasarDeArbolToLineaDeCajas(arbol, metodo, limite, cajas);//Filas tiene un problema, nose que carajos es ni como usarla.
+    scanf(" %d", &metodo);
+    pasarDeArbolToLineaDeCajas(arbol, metodo, limite, filas);
+    system("pause");
+    system("cls");
     printf("\n Cajas con los clientes: ");
-    mostrarTodo(cajas);
-    antenderClientes(cajas, 8);
+    mostrarTodo(filas);
+    antenderClientes(filas, 8);
     return 0;
 }
 

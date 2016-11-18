@@ -27,11 +27,11 @@ nodo2 * borrarNodo(nodo2 * lista,char nombre[]);
 nodo2* borrarPrimero(nodo2* lista);
 
 
-Fila inicFila(Fila nuevo);//Filas tiene un problema, nose que carajos es ni como usarla.
-Fila agregar(Fila fila, persona cliente);//Filas tiene un problema, nose que carajos es ni como usarla.
-Fila quitar(Fila fila);//Filas tiene un problema, nose que carajos es ni como usarla.
-void mostrar(Fila fila);//Filas tiene un problema, nose que carajos es ni como usarla.
-int filavacia(Fila fila);//Filas tiene un problema, nose que carajos es ni como usarla.
+Fila inicFila(Fila nuevo);
+Fila agregar(Fila fila, persona cliente);
+Fila quitar(Fila fila);
+void mostrar(Fila fila);
+int filavacia(Fila fila);
 
 
 

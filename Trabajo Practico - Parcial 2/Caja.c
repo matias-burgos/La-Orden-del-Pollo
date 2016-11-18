@@ -33,10 +33,11 @@ void ingresarCaja(Caja cajas[], char nombre[])//Ingresa todos las cajas al arreg
 
 
 
-/*
-void abrirOcerrarCaja(Caja cajas[], int numeroCaja) //El error se va con un puntero, pero aparecen otros errores
+
+void abrirOcerrarCaja(Caja cajas[], int numeroCaja)//Bien.
 {
-    if(cajas[numeroCaja].filita.inicio!=NULL) //El NULL era de filita.inicio, con filita solo al parecer no se puede
+
+    if(!filavacia(cajas[numeroCaja].filita))
     {
         printf("\n La caja no puede cerrarce, aun quedan clientes");
     }
@@ -44,11 +45,13 @@ void abrirOcerrarCaja(Caja cajas[], int numeroCaja) //El error se va con un punt
         if(cajas[numeroCaja].abiertaOcerrada==0)
         {
             cajas[numeroCaja].abiertaOcerrada=1;
+            printf("\n La caja se ha abierto");
         }
         else{
             if(cajas[numeroCaja].abiertaOcerrada==1)
             {
                 cajas[numeroCaja].abiertaOcerrada=0;
+                printf("\n La caja se ha cerrado");
             }
         }
     }
@@ -71,21 +74,23 @@ Caja buscarCaja(Caja cajas[], int pago, int validos)
     }
     return aux;
 }
-*/
-void mostrarCaja(Caja cajas)//Bien.
+
+void mostrarCaja(Caja caja)//Bien.
 {
-    printf("\n Numero de caja: %d", cajas.numero_de_cajas);
-    printf("\n Nombre del cajero: %s", cajas.nombreCajero);
-    printf("\n Tipo de pago que se acepta en la caja: %d", cajas.tipo_pago);
-    printf("\n Su algoritmo de planificación es: %s", cajas.algoritmoPlanificacion);
-    if(cajas.abiertaOcerrada==0)
+    printf("\n Numero de caja: %d", caja.numero_de_cajas);
+    printf("\n Nombre del cajero: %s", caja.nombreCajero);
+    printf("\n Tipo de pago que se acepta en la caja: %d", caja.tipo_pago);
+    printf("\n Su algoritmo de planificacion es: %s", caja.algoritmoPlanificacion);
+    if(caja.abiertaOcerrada==0)
     {
         printf("\n La caja se encuentra cerrada");
 
     }else{
         printf("\n La caja se encuentra abierta");
         printf("\n Clientes de la fila: ");
-        mostrar(cajas.filita);
+        mostrar(caja.filita);
+        system("pause");
+        system("cls");
     }
 }
 
@@ -94,13 +99,13 @@ void mostrarTodo(Caja cajas[])//Bien
     int i=0;
     while(i<8)
     {
-        printf("\n ----------O----------o----------O----------o----------O----------o----------O----------o");
+        printf("\n ----------O----------o----------O----------o----------O----------o");
         mostrarCaja(cajas[i]);
         i++;
     }
 }
-/*
-Caja IngresarFilas(Caja cajas[], int validos)
+
+void IngresarFilas(Caja cajas[], int validos)
 {
     int i=0;
     while(i<validos)
@@ -109,24 +114,32 @@ Caja IngresarFilas(Caja cajas[], int validos)
        cajas[i].filita=aux;
        i++;
     }
-    //return cajas;//Codeblocks con cancer.
+
 }
-*/
+
 Caja ingresarEnCajas(Caja cajas, persona individuo)//Bien.
 {
-    if(strstr(cajas.algoritmoPlanificacion,'FIFO')!=NULL)
+    char FIFO[]={'FIFO'};
+    char SRTF[]={'SRTF'};
+    char prioridades[]={'Prioridades'};
+    char RR[]={'RR'};
+
+    if(strstr(cajas.algoritmoPlanificacion, FIFO)!=NULL)
     {
+        printf("\n saasdf");
         cajas.filita=agregar(cajas.filita, individuo);
     }
-    if(strstr(cajas.algoritmoPlanificacion, 'SRTF')!=NULL)
+    if(strstr(cajas.algoritmoPlanificacion, SRTF)!=NULL)
     {
+        printf("\n saasdf");
         nodo2*aux=crearNodoLista(individuo);
         cajas.filita.inicio=agregarEnOrdenPorCant(cajas.filita.inicio, aux);
         nodo2* ultimo=buscarUltimo(cajas.filita.inicio);
         cajas.filita.final=ultimo;
     }
-    if((strstr(cajas.algoritmoPlanificacion, 'prioridades')!=NULL)|| strstr(cajas.algoritmoPlanificacion, 'RR')!=NULL)
+    if((strstr(cajas.algoritmoPlanificacion, prioridades)!=NULL)|| strstr(cajas.algoritmoPlanificacion, RR)!=NULL)
     {
+        printf("\n saasdf");
 
         nodo2*nuevo=crearNodoLista(individuo);
         cajas.filita.inicio=agregarEnOrdenTipoCli(cajas.filita.inicio, nuevo);
@@ -142,10 +155,10 @@ void agregarClienteACaja(Caja cajas[], int validos, persona individuo)//Bien.
     while(i<validos && cajas[i].tipo_pago!=individuo.tipo_pago)
     {
         i++;
-
     }
     if(cajas[i].abiertaOcerrada==1)
     {
+
         cajas[i]=ingresarEnCajas(cajas[i], individuo);
     }
     else{

@@ -22,9 +22,9 @@ nodoArbol *buscarPorNombre(nodoArbol *arbol, persona p);
 nodoArbol *nodoMasDerecho(nodoArbol *arbol);
 nodoArbol *nodoMasIzquierdo(nodoArbol *arbol);
 nodoArbol *borrarUnNodoArbol(nodoArbol *arbol, char nombre[]);
-nodo2* preorderCliente(nodoArbol * arbol, Caja cajas[], int validos);
-nodo2* inorderCliente(nodoArbol * arbol, Caja cajas[], int validos);
-nodo2* postorderCliente(nodoArbol * arbol, Caja cajas[], int validos);
+void preorderCliente(nodoArbol * arbol, Caja cajas[], int validos);
+void inorderCliente(nodoArbol * arbol, Caja cajas[], int validos);
+void postorderCliente(nodoArbol * arbol, Caja cajas[], int validos);
 void pasarDeArbolToLineaDeCajas(nodoArbol* arbol, int metodo, int validos, Caja cajas[]);
 
 #endif // ARBOL_H_INCLUDED

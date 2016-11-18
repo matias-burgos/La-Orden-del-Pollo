@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1479496215 source:c:\users\matias\documents\github\la-orden-del-pollo\trabajo practico - parcial 2\main.c
+1479511283 source:c:\users\matias\documents\github\la-orden-del-pollo\trabajo practico - parcial 2\main.c
 	<stdio.h>
 	<stdlib.h>
 	"Archivo.h"
@@ -8,7 +8,7 @@
 
 1479333501 c:\users\matias\documents\github\la-orden-del-pollo\trabajo practico - parcial 2\archivo.h
 
-1479488314 source:c:\users\matias\documents\github\la-orden-del-pollo\trabajo practico - parcial 2\archivo.c
+1479505506 source:c:\users\matias\documents\github\la-orden-del-pollo\trabajo practico - parcial 2\archivo.c
 	<stdio.h>
 	<stdlib.h>
 	"string.h"
@@ -22,25 +22,25 @@
 
 1479408264 c:\users\alumno\desktop\la-orden-del-pollo-master\trabajo practico - parcial 2\archivo.h
 
-1479490643 source:c:\users\matias\documents\github\la-orden-del-pollo\trabajo practico - parcial 2\arbol.c
+1479511574 source:c:\users\matias\documents\github\la-orden-del-pollo\trabajo practico - parcial 2\arbol.c
 	<stdio.h>
 	<stdlib.h>
 	"Arbol.h"
 	"string.h"
 	"Archivo.h"
 
-1479488314 c:\users\matias\documents\github\la-orden-del-pollo\trabajo practico - parcial 2\arbol.h
+1479508631 c:\users\matias\documents\github\la-orden-del-pollo\trabajo practico - parcial 2\arbol.h
 	"Archivo.h"
 	"Caja.h"
 
-1479496418 c:\users\matias\documents\github\la-orden-del-pollo\trabajo practico - parcial 2\caja.h
+1479509021 c:\users\matias\documents\github\la-orden-del-pollo\trabajo practico - parcial 2\caja.h
 	"Listas Dobles.h"
 	"Archivo.h"
 
-1479497757 c:\users\matias\documents\github\la-orden-del-pollo\trabajo practico - parcial 2\listas dobles.h
+1479511071 c:\users\matias\documents\github\la-orden-del-pollo\trabajo practico - parcial 2\listas dobles.h
 	"Archivo.h"
 
-1479500149 source:c:\users\matias\documents\github\la-orden-del-pollo\trabajo practico - parcial 2\caja.c
+1479511552 source:c:\users\matias\documents\github\la-orden-del-pollo\trabajo practico - parcial 2\caja.c
 	<stdio.h>
 	<stdlib.h>
 	"Caja.h"
@@ -48,7 +48,7 @@
 	"Archivo.h"
 	"string.h"
 
-1479500242 source:c:\users\matias\documents\github\la-orden-del-pollo\trabajo practico - parcial 2\listas dobles.c
+1479502704 source:c:\users\matias\documents\github\la-orden-del-pollo\trabajo practico - parcial 2\listas dobles.c
 	<stdio.h>
 	<stdlib.h>
 	"Listas Dobles.h"

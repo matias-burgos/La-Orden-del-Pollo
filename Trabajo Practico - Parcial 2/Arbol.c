@@ -48,7 +48,6 @@ nodoArbol* IngresarPersonas(nodoArbol*arbol, char nombre[])//Bien.
     persona p;
     while(fread(&p, sizeof(persona), 1, archi)!=NULL)
     {
-
         arbol=insertar(arbol, p);
     }
     fclose(archi);
@@ -198,32 +197,34 @@ nodoArbol *borrarUnNodoArbol(nodoArbol *arbol, char nombre[])//Bien.
     return arbol;
 }
 
-nodo2* preorderCliente(nodoArbol * arbol, Caja cajas[], int validos)
+void preorderCliente(nodoArbol * arbol, Caja cajas[], int validos)
 {
     persona aux;
     if(arbol!=NULL)
     {
         aux=arbol->p;
+        borrarUnNodoArbol(arbol, arbol->p.nombreApellido);
         agregarClienteACaja(cajas, validos, aux);
         preorder(arbol->izq);
         preorder(arbol->der);
     }
-    return cajas;
+
 }
-nodo2* inorderCliente(nodoArbol * arbol, Caja cajas[], int validos)
+void inorderCliente(nodoArbol * arbol, Caja cajas[], int validos)
 {
     persona aux;
     if(arbol!=NULL)
     {
         inorder(arbol->izq);
         aux=arbol->p;
+        borrarUnNodoArbol(arbol, arbol->p.nombreApellido);
         agregarClienteACaja(cajas, validos, aux);
         inorder(arbol->der);
     }
-    return cajas;
+
 }
 
-nodo2* postorderCliente(nodoArbol * arbol, Caja cajas[], int validos)
+void postorderCliente(nodoArbol * arbol, Caja cajas[], int validos)
 {
     persona aux;
     if(arbol!=NULL)
@@ -231,27 +232,29 @@ nodo2* postorderCliente(nodoArbol * arbol, Caja cajas[], int validos)
         postorder(arbol->izq);
         postorder(arbol->der);
         aux=arbol->p;
+        borrarUnNodoArbol(arbol, arbol->p.nombreApellido);
         agregarClienteACaja(cajas, validos, aux);
     }
-    return cajas;
+
 }
 
 
 
 void pasarDeArbolToLineaDeCajas(nodoArbol* arbol, int metodo, int validos, Caja cajas[])//Bien.
 {
+
+
     while(arbol!=NULL && metodo==1)
     {
-
-        cajas=preorderCliente(arbol, cajas, validos);
+        preorderCliente(arbol, cajas, validos);
     }
     while(arbol!=NULL && metodo==2)
     {
-        cajas=inorderCliente(arbol, cajas, validos);
+        inorderCliente(arbol, cajas, validos);
     }
     while(arbol!=NULL && metodo==3)
     {
-        cajas=postorderCliente(arbol, cajas, validos);
+        postorderCliente(arbol, cajas, validos);
     }
 }
 
