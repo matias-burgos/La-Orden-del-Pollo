@@ -6,15 +6,16 @@
 #include "string.h"
 
 
-Caja agregarCaja(Caja cajas, Caja nuevo)
+Caja agregarCaja(Caja caja, Caja nuevo)//Ingresa una caja al arreglo//Bien
 {
-    cajas=nuevo;
-    cajas.filita.inicio=NULL;
-    cajas.filita.final=NULL;
-    return cajas;
+    caja=nuevo;
+    caja.filita.inicio=NULL;
+    caja.filita.final=NULL;
+    return caja;
 }
 
-Caja ingresarCaja(Caja cajas[], char nombre[])
+
+void ingresarCaja(Caja cajas[], char nombre[])//Ingresa todos las cajas al arreglo.
 {
     FILE* archi=fopen(nombre, "r+b");
     Caja nuevo;
@@ -23,12 +24,11 @@ Caja ingresarCaja(Caja cajas[], char nombre[])
     {
         while(fread(&nuevo, sizeof(Caja),1, archi)!=0)
             {
-                //cajas=agregarCaja(cajas[i], nuevo);//no se que pasa.
+                cajas[i]=agregarCaja(cajas[i], nuevo);
                 i++;
             }
     }
     fclose(archi);
-    //return cajas;//no se que pasa.
 }
 
 
@@ -72,7 +72,7 @@ Caja buscarCaja(Caja cajas[], int pago, int validos)
     return aux;
 }
 */
-void mostrarCaja(Caja cajas)
+void mostrarCaja(Caja cajas)//Bien.
 {
     printf("\n Numero de caja: %d", cajas.numero_de_cajas);
     printf("\n Nombre del cajero: %s", cajas.nombreCajero);
@@ -85,11 +85,11 @@ void mostrarCaja(Caja cajas)
     }else{
         printf("\n La caja se encuentra abierta");
         printf("\n Clientes de la fila: ");
-        //mostrar(cajas.filita);//Filas tiene un problema, nose que carajos es ni como usarla.
+        mostrar(cajas.filita);//Filas tiene un problema, nose que carajos es ni como usarla.
     }
 }
 
-void mostrarTodo(Caja cajas[])
+void mostrarTodo(Caja cajas[])//Bien
 {
     int i=0;
     while(i<8)
@@ -99,7 +99,7 @@ void mostrarTodo(Caja cajas[])
         i++;
     }
 }
-
+/*
 Caja IngresarFilas(Caja cajas[], int validos)
 {
     int i=0;
@@ -111,28 +111,18 @@ Caja IngresarFilas(Caja cajas[], int validos)
     }
     //return cajas;//Codeblocks con cancer.
 }
-
+*/
 Caja ingresarEnCajas(Caja cajas, persona individuo)
 {
-    if(strstr(cajas.algoritmoPlanificacion,'FIFO')!=NULL)
+    if(strstr(cajas.algoritmoPlanificacion,'FIFO')!=NULL)//bien
     {
-        if(cajas.filita.inicio==NULL)
-        {
-           // cajas.filita.inicio.cliente=individuo;//Problema con Filas
-        }
-        else{
-            nodo2*nuevo=inicLista();
-            nuevo=crearNodoLista(individuo);
-            agregarAlFinal(cajas.filita.inicio ,nuevo);
-            cajas.filita.final=buscarUltimo(cajas.filita.inicio);
-
-        }
+        agregar(cajas.filita, individuo);
     }
     if(strstr(cajas.algoritmoPlanificacion, 'SRTF')!=NULL)
     {
         if(cajas.filita.inicio==NULL)
         {
-           // cajas.filita.inicio.cliente=individuo;//Problema con Filas
+            cajas.filita.inicio.cliente=individuo;//Problema con Filas
         }
         else{
             nodo2*nuevo=inicLista();
@@ -181,18 +171,24 @@ Caja agregarClienteACaja(Caja cajas[], int validos, persona individuo)
     {
         cajas[i]=ingresarEnCajas(cajas[i], individuo);
     }
+    else{
+        printf("\n La caja esta cerrada.");
+    }
 
     //return cajas;//Problema.
 }
-
-Caja agregarTiempo(Caja cajas, persona nuevo, int tiempo)//Es cualquier cosa esto.
+/*
+Caja agregarTiempo(Caja caja, persona nuevo, int tiempo)//Es cualquier cosa esto.
 {
-    Caja aux=cajas;
+    Caja aux=caja;
     int suma=0;
     while(tiempo<suma)
     {
-        suma=suma+aux.filita.final.cliente.cantArticulos;
-        aux.filita.final=aux.filita.final.anterior;
+        Fila filita=aux.filita;
+        nodo2*final=filita.final;
+        persona p=final->cliente;
+        suma=suma+p.cantArticulos;
+        aux.filita.final=final->anterior;
     }
     Caja auxi=aux;
     aux.filita.final.siguiente=nuevo;

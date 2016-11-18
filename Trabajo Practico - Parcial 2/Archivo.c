@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include "string.h"
 #include "Archivo.h"
-void mostrar_persona(persona p)
+void mostrar_persona(persona p)//Bien.
 {
     printf("\n ------------O-O-O-O------------");
     printf("\n --Nombre y Apellido: _ %s", p.nombreApellido);
@@ -12,7 +12,7 @@ void mostrar_persona(persona p)
     printf("\n \n ");
 }
 
-void mostrar_archivo(char Personas[])
+void mostrar_archivo(char Personas[])//Bien.
 {
     persona aux;
     int i=0;

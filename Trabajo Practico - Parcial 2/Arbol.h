@@ -21,7 +21,7 @@ void mostrarArbol(nodoArbol*arbol);
 nodoArbol *buscarPorNombre(nodoArbol *arbol, persona p);
 nodoArbol *nodoMasDerecho(nodoArbol *arbol);
 nodoArbol *nodoMasIzquierdo(nodoArbol *arbol);
-nodoArbol *borrarNodo(nodoArbol *arbol, char nombre[]);
+nodoArbol *borrarUnNodoArbol(nodoArbol *arbol, char nombre[]);
 nodo2* preorderCliente(nodoArbol * arbol, Caja cajas[], int validos);
 nodo2* inorderCliente(nodoArbol * arbol, Caja cajas[], int validos);
 nodo2* postorderCliente(nodoArbol * arbol, Caja cajas[], int validos);

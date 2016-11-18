@@ -7,7 +7,7 @@ nodo2 * inicLista()
 {
     return NULL;
 }
-
+/*
 
 nodo2 * crearNodoLista(persona nuevo)
 {
@@ -17,7 +17,7 @@ nodo2 * crearNodoLista(persona nuevo)
     aux->ste=NULL;
     return aux;
 }
-/*
+
 nodo2 * agregarAlPrincipio(nodo2 * lista, nodo2 * nuevoNodo)
 {
     nuevoNodo->ste=lista;
@@ -167,6 +167,7 @@ nodo2 * cargarLista(nodo2 * lista)
     }
     return lista;
 }
+*/
 nodo2 * borrarNodo(nodo2 * lista,char nombre[])
 {
     nodo2 * borrar=NULL;
@@ -174,7 +175,7 @@ nodo2 * borrarNodo(nodo2 * lista,char nombre[])
 
     if(lista!=NULL)
     {
-        if(lista->nombre==nombre)
+        if(lista->cliente.nombreApellido==nombre)
         {
             borrar=lista;
 
@@ -188,14 +189,14 @@ nodo2 * borrarNodo(nodo2 * lista,char nombre[])
         else
         {
             seg=lista->siguiente;
-            while(seg!=NULL && seg->nombre!=nombre)
+            while(seg!=NULL && seg->cliente.nombreApellido!=nombre)
             {
                 seg=seg->siguiente;
             }
 
             if( seg!= NULL)
             {
-                nodo * aux=seg->anterior; //Se crea un auxiliar donde se almacenara la lista sin el nodo que se busca borrar.
+                nodo2 * aux=seg->anterior; //Se crea un auxiliar donde se almacenara la lista sin el nodo que se busca borrar.
                 aux->siguiente = seg->siguiente;
                 free(seg);
             }
@@ -206,7 +207,7 @@ nodo2 * borrarNodo(nodo2 * lista,char nombre[])
     return lista;
 
 }
-
+/*
 Fila*borrarPrimero(Fila*fila)
 {
 
@@ -219,29 +220,30 @@ Fila*borrarPrimero(Fila*fila)
     return fila;
 }
 */
-Fila inicFila(Fila nuevo)
+Fila inicFila(Fila nuevo)//Bien.
 {
     nuevo.inicio=inicLista();
     nuevo.final=inicLista();
     return nuevo;
 }
-/*
-Fila*agregar(Fila*fila, persona cliente)
+
+Fila agregar(Fila fila, persona cliente)//Bien.
 {
     nodo2*nuevo=crearNodoLista(cliente);
     if(fila==NULL)
     {
         fila->inicio=nuevo;
+        fila->final=nuevo;
     }
     else
     {
         fila->inicio=agregarAlFinal(fila->inicio, nuevo);
-        cliente ultimo=buscarUltimo(fila);
+        persona ultimo=buscarUltimo(fila);
         fila->final=ultimo;
     }
     return fila;
 }
-
+/*
 Fila* quitar(Fila* filas)
 {
     persona aux=filas.inicio;

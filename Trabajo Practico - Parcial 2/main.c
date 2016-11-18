@@ -23,19 +23,23 @@ int main()
     char persona[30];
     fflush(stdin);
     scanf("%s", &persona);
-    arbol=borrarNodo(arbol, persona);
+    arbol=borrarUnNodoArbol(arbol, persona);
     mostrarArbol(arbol);
 
     char cajas[]="cajas.dat";
     Caja filas[8];
-    //filas=ingresarCaja(filas, cajas);//Filas tiene un problema, nose que carajos es ni como usarla.
+    ingresarCaja(filas, cajas);
     printf("\n Cajas");
     mostrarTodo(cajas);
-    IngresarFilas(cajas, 8);
-    pasarDeArbolToLineaDeCajas(arbol, arbol->p.tipo_pago, limite, cajas);//Filas tiene un problema, nose que carajos es ni como usarla.
+
+    printf("\n Ingresar la forma en que se recorra para pasarlo: ");
+    int metodo;
+    fflush(stdin);
+    scanf(" %s", &metodo);
+    pasarDeArbolToLineaDeCajas(arbol, metodo, limite, cajas);//Filas tiene un problema, nose que carajos es ni como usarla.
     printf("\n Cajas con los clientes: ");
     mostrarTodo(cajas);
-    antenderClientes(cajas, 8);
+    antenderClientes(cajas, 8);*/
     return 0;
 }
 

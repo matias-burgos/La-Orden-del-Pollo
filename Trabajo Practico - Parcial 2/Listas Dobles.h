@@ -24,9 +24,8 @@ nodo2* agregarEnOrdenPorCant (nodo2*lista, nodo2*nuevo);
 void mostrarLista(nodo2 * lista);
 nodo2 * cargarLista(nodo2* lista);
 nodo2 * borrarNodoLista(nodo2 * lista, char nombre[]);
+
 Fila borrarPrimero(Fila fila);
-
-
 Fila inicFila(Fila nuevo);//Filas tiene un problema, nose que carajos es ni como usarla.
 Fila agregar(Fila fila, persona cliente);//Filas tiene un problema, nose que carajos es ni como usarla.
 persona quitar(Fila fila);//Filas tiene un problema, nose que carajos es ni como usarla.

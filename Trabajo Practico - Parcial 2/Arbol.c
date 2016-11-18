@@ -164,33 +164,29 @@ nodoArbol *nodoMasIzquierdo(nodoArbol *arbol)
     return aux;
 }
 
-
-nodoArbol *borrarNodo(nodoArbol *arbol, char nombre[])
+nodoArbol *borrarUnNodoArbol(nodoArbol *arbol, char nombre[])
 {
-
     if(arbol!=NULL)
     {
-
-        if(strcmp(nombre, arbol->p.nombreApellido)<0)// Revisar.
+        if(strcmp(nombre,arbol->p.nombreApellido)>0)
         {
-
-            arbol->der=borrarNodo(arbol->der, nombre);
+            arbol->der=borrarUnNodoArbol(arbol->der, nombre);
         }
-        else if(strcmp(nombre, arbol->p.nombreApellido)>=0)//Revisar.
+        else if (strcmp(nombre,arbol->p.nombreApellido)<0)
         {
-            arbol->izq=borrarNodo(arbol->izq, nombre);
+            arbol->izq=borrarUnNodoArbol(arbol->izq, nombre);
         }
         else
         {
-            if(arbol->izq!=NULL)
+            if (arbol->izq!=NULL)
             {
                 arbol->p=(nodoMasDerecho(arbol->izq))->p;
-                arbol->izq=borrarNodo(arbol->izq, arbol->p.nombreApellido);
+                arbol->izq=borrarUnNodoArbol(arbol->izq, arbol->p.nombreApellido);
             }
-            else if(arbol->der!=NULL)
+            else if (arbol->der != NULL)
             {
-                arbol->p=(nodoMasIzquierdo(arbol->der))->p;
-                arbol->der=borrarNodo(arbol->der, arbol->p.nombreApellido);
+                arbol->p = (nodoMasIzquierdo(arbol->der))->p;
+                arbol->der = borrarUnNodoArbol(arbol->der , arbol->p.nombreApellido);
             }
             else
             {
@@ -208,7 +204,7 @@ nodo2* preorderCliente(nodoArbol * arbol, Caja cajas[], int validos)
     if(arbol!=NULL)
     {
         aux=arbol->p;//El codeblocks tiene cancer y nose que pasa.
-        //cajas=agregarClienteACaja(cajas, validos, aux);//Problema.
+        cajas=agregarClienteACaja(cajas, validos, aux);//Problema.
         preorder(arbol->izq);
         preorder(arbol->der);
     }
@@ -246,6 +242,7 @@ void pasarDeArbolToLineaDeCajas(nodoArbol* arbol, int metodo, int validos, Caja 
 {
     while(arbol!=NULL && metodo==1)
     {
+
         cajas=preorderCliente(arbol, cajas, validos);
     }
     while(arbol!=NULL && metodo==2)
@@ -257,4 +254,5 @@ void pasarDeArbolToLineaDeCajas(nodoArbol* arbol, int metodo, int validos, Caja 
         cajas=postorderCliente(arbol, cajas, validos);
     }
 }
+
 
