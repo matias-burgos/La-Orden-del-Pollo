@@ -117,7 +117,7 @@ void IngresarFilas(Caja cajas[], int validos)
 
 }
 
-Caja ingresarEnCajas(Caja cajas, persona individuo)//Bien.
+Caja ingresarEnCajas(Caja cajas, persona individuo)//Bien.//Problema aca creo.
 {
     char FIFO[]={'FIFO'};
     char SRTF[]={'SRTF'};
@@ -126,12 +126,12 @@ Caja ingresarEnCajas(Caja cajas, persona individuo)//Bien.
 
     if(strstr(cajas.algoritmoPlanificacion, FIFO)!=NULL)
     {
-        printf("\n saasdf");
+
         cajas.filita=agregar(cajas.filita, individuo);
     }
     if(strstr(cajas.algoritmoPlanificacion, SRTF)!=NULL)
     {
-        printf("\n saasdf");
+
         nodo2*aux=crearNodoLista(individuo);
         cajas.filita.inicio=agregarEnOrdenPorCant(cajas.filita.inicio, aux);
         nodo2* ultimo=buscarUltimo(cajas.filita.inicio);
@@ -139,7 +139,7 @@ Caja ingresarEnCajas(Caja cajas, persona individuo)//Bien.
     }
     if((strstr(cajas.algoritmoPlanificacion, prioridades)!=NULL)|| strstr(cajas.algoritmoPlanificacion, RR)!=NULL)
     {
-        printf("\n saasdf");
+
 
         nodo2*nuevo=crearNodoLista(individuo);
         cajas.filita.inicio=agregarEnOrdenTipoCli(cajas.filita.inicio, nuevo);
@@ -229,7 +229,7 @@ Caja AtenderAlgoritmos(Caja cajas)
     }
     return cajas;
 }
-Caja RR(Caja cajas)
+Caja AlgoritmoRR(Caja cajas)
 {
     int q=8;
     while(cajas.filita.inicio!=NULL)
@@ -275,12 +275,13 @@ Caja RR(Caja cajas)
 void antenderClientes(Caja cajas[], int validos)
 {
     int i=0;
+    char RR[]={'RR'};
     while(i<validos)
     {
 
-        if(strstr(cajas[i].algoritmoPlanificacion, 'RR')!=NULL)
+        if(strstr(cajas[i].algoritmoPlanificacion, RR)!=NULL)
         {
-            cajas[i]=RR(cajas[i]);
+            cajas[i]=AlgoritmoRR(cajas[i]);
         }
         else{
             cajas[i]=AtenderAlgoritmos(cajas[i]);

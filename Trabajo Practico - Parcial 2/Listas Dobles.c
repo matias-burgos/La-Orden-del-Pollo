@@ -18,14 +18,20 @@ nodo2 * crearNodoLista(persona nuevo)//Bien.
     return aux;
 }
 
-nodo2 * agregarAlPrincipio(nodo2 * lista, nodo2 * nuevoNodo)//Bien.
+nodo2 * agregarAlPrincipio(nodo2 * lista, nodo2 * nuevo)//Bien.
 {
-    nuevoNodo->siguiente=lista;
-    if(lista!=NULL)
-    {
-        lista->anterior=nuevoNodo;
-    }
-    return nuevoNodo;
+    if(lista==NULL)
+     {
+         lista=nuevo;
+     }
+     else{
+
+         nuevo->siguiente=lista;
+         lista->anterior=nuevo;
+         lista=nuevo;
+     }
+
+    return lista;
 }
 
 
@@ -158,7 +164,7 @@ void mostrarNodo(nodo2 * aux)//Bien.
 
 void mostrarLista(nodo2 * lista)//Bien.
 {
-    printf("\nContenido de la lista: ");
+    printf("\n Contenido de la lista: ");
     nodo2 * seg = lista;
     while (seg != NULL)
     {
