@@ -165,36 +165,39 @@ nodoArbol *nodoMasIzquierdo(nodoArbol *arbol)//Bien.
 
 nodoArbol* borrarUnNodoArbol(nodoArbol* arbol, char nombre[])//Bien.
 {
-    if(arbol)
+    printf("\n fadfa");
+    if(arbol!=NULL)
     {
-        if(strcmp(nombre, arbol->p.nombreApellido)>0){
+        if(strcmp(arbol->p.nombreApellido, nombre)<0){
                 arbol->der= borrarUnNodoArbol(arbol->der , nombre);
         }
-        else if(strcmp(nombre, arbol->p.nombreApellido)<0){
+        else {
+            if(strcmp( arbol->p.nombreApellido, nombre)>0){
                 arbol->izq = borrarUnNodoArbol(arbol->izq, nombre);
+            }else{
+
+                if(arbol->izq!=NULL)
+                {
+                    arbol->p= (nodoMasDerecho(arbol->izq))->p;
+                    arbol->izq= borrarUnNodoArbol(arbol->izq, arbol->p.nombreApellido);
+                }
+                else if(arbol->der!=NULL)
+                {
+                    arbol->p= (nodoMasIzquierdo(arbol->der))->p;
+                    arbol->der= borrarUnNodoArbol(arbol->der, arbol->p.nombreApellido);
+                }
+                else
+                {
+                    free(arbol);
+                    arbol= NULL;
+                }
+            }
         }
-        else
-        {
-            if(arbol->izq)
-            {
-                arbol->p= (nodoMasDerecho(arbol->izq))->p;
-                arbol->izq= borrarUnNodoArbol(arbol->izq, arbol->p.nombreApellido);
-            }
-            else if(arbol->der)
-            {
-                arbol->p= (nodoMasIzquierdo(arbol->der))->p;
-                arbol->der= borrarUnNodoArbol(arbol->der, arbol->p.nombreApellido);
-            }
-            else
-            {
-                free(arbol);
-                arbol= NULL;
-            }
-        }
+
     }
     return arbol;
 }
-
+/*
 nodoArbol* preorderCliente(nodoArbol * arbol, Caja cajas[], int validos)
 {
     persona aux;
@@ -203,7 +206,7 @@ nodoArbol* preorderCliente(nodoArbol * arbol, Caja cajas[], int validos)
 
         aux=arbol->p;
         arbol=borrarUnNodoArbol(arbol, aux.nombreApellido);
-        agregarClienteACaja(cajas, validos, aux);
+        agregarClienteACaja(cajas, aux);
         mostrarTodo(cajas);
 
 
@@ -248,29 +251,85 @@ nodoArbol* postorderCliente(nodoArbol * arbol, Caja cajas[], int validos)
     return arbol;
 
 }
+*/
+nodo2* pasarARbolALista(nodoArbol*arbol)
+{
+    nodo2*aux=malloc(sizeof(nodo2));
+    aux->cliente=arbol->p;
+    aux->anterior=NULL;
+    aux->siguiente=NULL;
+    return aux;
+}
 
-
-
-void pasarDeArbolToLineaDeCajas(nodoArbol* arbol, int metodo, int validos, Caja cajas[])//Bien.
+nodo2* pasarDeArbolToLineaDeCajas(nodoArbol* arbol, int metodo, Caja cajas[],nodo2* lista)//Bien.
 {
 
 
-    while(arbol!=NULL && metodo==1)
+    if(arbol!=NULL && metodo==1)
+    {
+        lista=agregarAlFinal(lista, pasarARbolALista(arbol));
+        lista=pasarDeArbolToLineaDeCajas(arbol->izq, metodo, cajas, lista);
+        lista=pasarDeArbolToLineaDeCajas(arbol->der, metodo, cajas, lista);
+
+
+
+
+
+        //arbol=preorderCliente(arbol, cajas, validos);
+    }
+    if(arbol!=NULL && metodo==2)
+    {
+        lista=pasarDeArbolToLineaDeCajas(arbol->izq, metodo, cajas, lista);
+        lista=agregarAlFinal(lista, pasarARbolALista(arbol));
+        lista=pasarDeArbolToLineaDeCajas(arbol->der, metodo, cajas, lista);
+
+
+
+
+
+        //arbol=inorderCliente(arbol, cajas, validos);
+    }
+    if(arbol!=NULL && metodo==3)
     {
 
-        arbol=preorderCliente(arbol, cajas, validos);
-    }
-    while(arbol!=NULL && metodo==2)
-    {
+        lista=pasarDeArbolToLineaDeCajas(arbol->izq, metodo, cajas, lista);
+        lista=pasarDeArbolToLineaDeCajas(arbol->der, metodo, cajas, lista);
+        nodo2*aux=pasarARbolALista(arbol);
+        mostrarNodo(aux);
+       // arbol=borrarUnNodoArbol(arbol, aux->cliente.nombreApellido);
+        lista=agregarAlFinal(lista, aux);
 
-        arbol=inorderCliente(arbol, cajas, validos);
-    }
-    while(arbol!=NULL && metodo==3)
-    {
 
-        arbol=postorderCliente(arbol, cajas, validos);
+
+
+
+        //arbol=postorderCliente(arbol, cajas, validos);
     }
+
+    return lista;
 
 }
+nodo2* PasarUnNodo(nodo2*lista)
+{
+    nodo2*aux=malloc(sizeof(nodo2));
+    aux->cliente=lista->cliente;
+    aux->siguiente=NULL;
+    aux->anterior=NULL;
+    return aux;
+}
+void PasajeArbolCaja(nodoArbol*arbol, int metodo, Caja cajas[])
+{
+    nodo2*aux=inicArbol();
+    nodo2*nuevo=inicArbol();
+    aux=pasarDeArbolToLineaDeCajas(arbol, metodo, cajas, aux);
+    while(aux!=NULL)
+    {
+        nuevo=PasarUnNodo(aux);
+        agregarClienteACaja(cajas, nuevo);
+        mostrarTodo(cajas);
+        aux=aux->siguiente;
+
+    }
 
 
+}

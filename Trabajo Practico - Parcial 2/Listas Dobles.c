@@ -121,7 +121,8 @@ nodo2* agregarEnOrdenTipoCli (nodo2* lista, nodo2* nuevo)//Bien.//se ordena por 
             nodo2* ante=aux->anterior;
             nuevo->siguiente=aux;
             nuevo->anterior=ante;
-
+            ante->siguiente=nuevo;
+            aux->anterior=nuevo;
         }
         else{
             lista=agregarAlFinal(lista, nuevo);
@@ -147,6 +148,8 @@ nodo2* agregarEnOrdenPorCant (nodo2*lista, nodo2*nuevo)//Bien.//se ordena por ca
             nodo2* ante=aux->anterior;
             nuevo->siguiente=aux;
             nuevo->anterior=ante;
+            ante->siguiente=nuevo;
+            aux->anterior=nuevo;
 
         }
         else{
@@ -252,12 +255,10 @@ Fila inicFila(Fila nuevo)//Bien.
     return nuevo;
 }
 
-Fila agregar(Fila fila, persona cliente)//Bien.
+Fila agregar(Fila fila, nodo2*lista)//Bien.
 {
-    nodo2*nuevo=crearNodoLista(cliente);
-    fila.inicio=agregarAlFinal(fila.inicio, nuevo);
+    fila.inicio=agregarAlFinal(fila.inicio, lista);
     fila.final=buscarUltimo(fila.inicio);
-    nodo2*inicio=fila.inicio;
     return fila;
 }
 

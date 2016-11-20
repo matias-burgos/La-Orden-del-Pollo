@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1479605591 source:c:\users\matias\documents\github\la-orden-del-pollo\trabajo practico - parcial 2\main.c
+1479671499 source:c:\users\matias\documents\github\la-orden-del-pollo\trabajo practico - parcial 2\main.c
 	<stdio.h>
 	<stdlib.h>
 	"Archivo.h"
@@ -22,25 +22,25 @@
 
 1479408264 c:\users\alumno\desktop\la-orden-del-pollo-master\trabajo practico - parcial 2\archivo.h
 
-1479615068 source:c:\users\matias\documents\github\la-orden-del-pollo\trabajo practico - parcial 2\arbol.c
+1479671472 source:c:\users\matias\documents\github\la-orden-del-pollo\trabajo practico - parcial 2\arbol.c
 	<stdio.h>
 	<stdlib.h>
 	"Arbol.h"
 	"string.h"
 	"Archivo.h"
 
-1479579625 c:\users\matias\documents\github\la-orden-del-pollo\trabajo practico - parcial 2\arbol.h
+1479672551 c:\users\matias\documents\github\la-orden-del-pollo\trabajo practico - parcial 2\arbol.h
 	"Archivo.h"
 	"Caja.h"
 
-1479615394 c:\users\matias\documents\github\la-orden-del-pollo\trabajo practico - parcial 2\caja.h
+1479671291 c:\users\matias\documents\github\la-orden-del-pollo\trabajo practico - parcial 2\caja.h
 	"Listas Dobles.h"
 	"Archivo.h"
 
-1479615284 c:\users\matias\documents\github\la-orden-del-pollo\trabajo practico - parcial 2\listas dobles.h
+1479658433 c:\users\matias\documents\github\la-orden-del-pollo\trabajo practico - parcial 2\listas dobles.h
 	"Archivo.h"
 
-1479613111 source:c:\users\matias\documents\github\la-orden-del-pollo\trabajo practico - parcial 2\caja.c
+1479671568 source:c:\users\matias\documents\github\la-orden-del-pollo\trabajo practico - parcial 2\caja.c
 	<stdio.h>
 	<stdlib.h>
 	"Caja.h"
@@ -48,7 +48,7 @@
 	"Archivo.h"
 	"string.h"
 
-1479613104 source:c:\users\matias\documents\github\la-orden-del-pollo\trabajo practico - parcial 2\listas dobles.c
+1479659035 source:c:\users\matias\documents\github\la-orden-del-pollo\trabajo practico - parcial 2\listas dobles.c
 	<stdio.h>
 	<stdlib.h>
 	"Listas Dobles.h"

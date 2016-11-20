@@ -56,29 +56,50 @@ void abrirOcerrarCaja(Caja cajas[], int numeroCaja)//Bien.
         }
     }
 }
+int cantidadFila(Fila filita)
+{
+    nodo2* aux=filita.inicio;
+    int i=0;
+    while(aux!=NULL)
+    {
+        aux=aux->siguiente;
+        i++;
+    }
 
+    return i;
+}
 int buscarCaja(Caja cajas[], int pago, int validos)
 {
+    int flag=-1;
+    int posicion=-1;
+    int cant;
     int i=0;
-    int o=0;
-    Caja aux;
-    while(i<validos)
+    int u=0;
+    while(i<8)
     {
-        if(cajas[i].tipo_pago==pago)
+        if(cajas[i].abiertaOcerrada==1)
         {
-            if(cajas[i].abiertaOcerrada==1)
+            if( (cajas[i].tipo_pago==3)||(cajas[i].tipo_pago==pago) )
             {
-                aux=cajas[i];
-                o=i;
-            }
-            else{
-                aux.abiertaOcerrada=0;
-
+                flag++;
+                if(flag>-1)
+                {
+                    if(cant>cantidadFila(cajas[i].filita))
+                    {
+                        posicion=i;
+                        cant=cantidadFila(cajas[i].filita);
+                    }
+                }
+                else
+                {
+                    posicion=i;
+                    cant=cantidadFila(cajas[i].filita);
+                }
             }
         }
         i++;
     }
-    return o;
+    return posicion;
 }
 
 void mostrarCaja(Caja caja)//Bien.
@@ -125,22 +146,20 @@ void IngresarFilas(Caja cajas[], int validos)
 
 }
 
-Caja ingresarEnCajas(Caja cajas, persona individuo)//Bien.//Problema aca creo.
+Caja ingresarEnCajas(Caja cajas, nodo2*lista)//Bien.//Problema aca creo.
 {
     if(strcmp(cajas.algoritmoPlanificacion, "FIFO")==0)
     {
 
-        agregar(cajas.filita, individuo);
-
-
+        cajas.filita=agregar(cajas.filita, lista);
 
 
     }
     if(strcmp(cajas.algoritmoPlanificacion, "SRTF")==0)
     {
 
-        nodo2*aux=crearNodoLista(individuo);
-        cajas.filita.inicio=agregarEnOrdenPorCant(cajas.filita.inicio, aux);
+
+        cajas.filita.inicio=agregarEnOrdenPorCant(cajas.filita.inicio, lista);
 
         nodo2* ultimo=buscarUltimo(cajas.filita.inicio);
         cajas.filita.final=ultimo;
@@ -150,8 +169,7 @@ Caja ingresarEnCajas(Caja cajas, persona individuo)//Bien.//Problema aca creo.
     {
 
 
-        nodo2*nuevo=crearNodoLista(individuo);
-        cajas.filita.inicio=agregarEnOrdenTipoCli(cajas.filita.inicio, nuevo);
+        cajas.filita.inicio=agregarEnOrdenTipoCli(cajas.filita.inicio, lista);
         nodo2* ultimo=buscarUltimo(cajas.filita.inicio);
         cajas.filita.final=ultimo;
     }
@@ -159,21 +177,23 @@ Caja ingresarEnCajas(Caja cajas, persona individuo)//Bien.//Problema aca creo.
     return cajas;
 }
 
-void agregarClienteACaja(Caja cajas[], int validos, persona individuo)//Bien.
+void agregarClienteACaja(Caja cajas[], nodo2*lista)//Bien.
 {
-    int i=buscarCaja(cajas, individuo.tipo_pago, validos);
+
+    int i=buscarCaja(cajas, lista->cliente.tipo_pago, 8);
     if(i<8)
     {
         if(cajas[i].abiertaOcerrada==1)
         {
 
 
-            cajas[i]=ingresarEnCajas(cajas[i], individuo);
+            cajas[i]=ingresarEnCajas(cajas[i], lista);
 
         }
         else{
             printf("\n Ninguna caja abierta acepta su tipo de pago.");
         }
+
     }
     else{
         printf("\n No hay caja que acepte ese tipo de pago.");

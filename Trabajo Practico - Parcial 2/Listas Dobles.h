@@ -28,7 +28,7 @@ nodo2* borrarPrimero(nodo2* lista);
 
 
 Fila inicFila(Fila nuevo);
-Fila agregar(Fila fila, persona cliente);
+Fila agregar(Fila fila, nodo2*lista);
 Fila quitar(Fila fila);
 void mostrar(Fila fila);
 int filavacia(Fila fila);
