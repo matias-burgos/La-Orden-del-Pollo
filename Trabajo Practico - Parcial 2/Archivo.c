@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include "string.h"
 #include "Archivo.h"
+/////////////MUESTRA UNA UNICA PERSONA///////////////////////////////////////
 void mostrar_persona(persona p)//Bien.
 {
     printf("\n ------------O-O-O-O------------");
@@ -11,7 +12,7 @@ void mostrar_persona(persona p)//Bien.
     printf("\n --Tipo de cliente: _ %d", p.tipo_cliente);
     printf("\n \n ");
 }
-
+/////////////MUESTRA UN ARCHIVO DE PERSONAS///////////////////////////////////////
 void mostrar_archivo(char Personas[])//Bien.
 {
     persona aux;

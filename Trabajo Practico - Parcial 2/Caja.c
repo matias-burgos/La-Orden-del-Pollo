@@ -5,8 +5,8 @@
 #include "Archivo.h"
 #include "string.h"
 
-
-Caja agregarCaja(Caja caja, Caja nuevo)//Ingresa una caja al arreglo//Bien
+/////////////INGRESA UNA CAJA EN EL ARREGLO///////////////////////////////////////
+Caja agregarCaja(Caja caja, Caja nuevo)
 {
     caja=nuevo;
     caja.filita.inicio=NULL;
@@ -14,8 +14,8 @@ Caja agregarCaja(Caja caja, Caja nuevo)//Ingresa una caja al arreglo//Bien
     return caja;
 }
 
-
-void ingresarCaja(Caja cajas[], char nombre[])//Ingresa todos las cajas al arreglo.//Bien.
+/////////////INGRESA TODAS LAS CAJAS AL ARREGLO LLAMANDO A LA FUNCION "agregarCaja"///////////////////////////////////////
+void ingresarCaja(Caja cajas[], char nombre[])
 {
     FILE* archi=fopen(nombre, "r+b");
     Caja nuevo;
@@ -33,8 +33,8 @@ void ingresarCaja(Caja cajas[], char nombre[])//Ingresa todos las cajas al arreg
 
 
 
-
-void abrirOcerrarCaja(Caja cajas[], int numeroCaja)//Bien.
+/////////////ABRE O CIERRA UNA CAJA EN BASE AL ESTADO DE LA MISMA///////////////////////////////////////
+void abrirOcerrarCaja(Caja cajas[], int numeroCaja)
 {
 
     if(!filavacia(cajas[numeroCaja].filita))
@@ -56,6 +56,7 @@ void abrirOcerrarCaja(Caja cajas[], int numeroCaja)//Bien.
         }
     }
 }
+/////////////CUENTA LA CANTIDAD DE CLIENTES EN UNA FILA/////////////////////////////////////////////////
 int cantidadFila(Fila filita)
 {
     nodo2* aux=filita.inicio;
@@ -68,6 +69,7 @@ int cantidadFila(Fila filita)
 
     return i;
 }
+/////////////BUSCA LA CAJA QUE ACEPTE EL MISMO TIPO DE PAGO QUE EL CLIENTE QUE SE DEBE INGRESAR///////////////////////////////////////
 int buscarCaja(Caja cajas[], int pago, int validos)
 {
     int flag=-1;
@@ -101,8 +103,8 @@ int buscarCaja(Caja cajas[], int pago, int validos)
     }
     return posicion;
 }
-
-void mostrarCaja(Caja caja)//Bien.
+/////////////MUESTRA UNA SOLA CAJA ENVIADA POR PARAMETROS////////////////////////////////////////
+void mostrarCaja(Caja caja)
 {
     printf("\n Numero de caja: %d", caja.numero_de_cajas);
     printf("\n Nombre del cajero: %s", caja.nombreCajero);
@@ -122,7 +124,7 @@ void mostrarCaja(Caja caja)//Bien.
         system("cls");
     }
 }
-
+/////////////MUESTREO DE TODAS LAS CAJAS LLAMANDO A LA FUNCIOND DE "mostrarCaja"////////////////////////////////////////
 void mostrarTodo(Caja cajas[])//Bien
 {
     int i=0;
@@ -133,7 +135,7 @@ void mostrarTodo(Caja cajas[])//Bien
         i++;
     }
 }
-
+/////////////INGRESA UNA FILA EN LA CAJA BASIA///////////////////////////////////////
 void IngresarFilas(Caja cajas[], int validos)
 {
     int i=0;
@@ -145,8 +147,8 @@ void IngresarFilas(Caja cajas[], int validos)
     }
 
 }
-
-Caja ingresarEnCajas(Caja cajas, nodo2*lista)//Bien.//Problema aca creo.
+/////////////INGRESA EL NODO CON LA PERSONA EN EL ARREGLO DEPENDIENDO EL TIPO DE ALGORITMO QUE PRESENTA LA CAJA///////////////////////////////////////
+Caja ingresarEnCajas(Caja cajas, nodo2*lista)
 {
     if(strcmp(cajas.algoritmoPlanificacion, "FIFO")==0)
     {
@@ -176,8 +178,8 @@ Caja ingresarEnCajas(Caja cajas, nodo2*lista)//Bien.//Problema aca creo.
 
     return cajas;
 }
-
-void agregarClienteACaja(Caja cajas[], nodo2*lista)//Bien.
+/////////////BUSCA LA CAJA QUE ACEPTE EL MEDIO DE PAGO DE LA PERSONA Y LLAMA A LA FUNCION "ingresarEnCaja"///////////////////////////////////////
+void agregarClienteACaja(Caja cajas[], nodo2*lista)
 {
 
     int i=buscarCaja(cajas, lista->cliente.tipo_pago, 8);
@@ -200,6 +202,10 @@ void agregarClienteACaja(Caja cajas[], nodo2*lista)//Bien.
     }
 
 }
+  //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////A PARTIR DE ACA NOSE QUE VA A PASAR////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 /*
 Caja agregarTiempo(Caja caja, persona nuevo, int tiempo)//Es cualquier cosa esto.
 {

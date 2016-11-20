@@ -3,14 +3,14 @@
 #include "Arbol.h"
 #include "string.h"
 #include "Archivo.h"
-
-nodoArbol * inicArbol()//Bien.
+/////////////INICIALIZA EL ARBOL///////////////////////////////////////
+nodoArbol * inicArbol()
 {
     return NULL;
 }
 
-
-nodoArbol * crearNodoArbol(persona p)//Bien.
+/////////////CREA UN NODO DE UNA ARBOL///////////////////////////////////////
+nodoArbol * crearNodoArbol(persona p)
 {
     nodoArbol * aux = (nodoArbol *) malloc(sizeof(nodoArbol));
 
@@ -21,8 +21,8 @@ nodoArbol * crearNodoArbol(persona p)//Bien.
     return aux;
 }
 
-
-nodoArbol * insertar (nodoArbol * arbol, persona p)//Bien.
+/////////////INGRESA LA PERSONA MEDIANTE UN NODO AL ARBOL///////////////////////////////////////
+nodoArbol * insertar (nodoArbol * arbol, persona p)
 {
     if(arbol==NULL)
     {
@@ -42,7 +42,8 @@ nodoArbol * insertar (nodoArbol * arbol, persona p)//Bien.
     return arbol;
 }
 
-nodoArbol* IngresarPersonas(nodoArbol*arbol, char nombre[])//Bien.
+/////////////PASA UNA PERSONA DEL ARCHIVO LO PASA AL ARBOL///////////////////////////////////////
+nodoArbol* IngresarPersonas(nodoArbol*arbol, char nombre[])
 {
     FILE*archi=fopen(nombre, "r+b");
     persona p;
@@ -53,6 +54,7 @@ nodoArbol* IngresarPersonas(nodoArbol*arbol, char nombre[])//Bien.
     fclose(archi);
     return arbol;
 }
+/////////////RECORRE Y MUESTRA EL ARBOL POR PREORDER///////////////////////////////////////
 void preorder(nodoArbol * arbol)//Bien.
 {
     if(arbol!=NULL)
@@ -64,7 +66,7 @@ void preorder(nodoArbol * arbol)//Bien.
     }
 }
 
-
+/////////////RECORRE Y MUESTRA EL ARBOL POR INORDER///////////////////////////////////////
 void inorder(nodoArbol * arbol)//Bien.
 {
     if(arbol!=NULL)
@@ -75,7 +77,7 @@ void inorder(nodoArbol * arbol)//Bien.
         inorder(arbol->der);
     }
 }
-
+/////////////RECORRE Y MUESTRA EL ARBOL POR POSTORDER///////////////////////////////////////
 void postorder(nodoArbol * arbol)//Bien.
 {
 
@@ -87,7 +89,7 @@ void postorder(nodoArbol * arbol)//Bien.
         printf("\n \n ");
     }
 }
-
+/////////////MUESTRA EL ARBOL EN LAS TRES FORMAS///////////////////////////////////////
 void mostrarArbol(nodoArbol*arbol)//Bien.
 {
     printf("\n Preorder: ");
@@ -107,7 +109,7 @@ void mostrarArbol(nodoArbol*arbol)//Bien.
     system("cls");
 }
 
-
+/////////////BUSCA UNA PERSONA EN EL ARBOL EN BASE AL NOMBRE///////////////////////////////////////
 nodoArbol *buscarPorNombre(nodoArbol *arbol, persona p)//Bien.
 {
     nodoArbol*rta=inicArbol();
@@ -162,7 +164,7 @@ nodoArbol *nodoMasIzquierdo(nodoArbol *arbol)//Bien.
     }
     return aux;
 }
-
+/////////////BORRA UN NODO DE UN ARBOL CON RECURSION///////////////////////////////////////
 nodoArbol* borrarUnNodoArbol(nodoArbol* arbol, char nombre[])//Bien.
 {
     printf("\n fadfa");
@@ -252,6 +254,7 @@ nodoArbol* postorderCliente(nodoArbol * arbol, Caja cajas[], int validos)
 
 }
 */
+/////////////PASA UN NODO DE UN ARBOL A UN NODO LISTA///////////////////////////////////////
 nodo2* pasarARbolALista(nodoArbol*arbol)
 {
     nodo2*aux=malloc(sizeof(nodo2));
@@ -260,7 +263,7 @@ nodo2* pasarARbolALista(nodoArbol*arbol)
     aux->siguiente=NULL;
     return aux;
 }
-
+/////////////PASA UN ARBOL A UN NODO LISTA EN BASE AL TIPO DE METODO SELECCIONADO///////////////////////////////////////
 nodo2* pasarDeArbolToLineaDeCajas(nodoArbol* arbol, int metodo, Caja cajas[],nodo2* lista)//Bien.
 {
 
@@ -309,6 +312,7 @@ nodo2* pasarDeArbolToLineaDeCajas(nodoArbol* arbol, int metodo, Caja cajas[],nod
     return lista;
 
 }
+/////////////PASA EL PRIMER NODO DE LA LISTA A UN UNICO NODO///////////////////////////////////////
 nodo2* PasarUnNodo(nodo2*lista)
 {
     nodo2*aux=malloc(sizeof(nodo2));
@@ -317,6 +321,7 @@ nodo2* PasarUnNodo(nodo2*lista)
     aux->anterior=NULL;
     return aux;
 }
+/////////////PASA UN NODO DE PERSONA DE LA LISTA AL ARCHIVO///////////////////////////////////////
 void PasajeArbolCaja(nodoArbol*arbol, int metodo, Caja cajas[])
 {
     nodo2*aux=inicArbol();
