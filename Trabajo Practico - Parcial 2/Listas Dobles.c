@@ -111,7 +111,7 @@ nodo2* agregarEnOrdenTipoCli (nodo2* lista, nodo2* nuevo)//Bien.//se ordena por 
     }
     else{
 
-        while(aux->cliente.tipo_cliente>nuevo->cliente.tipo_cliente && aux!=NULL)
+        while(aux->cliente.tipo_cliente<nuevo->cliente.tipo_cliente && aux!=NULL)
         {
             aux=aux->siguiente;
         }
@@ -121,16 +121,16 @@ nodo2* agregarEnOrdenTipoCli (nodo2* lista, nodo2* nuevo)//Bien.//se ordena por 
             nodo2* ante=aux->anterior;
             nuevo->siguiente=aux;
             nuevo->anterior=ante;
-            aux->anterior=nuevo;
+
         }
         else{
-            lista=agregarAlPrincipio(lista, nuevo);
+            lista=agregarAlFinal(lista, nuevo);
         }
     }
 
     return lista;
 }
-nodo2* agregarEnOrdenPorCant (nodo2*lista, nodo2*nuevo)//Bien.
+nodo2* agregarEnOrdenPorCant (nodo2*lista, nodo2*nuevo)//Bien.//se ordena por cantidad de articulos del cliente desde el inicio hasta el final.
 {
     nodo2*aux=lista;
     if(lista==NULL)
@@ -138,7 +138,7 @@ nodo2* agregarEnOrdenPorCant (nodo2*lista, nodo2*nuevo)//Bien.
         lista=nuevo;
     }
     else{
-        while(aux->cliente.cantArticulos>nuevo->cliente.cantArticulos && aux!=NULL)
+        while(aux->cliente.cantArticulos<nuevo->cliente.cantArticulos && aux!=NULL)
         {
             aux=aux->siguiente;
         }
@@ -147,27 +147,28 @@ nodo2* agregarEnOrdenPorCant (nodo2*lista, nodo2*nuevo)//Bien.
             nodo2* ante=aux->anterior;
             nuevo->siguiente=aux;
             nuevo->anterior=ante;
-            aux->anterior=nuevo;
+
         }
         else{
-            lista=agregarAlPrincipio(lista, nuevo);
+            lista=agregarAlFinal(lista, nuevo);
         }
     }
 
     return lista;
 }
 
-void mostrarNodo(nodo2 * aux)//Bien.
+void mostrarNodo(nodo2 * aux)//Bien.//Muestra un solo nodo.
 {
     mostrar_persona(aux->cliente);
 }
 
-void mostrarLista(nodo2 * lista)//Bien.
+void mostrarLista(nodo2 * lista)//Bien.//Muestra todos los nodos de la lista.
 {
     printf("\n Contenido de la lista: ");
     nodo2 * seg = lista;
     while (seg != NULL)
     {
+        printf("\n asdfsadfasdfasdfasdfasfasdfasdfasdf");
         mostrarNodo(seg);
         seg= seg->siguiente;
     }
@@ -254,17 +255,9 @@ Fila inicFila(Fila nuevo)//Bien.
 Fila agregar(Fila fila, persona cliente)//Bien.
 {
     nodo2*nuevo=crearNodoLista(cliente);
-    if(fila.inicio==NULL)
-    {
-        fila.inicio=nuevo;
-        fila.final=nuevo;
-    }
-    else
-    {
-        fila.inicio=agregarAlFinal(fila.inicio, nuevo);
-        nodo2* ultimo=buscarUltimo(fila.inicio);
-        fila.final=ultimo;
-    }
+    fila.inicio=agregarAlFinal(fila.inicio, nuevo);
+    fila.final=buscarUltimo(fila.inicio);
+    nodo2*inicio=fila.inicio;
     return fila;
 }
 

@@ -163,7 +163,7 @@ nodoArbol *nodoMasIzquierdo(nodoArbol *arbol)//Bien.
     return aux;
 }
 
-nodoArbol *borrarUnNodoArbol(nodoArbol *arbol, char nombre[])//Bien.
+nodoArbol* borrarUnNodoArbol(nodoArbol* arbol, char nombre[])//Bien.
 {
     if(arbol!=NULL)
     {
@@ -197,44 +197,57 @@ nodoArbol *borrarUnNodoArbol(nodoArbol *arbol, char nombre[])//Bien.
     return arbol;
 }
 
-void preorderCliente(nodoArbol * arbol, Caja cajas[], int validos)
+nodoArbol* preorderCliente(nodoArbol * arbol, Caja cajas[], int validos)
 {
     persona aux;
     if(arbol!=NULL)
     {
+
         aux=arbol->p;
-        borrarUnNodoArbol(arbol, arbol->p.nombreApellido);
+        arbol=borrarUnNodoArbol(arbol, aux.nombreApellido);
         agregarClienteACaja(cajas, validos, aux);
-        preorderCliente(arbol->izq, cajas, validos);
-        preorderCliente(arbol->der, cajas, validos);
+        mostrarTodo(cajas);
+
+
+        arbol->izq=preorderCliente(arbol->izq, cajas, validos);
+        arbol->der=preorderCliente(arbol->der, cajas, validos);
     }
+    return arbol;
 
 }
-void inorderCliente(nodoArbol * arbol, Caja cajas[], int validos)
+nodoArbol* inorderCliente(nodoArbol * arbol, Caja cajas[], int validos)
 {
     persona aux;
     if(arbol!=NULL)
     {
-        inorderCliente(arbol->izq, cajas, validos);
+        arbol->izq=inorderCliente(arbol->izq, cajas, validos);
+
         aux=arbol->p;
-        borrarUnNodoArbol(arbol, arbol->p.nombreApellido);
+        arbol=borrarUnNodoArbol(arbol, aux.nombreApellido);
         agregarClienteACaja(cajas, validos, aux);
-        inorderCliente(arbol->der, cajas, validos);
+        mostrarTodo(cajas);
+
+        arbol->der=inorderCliente(arbol->der, cajas, validos);
     }
+    return arbol;
 
 }
 
-void postorderCliente(nodoArbol * arbol, Caja cajas[], int validos)
+nodoArbol* postorderCliente(nodoArbol * arbol, Caja cajas[], int validos)
 {
     persona aux;
     if(arbol!=NULL)
     {
-        postorderCliente(arbol->izq, cajas, validos);
-        postorderCliente(arbol->der, cajas, validos);
+        arbol->izq=postorderCliente(arbol->izq, cajas, validos);
+        arbol->der=postorderCliente(arbol->der, cajas, validos);
+
         aux=arbol->p;
-        borrarUnNodoArbol(arbol, arbol->p.nombreApellido);
+        arbol=borrarUnNodoArbol(arbol, aux.nombreApellido);
         agregarClienteACaja(cajas, validos, aux);
+        mostrarTodo(cajas);
+
     }
+    return arbol;
 
 }
 
@@ -246,16 +259,20 @@ void pasarDeArbolToLineaDeCajas(nodoArbol* arbol, int metodo, int validos, Caja 
 
     while(arbol!=NULL && metodo==1)
     {
-        preorderCliente(arbol, cajas, validos);
+
+        arbol=preorderCliente(arbol, cajas, validos);
     }
     while(arbol!=NULL && metodo==2)
     {
-        inorderCliente(arbol, cajas, validos);
+
+        arbol=inorderCliente(arbol, cajas, validos);
     }
     while(arbol!=NULL && metodo==3)
     {
-        postorderCliente(arbol, cajas, validos);
+
+        arbol=postorderCliente(arbol, cajas, validos);
     }
+
 }
 
 

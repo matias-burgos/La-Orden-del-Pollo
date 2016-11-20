@@ -43,8 +43,9 @@ int main()
     int metodo;
 
     fflush(stdin);
-    scanf(" %d", &metodo);
+    scanf("%d", &metodo);
     pasarDeArbolToLineaDeCajas(arbol, metodo, limite, filas);
+    printf("\n Las personas han sido pasadas a las respectivas cajas");
     system("pause");
     system("cls");
     printf("\n Cajas con los clientes: ");

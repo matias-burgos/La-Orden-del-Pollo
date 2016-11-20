@@ -69,6 +69,9 @@ Caja buscarCaja(Caja cajas[], int pago, int validos)
             {
                 aux=cajas[i];
             }
+            else{
+                aux.abiertaOcerrada=0;
+            }
         }
         i++;
     }
@@ -83,6 +86,8 @@ void mostrarCaja(Caja caja)//Bien.
     printf("\n Su algoritmo de planificacion es: %s", caja.algoritmoPlanificacion);
     if(caja.abiertaOcerrada==0)
     {
+
+
         printf("\n La caja se encuentra cerrada");
 
     }else{
@@ -119,25 +124,26 @@ void IngresarFilas(Caja cajas[], int validos)
 
 Caja ingresarEnCajas(Caja cajas, persona individuo)//Bien.//Problema aca creo.
 {
-    char FIFO[]={'FIFO'};
-    char SRTF[]={'SRTF'};
-    char prioridades[]={'Prioridades'};
-    char RR[]={'RR'};
-
-    if(strstr(cajas.algoritmoPlanificacion, FIFO)!=NULL)
+    if(strcmp(cajas.algoritmoPlanificacion, "FIFO")==0)//No entra a ningun if.
     {
 
         cajas.filita=agregar(cajas.filita, individuo);
+
+
+
+
     }
-    if(strstr(cajas.algoritmoPlanificacion, SRTF)!=NULL)
+    if(strcmp(cajas.algoritmoPlanificacion, "SRTF")==0)
     {
 
         nodo2*aux=crearNodoLista(individuo);
         cajas.filita.inicio=agregarEnOrdenPorCant(cajas.filita.inicio, aux);
+
         nodo2* ultimo=buscarUltimo(cajas.filita.inicio);
         cajas.filita.final=ultimo;
+
     }
-    if((strstr(cajas.algoritmoPlanificacion, prioridades)!=NULL)|| strstr(cajas.algoritmoPlanificacion, RR)!=NULL)
+    if((strcmp(cajas.algoritmoPlanificacion, "Prioridades")==0)|| strcmp(cajas.algoritmoPlanificacion, "RR")==0)
     {
 
 
@@ -146,23 +152,33 @@ Caja ingresarEnCajas(Caja cajas, persona individuo)//Bien.//Problema aca creo.
         nodo2* ultimo=buscarUltimo(cajas.filita.inicio);
         cajas.filita.final=ultimo;
     }
+
     return cajas;
 }
 
 void agregarClienteACaja(Caja cajas[], int validos, persona individuo)//Bien.
 {
     int i=0;
-    while(i<validos && cajas[i].tipo_pago!=individuo.tipo_pago)
+    while(i<8 && cajas[i].tipo_pago!=individuo.tipo_pago)
     {
         i++;
     }
-    if(cajas[i].abiertaOcerrada==1)
+    //aux=buscarCaja(cajas, individuo.tipo_pago, validos);
+    if(i<8)
     {
+        if(cajas[i].abiertaOcerrada==1)
+        {
 
-        cajas[i]=ingresarEnCajas(cajas[i], individuo);
+
+            cajas[i]=ingresarEnCajas(cajas[i], individuo);
+
+        }
+        else{
+            printf("\n Ninguna caja abierta acepta su tipo de pago.");
+        }
     }
     else{
-        printf("\n La caja esta cerrada.");
+        printf("\n No hay caja que acepte ese tipo de pago.");
     }
 
 }
