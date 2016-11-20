@@ -165,32 +165,30 @@ nodoArbol *nodoMasIzquierdo(nodoArbol *arbol)//Bien.
 
 nodoArbol* borrarUnNodoArbol(nodoArbol* arbol, char nombre[])//Bien.
 {
-    if(arbol!=NULL)
+    if(arbol)
     {
-        if(strcmp(nombre,arbol->p.nombreApellido)>0)
-        {
-            arbol->der=borrarUnNodoArbol(arbol->der, nombre);
+        if(strcmp(nombre, arbol->p.nombreApellido)>0){
+                arbol->der= borrarUnNodoArbol(arbol->der , nombre);
         }
-        else if (strcmp(nombre,arbol->p.nombreApellido)<0)
-        {
-            arbol->izq=borrarUnNodoArbol(arbol->izq, nombre);
+        else if(strcmp(nombre, arbol->p.nombreApellido)<0){
+                arbol->izq = borrarUnNodoArbol(arbol->izq, nombre);
         }
         else
         {
-            if (arbol->izq!=NULL)
+            if(arbol->izq)
             {
-                arbol->p=(nodoMasDerecho(arbol->izq))->p;
-                arbol->izq=borrarUnNodoArbol(arbol->izq, arbol->p.nombreApellido);
+                arbol->p= (nodoMasDerecho(arbol->izq))->p;
+                arbol->izq= borrarUnNodoArbol(arbol->izq, arbol->p.nombreApellido);
             }
-            else if (arbol->der != NULL)
+            else if(arbol->der)
             {
-                arbol->p = (nodoMasIzquierdo(arbol->der))->p;
-                arbol->der = borrarUnNodoArbol(arbol->der , arbol->p.nombreApellido);
+                arbol->p= (nodoMasIzquierdo(arbol->der))->p;
+                arbol->der= borrarUnNodoArbol(arbol->der, arbol->p.nombreApellido);
             }
             else
             {
                 free(arbol);
-                arbol=NULL;
+                arbol= NULL;
             }
         }
     }

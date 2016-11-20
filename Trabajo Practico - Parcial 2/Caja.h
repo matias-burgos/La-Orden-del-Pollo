@@ -16,7 +16,7 @@ typedef struct
 Caja agregarCaja(Caja filas, Caja cajas);
 void ingresarCaja(Caja cajas[], char nombre[]);
 void abrirOcerrarCaja(Caja cajas[], int numeroCaja);
-Caja buscarCaja(Caja cajas[], int pago, int validos);
+int buscarCaja(Caja cajas[], int pago, int validos);
 void mostrarCaja(Caja cajas);
 void mostrarTodo(Caja cajas[]);
 void IngresarFilas(Caja cajas[], int validos);//Posiblemente se borre. No tiene funcion.

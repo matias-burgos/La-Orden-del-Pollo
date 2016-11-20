@@ -57,9 +57,10 @@ void abrirOcerrarCaja(Caja cajas[], int numeroCaja)//Bien.
     }
 }
 
-Caja buscarCaja(Caja cajas[], int pago, int validos)
+int buscarCaja(Caja cajas[], int pago, int validos)
 {
     int i=0;
+    int o=0;
     Caja aux;
     while(i<validos)
     {
@@ -68,14 +69,16 @@ Caja buscarCaja(Caja cajas[], int pago, int validos)
             if(cajas[i].abiertaOcerrada==1)
             {
                 aux=cajas[i];
+                o=i;
             }
             else{
                 aux.abiertaOcerrada=0;
+
             }
         }
         i++;
     }
-    return aux;
+    return o;
 }
 
 void mostrarCaja(Caja caja)//Bien.
@@ -124,10 +127,10 @@ void IngresarFilas(Caja cajas[], int validos)
 
 Caja ingresarEnCajas(Caja cajas, persona individuo)//Bien.//Problema aca creo.
 {
-    if(strcmp(cajas.algoritmoPlanificacion, "FIFO")==0)//No entra a ningun if.
+    if(strcmp(cajas.algoritmoPlanificacion, "FIFO")==0)
     {
 
-        cajas.filita=agregar(cajas.filita, individuo);
+        agregar(cajas.filita, individuo);
 
 
 
@@ -158,12 +161,7 @@ Caja ingresarEnCajas(Caja cajas, persona individuo)//Bien.//Problema aca creo.
 
 void agregarClienteACaja(Caja cajas[], int validos, persona individuo)//Bien.
 {
-    int i=0;
-    while(i<8 && cajas[i].tipo_pago!=individuo.tipo_pago)
-    {
-        i++;
-    }
-    //aux=buscarCaja(cajas, individuo.tipo_pago, validos);
+    int i=buscarCaja(cajas, individuo.tipo_pago, validos);
     if(i<8)
     {
         if(cajas[i].abiertaOcerrada==1)
