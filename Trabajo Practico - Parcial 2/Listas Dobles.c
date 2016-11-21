@@ -171,7 +171,6 @@ void mostrarLista(nodo2 * lista)//Bien.//Muestra todos los nodos de la lista.
     nodo2 * seg = lista;
     while (seg != NULL)
     {
-        printf("\n asdfsadfasdfasdfasdfasfasdfasdfasdf");
         mostrarNodo(seg);
         seg= seg->siguiente;
     }

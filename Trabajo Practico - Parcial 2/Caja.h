@@ -16,13 +16,14 @@ typedef struct
 Caja agregarCaja(Caja filas, Caja cajas);
 void ingresarCaja(Caja cajas[], char nombre[]);
 void abrirOcerrarCaja(Caja cajas[], int numeroCaja);
+void abrirOcerrarTodasLasCajas(Caja cajas[], int validos);
 int cantidadFila(Fila filita);
 int buscarCaja(Caja cajas[], int pago, int validos);
 void mostrarCaja(Caja cajas);
 void mostrarTodo(Caja cajas[]);
-void IngresarFilas(Caja cajas[], int validos);//Posiblemente se borre. No tiene funcion.
+void IngresarFilas(Caja cajas[], int validos);
 Caja ingresarEnCajas(Caja cajas, nodo2*lista);
-void agregarClienteACaja(Caja cajas[], nodo2*lista);  //Originalmente era asi: void agregarClienteACaja(Caja cajas[], int validos, nodo2*cliente);
+void agregarClienteACaja(Caja cajas[], nodo2*lista);
 Caja agregarTiempo(Caja cajas, persona nuevo, int tiempo);
 Caja agregarClienteACajaEnTiempoDeterminado(Caja cajas[], int validos, persona nuevo, int tiempo);
 Caja AtenderAlgoritmos(Caja cajas);

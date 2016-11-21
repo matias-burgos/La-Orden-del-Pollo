@@ -1,14 +1,17 @@
 # depslib dependency file v1.0
-1479671499 source:c:\users\matias\documents\github\la-orden-del-pollo\trabajo practico - parcial 2\main.c
+1479765759 source:c:\users\matias\documents\github\la-orden-del-pollo\trabajo practico - parcial 2\main.c
 	<stdio.h>
 	<stdlib.h>
+	<dos.h>
+	<conio.h>
 	"Archivo.h"
-	"Arbol.h"
 	"Caja.h"
+	"Listas Dobles.h"
+	"Arbol.h"
 
-1479333501 c:\users\matias\documents\github\la-orden-del-pollo\trabajo practico - parcial 2\archivo.h
+1479763876 c:\users\matias\documents\github\la-orden-del-pollo\trabajo practico - parcial 2\archivo.h
 
-1479674945 source:c:\users\matias\documents\github\la-orden-del-pollo\trabajo practico - parcial 2\archivo.c
+1479763738 source:c:\users\matias\documents\github\la-orden-del-pollo\trabajo practico - parcial 2\archivo.c
 	<stdio.h>
 	<stdlib.h>
 	"string.h"
@@ -22,25 +25,25 @@
 
 1479408264 c:\users\alumno\desktop\la-orden-del-pollo-master\trabajo practico - parcial 2\archivo.h
 
-1479674923 source:c:\users\matias\documents\github\la-orden-del-pollo\trabajo practico - parcial 2\arbol.c
+1479766747 source:c:\users\matias\documents\github\la-orden-del-pollo\trabajo practico - parcial 2\arbol.c
 	<stdio.h>
 	<stdlib.h>
 	"Arbol.h"
 	"string.h"
 	"Archivo.h"
 
-1479672551 c:\users\matias\documents\github\la-orden-del-pollo\trabajo practico - parcial 2\arbol.h
+1479754795 c:\users\matias\documents\github\la-orden-del-pollo\trabajo practico - parcial 2\arbol.h
 	"Archivo.h"
 	"Caja.h"
 
-1479671291 c:\users\matias\documents\github\la-orden-del-pollo\trabajo practico - parcial 2\caja.h
+1479754423 c:\users\matias\documents\github\la-orden-del-pollo\trabajo practico - parcial 2\caja.h
 	"Listas Dobles.h"
 	"Archivo.h"
 
 1479658433 c:\users\matias\documents\github\la-orden-del-pollo\trabajo practico - parcial 2\listas dobles.h
 	"Archivo.h"
 
-1479674726 source:c:\users\matias\documents\github\la-orden-del-pollo\trabajo practico - parcial 2\caja.c
+1479766911 source:c:\users\matias\documents\github\la-orden-del-pollo\trabajo practico - parcial 2\caja.c
 	<stdio.h>
 	<stdlib.h>
 	"Caja.h"

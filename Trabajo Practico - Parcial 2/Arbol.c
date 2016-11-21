@@ -270,7 +270,8 @@ nodo2* pasarDeArbolToLineaDeCajas(nodoArbol* arbol, int metodo, Caja cajas[],nod
 
     if(arbol!=NULL && metodo==1)
     {
-        lista=agregarAlFinal(lista, pasarARbolALista(arbol));
+        nodo2*aux=pasarARbolALista(arbol);
+        lista=agregarAlFinal(lista, aux);
         lista=pasarDeArbolToLineaDeCajas(arbol->izq, metodo, cajas, lista);
         lista=pasarDeArbolToLineaDeCajas(arbol->der, metodo, cajas, lista);
 
@@ -278,19 +279,19 @@ nodo2* pasarDeArbolToLineaDeCajas(nodoArbol* arbol, int metodo, Caja cajas[],nod
 
 
 
-        //arbol=preorderCliente(arbol, cajas, validos);
     }
     if(arbol!=NULL && metodo==2)
     {
         lista=pasarDeArbolToLineaDeCajas(arbol->izq, metodo, cajas, lista);
-        lista=agregarAlFinal(lista, pasarARbolALista(arbol));
+        nodo2*aux=pasarARbolALista(arbol);
+        lista=agregarAlFinal(lista, aux);
         lista=pasarDeArbolToLineaDeCajas(arbol->der, metodo, cajas, lista);
 
 
 
 
 
-        //arbol=inorderCliente(arbol, cajas, validos);
+
     }
     if(arbol!=NULL && metodo==3)
     {
@@ -298,15 +299,13 @@ nodo2* pasarDeArbolToLineaDeCajas(nodoArbol* arbol, int metodo, Caja cajas[],nod
         lista=pasarDeArbolToLineaDeCajas(arbol->izq, metodo, cajas, lista);
         lista=pasarDeArbolToLineaDeCajas(arbol->der, metodo, cajas, lista);
         nodo2*aux=pasarARbolALista(arbol);
-        mostrarNodo(aux);
-       // arbol=borrarUnNodoArbol(arbol, aux->cliente.nombreApellido);
         lista=agregarAlFinal(lista, aux);
 
 
 
 
 
-        //arbol=postorderCliente(arbol, cajas, validos);
+
     }
 
     return lista;
@@ -326,12 +325,13 @@ void PasajeArbolCaja(nodoArbol*arbol, int metodo, Caja cajas[])
 {
     nodo2*aux=inicArbol();
     nodo2*nuevo=inicArbol();
+
     aux=pasarDeArbolToLineaDeCajas(arbol, metodo, cajas, aux);
+
     while(aux!=NULL)
     {
         nuevo=PasarUnNodo(aux);
         agregarClienteACaja(cajas, nuevo);
-        mostrarTodo(cajas);
         aux=aux->siguiente;
 
     }

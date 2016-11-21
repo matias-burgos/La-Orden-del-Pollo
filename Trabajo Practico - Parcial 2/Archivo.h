@@ -12,6 +12,8 @@ typedef struct
 
 void mostrar_persona(persona p);
 void mostrar_archivo(char nombre[]);
+persona cargar();
+void cargarPersonas(char nombre[]);
 
 
 

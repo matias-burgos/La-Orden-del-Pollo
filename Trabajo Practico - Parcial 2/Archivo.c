@@ -29,4 +29,55 @@ void mostrar_archivo(char Personas[])//Bien.
     }
     fclose(archi);
 }
+persona cargar()
+{
+    int nota;
+    persona p;
+    printf("Ingrese Nombre y Apellido: ");
+    fflush(stdin);
+    scanf("%s",p.nombreApellido);
+    printf("Ingrese la cantidad de articulos: ");
+    fflush(stdin);
+    scanf("%d",&p.cantArticulos);
+    p.tiempoDeEspera = 0;
+    p.tiempoProcesado = 0;
+    printf("Ingrese tipo de cliente \n(1.Embarazada/2.Jubilado/3.Comun: ");
+    fflush(stdin);
+    scanf("%d",&p.tipo_cliente);
+    printf("\n¿Desea saber los tipos de pago disponibles?: s/n");
+    fflush(stdin);
+    scanf("%d", &nota);
+    if(nota=='s')
+    {
+        printf("\nEl codigo para cada tipo de pago disponible es el siguiente: ");
+        printf("\n1_Efectivo.");
+        printf("\n2_Credito o Debito.");
+        printf("\n3_Todos.");
+    }
+    printf("Ingrese tipo de pago: ");
+    fflush(stdin);
+    scanf("%d",&p.tipo_pago);
+    return p;
+}
 
+void cargarPersonas(char nombre[])
+{
+    FILE * archi;
+    char rta='s';
+    char nota='n';
+    persona p;
+    archi=fopen(nombre, "a+b");
+    if (archi!=NULL)
+    {
+        while(rta=='s')
+            {
+                p=cargar();
+                fwrite(&p,sizeof(persona),1,archi);
+                printf("\n Desea cargas mas clientes? s/n: ");
+                fflush(stdin);
+                scanf("%c",&rta);
+                printf("\n");
+            }
+        }
+    fclose(archi);
+}

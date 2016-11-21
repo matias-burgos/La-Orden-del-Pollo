@@ -25,7 +25,6 @@ nodoArbol *borrarUnNodoArbol(nodoArbol *arbol, char nombre[]);
 nodoArbol* preorderCliente(nodoArbol * arbol, Caja cajas[], int validos);
 nodoArbol* inorderCliente(nodoArbol * arbol, Caja cajas[], int validos);
 nodoArbol* postorderCliente(nodoArbol * arbol, Caja cajas[], int validos);
-//void pasarDeArbolToLineaDeCajas(nodoArbol* arbol, int metodo, int validos, Caja cajas[]);
 nodo2* pasarDeArbolToLineaDeCajas(nodoArbol* arbol, int metodo, Caja cajas[],nodo2* aux);
 nodo2* PasarUnNodo(nodo2*lista);
 void PasajeArbolCaja(nodoArbol*arbol, int metodo, Caja cajas[]);

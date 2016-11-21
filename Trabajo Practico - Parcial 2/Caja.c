@@ -45,17 +45,27 @@ void abrirOcerrarCaja(Caja cajas[], int numeroCaja)
         if(cajas[numeroCaja].abiertaOcerrada==0)
         {
             cajas[numeroCaja].abiertaOcerrada=1;
-            printf("\n La caja se ha abierto");
+            printf("\n La caja numero %d se ha abierto", numeroCaja+1);
         }
         else{
             if(cajas[numeroCaja].abiertaOcerrada==1)
             {
                 cajas[numeroCaja].abiertaOcerrada=0;
-                printf("\n La caja se ha cerrado");
+                printf("\n La caja numero %d se ha cerrado", numeroCaja+1);
             }
         }
     }
 }
+void abrirOcerrarTodasLasCajas(Caja cajas[], int validos)
+{
+    int i=0;
+    while(i<validos)
+    {
+        abrirOcerrarCaja(cajas, i);
+        i++;
+    }
+}
+
 /////////////CUENTA LA CANTIDAD DE CLIENTES EN UNA FILA/////////////////////////////////////////////////
 int cantidadFila(Fila filita)
 {
@@ -114,13 +124,14 @@ void mostrarCaja(Caja caja)
     {
 
 
-        printf("\n La caja se encuentra cerrada");
+        printf("\n La caja se encuentra cerrada ");
 
     }else{
-        printf("\n La caja se encuentra abierta");
+        printf("\n La caja se encuentra abierta ");
         printf("\n Clientes de la fila: ");
         mostrar(caja.filita);
-        system("pause");
+        printf("\n \n");
+        system("\n pause");
         system("cls");
     }
 }
@@ -152,14 +163,14 @@ Caja ingresarEnCajas(Caja cajas, nodo2*lista)
 {
     if(strcmp(cajas.algoritmoPlanificacion, "FIFO")==0)
     {
-
+        printf("\n asdfsd");
         cajas.filita=agregar(cajas.filita, lista);
 
 
     }
     if(strcmp(cajas.algoritmoPlanificacion, "SRTF")==0)
     {
-
+        printf("\n asdfsd");
 
         cajas.filita.inicio=agregarEnOrdenPorCant(cajas.filita.inicio, lista);
 
@@ -169,7 +180,7 @@ Caja ingresarEnCajas(Caja cajas, nodo2*lista)
     }
     if((strcmp(cajas.algoritmoPlanificacion, "Prioridades")==0)|| strcmp(cajas.algoritmoPlanificacion, "RR")==0)
     {
-
+        printf("\n asdfsd");
 
         cajas.filita.inicio=agregarEnOrdenTipoCli(cajas.filita.inicio, lista);
         nodo2* ultimo=buscarUltimo(cajas.filita.inicio);
@@ -183,18 +194,12 @@ void agregarClienteACaja(Caja cajas[], nodo2*lista)
 {
 
     int i=buscarCaja(cajas, lista->cliente.tipo_pago, 8);
+
     if(i<8)
     {
-        if(cajas[i].abiertaOcerrada==1)
-        {
 
+        cajas[i]=ingresarEnCajas(cajas[i], lista);
 
-            cajas[i]=ingresarEnCajas(cajas[i], lista);
-
-        }
-        else{
-            printf("\n Ninguna caja abierta acepta su tipo de pago.");
-        }
 
     }
     else{
