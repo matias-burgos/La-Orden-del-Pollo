@@ -167,7 +167,6 @@ nodoArbol *nodoMasIzquierdo(nodoArbol *arbol)//Bien.
 /////////////BORRA UN NODO DE UN ARBOL CON RECURSION///////////////////////////////////////
 nodoArbol* borrarUnNodoArbol(nodoArbol* arbol, char nombre[])//Bien.
 {
-    printf("\n fadfa");
     if(arbol!=NULL)
     {
         if(strcmp(arbol->p.nombreApellido, nombre)<0){
@@ -199,61 +198,7 @@ nodoArbol* borrarUnNodoArbol(nodoArbol* arbol, char nombre[])//Bien.
     }
     return arbol;
 }
-/*
-nodoArbol* preorderCliente(nodoArbol * arbol, Caja cajas[], int validos)
-{
-    persona aux;
-    if(arbol!=NULL)
-    {
 
-        aux=arbol->p;
-        arbol=borrarUnNodoArbol(arbol, aux.nombreApellido);
-        agregarClienteACaja(cajas, aux);
-        mostrarTodo(cajas);
-
-
-        arbol->izq=preorderCliente(arbol->izq, cajas, validos);
-        arbol->der=preorderCliente(arbol->der, cajas, validos);
-    }
-    return arbol;
-
-}
-nodoArbol* inorderCliente(nodoArbol * arbol, Caja cajas[], int validos)
-{
-    persona aux;
-    if(arbol!=NULL)
-    {
-        arbol->izq=inorderCliente(arbol->izq, cajas, validos);
-
-        aux=arbol->p;
-        arbol=borrarUnNodoArbol(arbol, aux.nombreApellido);
-        agregarClienteACaja(cajas, validos, aux);
-        mostrarTodo(cajas);
-
-        arbol->der=inorderCliente(arbol->der, cajas, validos);
-    }
-    return arbol;
-
-}
-
-nodoArbol* postorderCliente(nodoArbol * arbol, Caja cajas[], int validos)
-{
-    persona aux;
-    if(arbol!=NULL)
-    {
-        arbol->izq=postorderCliente(arbol->izq, cajas, validos);
-        arbol->der=postorderCliente(arbol->der, cajas, validos);
-
-        aux=arbol->p;
-        arbol=borrarUnNodoArbol(arbol, aux.nombreApellido);
-        agregarClienteACaja(cajas, validos, aux);
-        mostrarTodo(cajas);
-
-    }
-    return arbol;
-
-}
-*/
 /////////////PASA UN NODO DE UN ARBOL A UN NODO LISTA///////////////////////////////////////
 nodo2* pasarARbolALista(nodoArbol*arbol)
 {
@@ -266,19 +211,12 @@ nodo2* pasarARbolALista(nodoArbol*arbol)
 /////////////PASA UN ARBOL A UN NODO LISTA EN BASE AL TIPO DE METODO SELECCIONADO///////////////////////////////////////
 nodo2* pasarDeArbolToLineaDeCajas(nodoArbol* arbol, int metodo, Caja cajas[],nodo2* lista)//Bien.
 {
-
-
     if(arbol!=NULL && metodo==1)
     {
         nodo2*aux=pasarARbolALista(arbol);
         lista=agregarAlFinal(lista, aux);
         lista=pasarDeArbolToLineaDeCajas(arbol->izq, metodo, cajas, lista);
         lista=pasarDeArbolToLineaDeCajas(arbol->der, metodo, cajas, lista);
-
-
-
-
-
     }
     if(arbol!=NULL && metodo==2)
     {
@@ -286,11 +224,6 @@ nodo2* pasarDeArbolToLineaDeCajas(nodoArbol* arbol, int metodo, Caja cajas[],nod
         nodo2*aux=pasarARbolALista(arbol);
         lista=agregarAlFinal(lista, aux);
         lista=pasarDeArbolToLineaDeCajas(arbol->der, metodo, cajas, lista);
-
-
-
-
-
 
     }
     if(arbol!=NULL && metodo==3)
@@ -300,11 +233,6 @@ nodo2* pasarDeArbolToLineaDeCajas(nodoArbol* arbol, int metodo, Caja cajas[],nod
         lista=pasarDeArbolToLineaDeCajas(arbol->der, metodo, cajas, lista);
         nodo2*aux=pasarARbolALista(arbol);
         lista=agregarAlFinal(lista, aux);
-
-
-
-
-
 
     }
 

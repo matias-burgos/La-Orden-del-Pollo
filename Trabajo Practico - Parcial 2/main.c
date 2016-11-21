@@ -246,7 +246,7 @@ void menu_de_cajas(nodoArbol* arbol, Caja cajas[])
 
             break;
         case 3:
-            mostrarTodo(cajas);
+            mostrarCaja(cajas);
             break;
         case 4:
 
@@ -350,19 +350,19 @@ void menu_arbol_a_cajas (Caja cajas[],nodoArbol * arbol)
         {
         case 1:
             PasajeArbolCaja(arbol, opciones, cajas);
-
+            mostrarCaja(cajas);
             system("pause");
             break;
         case 2:
 
             PasajeArbolCaja(arbol, opciones, cajas);
-            mostrarTodo(cajas);
+            mostrarCaja(cajas);
             system("pause");
             break;
         case 3:
 
             PasajeArbolCaja(arbol, opciones, cajas);
-            mostrarTodo(cajas);
+            mostrarCaja(cajas);
             system("pause");
             break;
         }
@@ -411,60 +411,5 @@ void Menu ()
 int main()
 {
     Menu();
-    //menu_de_archivos();
     return 0;
 }
-
-
-
-/*
-int main()
-{
-    int limite=30;
-    printf("\n Lista de las personas ingresadas: ");
-    char nombre[]="Personas.dat";
-    mostrar_archivo(nombre);
-    printf("\n \n ");
-    system(" pause");
-    system("cls");
-
-    printf("\n ----------O----------O----------O----------O----------O----------O----------O");
-    printf("\n Arbol con las personas: ");
-    nodoArbol* arbol = inicArbol();
-    arbol=IngresarPersonas(arbol, nombre);
-    mostrarArbol(arbol);
-    printf("\n Ingresar nombre de la persona que desee borrar. ");
-    char persona[30];
-    fflush(stdin);
-    scanf("%s", &persona);
-    arbol=borrarUnNodoArbol(arbol, persona);
-    mostrarArbol(arbol);
-
-    char cajas[]="cajas.dat";
-    Caja filas[8];
-    ingresarCaja(filas, cajas);
-    printf("\n Cajas");
-    mostrarTodo(filas);
-    system("pause");
-    system("cls");
-    int i=0;
-    while(i<8)
-    {
-        abrirOcerrarCaja(filas, i);
-        i++;
-    }
-    printf("\n Ingresar la forma en que se recorra para pasarlo: ");
-    int metodo;
-
-    fflush(stdin);
-    scanf("%d", &metodo);
-    PasajeArbolCaja(arbol, metodo, filas);
-    printf("\n Las personas han sido pasadas a las respectivas cajas");
-    system("pause");
-    system("cls");
-    printf("\n Cajas con los clientes: ");
-    mostrarTodo(filas);
-    antenderClientes(filas, 8);
-    return 0;
-}
-*/

@@ -37,19 +37,12 @@ nodo2 * agregarAlPrincipio(nodo2 * lista, nodo2 * nuevo)//Bien.
 
 nodo2 * buscarUltimo(nodo2 * lista)//Bien.
 {
-    nodo2* rta=NULL;
-    if(lista!=NULL)
+    nodo2*aux=lista;
+    while(aux->siguiente!=NULL)
     {
-        if(lista->siguiente==NULL)
-        {
-            rta=lista;
-        }
-        else
-        {
-            rta=buscarUltimo(lista->siguiente);
-        }
+        aux=aux->siguiente;
     }
-    return rta;
+    return aux;
 }
 
 nodo2 * agregarAlFinal(nodo2 * lista, nodo2 * nuevo)//Bien.
@@ -176,25 +169,7 @@ void mostrarLista(nodo2 * lista)//Bien.//Muestra todos los nodos de la lista.
     }
     printf("\n");
 }
-/*
-nodo2 * cargarLista(nodo2 * lista)
-{
-    char rta = 's';
-    int dato;
-    nodo2 * aux;
-    while(rta == 's')
-    {
-        printf("\nIngrese un valor: ");
-        scanf("%d", &dato);
-        aux = crearNodo(dato);
-        lista=agregarAlFinal(lista, aux);
-        printf("\nContinuas?: ");
-        fflush(stdin);
-        scanf("%c", &rta);
-    }
-    return lista;
-}
-*/
+
 nodo2 * borrarNodo(nodo2 * lista,char nombre[])//Bien.
 {
     nodo2 * borrar=NULL;

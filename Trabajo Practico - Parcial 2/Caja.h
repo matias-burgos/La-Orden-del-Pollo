@@ -19,15 +19,15 @@ void abrirOcerrarCaja(Caja cajas[], int numeroCaja);
 void abrirOcerrarTodasLasCajas(Caja cajas[], int validos);
 int cantidadFila(Fila filita);
 int buscarCaja(Caja cajas[], int pago, int validos);
-void mostrarCaja(Caja cajas);
-void mostrarTodo(Caja cajas[]);
+void mostrarIndividual(Caja caja);
+void mostrarCaja(Caja cajas[]);
 void IngresarFilas(Caja cajas[], int validos);
 Caja ingresarEnCajas(Caja cajas, nodo2*lista);
 void agregarClienteACaja(Caja cajas[], nodo2*lista);
 Caja agregarTiempo(Caja cajas, persona nuevo, int tiempo);
 Caja agregarClienteACajaEnTiempoDeterminado(Caja cajas[], int validos, persona nuevo, int tiempo);
 Caja AtenderAlgoritmos(Caja cajas);
-Caja RR(Caja cajas);
+Caja AlgoritmoRR(Caja cajas);
 void antenderClientes(Caja cajas[], int validos);
 
 #endif // CAJA_H_INCLUDED
