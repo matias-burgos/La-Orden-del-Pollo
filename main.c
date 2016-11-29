@@ -65,7 +65,7 @@ nodoArbol* menu_de_arbol(nodoArbol* arbol)
                     printf("\nOjo. No hay nada!");
                 }
                 else{
-                    printf("\n Las personas se han pasado correctamente ");
+                    printf("\n Las personas se han pasado correctamente. ");
                 }
 
                 system("\n pause");
@@ -74,7 +74,7 @@ nodoArbol* menu_de_arbol(nodoArbol* arbol)
         case 2:
             if(arbol==NULL)
             {
-                printf("\n No hay datos en el arbol");
+                printf("\n No hay datos en el arbol. ");
                 system("\n pause");
             }
             else

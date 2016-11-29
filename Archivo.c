@@ -27,9 +27,6 @@ void mostrar_archivo(char Personas[])//Bien.
             mostrar_persona(aux);
         }
     }
-    else{
-        printf("\n El archivo esta vacio");
-    }
     fclose(archi);
 }
 persona cargar()
