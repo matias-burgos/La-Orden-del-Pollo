@@ -242,7 +242,221 @@ Caja agregarClienteACajaEnTiempoDeterminado(Caja cajas[], int validos, persona n
     cajas[i]=agregarTiempo(cajas[i], nuevo, tiempo);  //Original: cajas[i]=agregarTiempo(Caja cajas[i], persona nuevo, int tiempo);
     return cajas;
 }
-*//*
+
+
+
+void TiempoDeEsperaRoundRobin (Fila * fila)
+{
+    nodo2 * aux = fila->inicio;
+    int tiempo = 0;
+    int quantum = 8;
+
+    aux->cliente.tiempoDeEspera = 0;
+
+    while (aux->siguiente != NULL)
+    {
+
+        if (aux->cliente.cantArticulos < 8 && aux->cliente.cantArticulos >= 0)
+        {
+            tiempo = aux->cliente.cantArticulos + tiempo;
+        }
+        else
+        {
+            tiempo = quantum + tiempo;
+        }
+
+        nodo2 * seg = aux->siguiente;
+        seg->cliente.tiempoDeEspera = tiempo;
+        aux = aux-> siguiente;
+    }
+}
+
+
+void TiempoDeEjecucion (Fila * fila)
+{
+    nodo2 * aux = fila->inicio;
+    while (aux != NULL)
+    {
+        if(aux->cliente.cantArticulos > 0)
+        {
+            aux->cliente.tiempoProcesado = aux->cliente.tiempoProcesado + aux->cliente.cantArticulos;
+        }
+        aux->cliente.cantArticulos = 0;
+        aux = aux->siguiente;
+    }
+}
+
+*/
+
+float SumarTiempoDeEjecucion (Fila  filitaa)//
+{
+    float tiempo=0;
+    nodo2* aux=filitaa.inicio;
+    while(aux!=NULL)
+    {
+        tiempo=tiempo+aux->cliente.tiempoProcesado;
+        aux=aux->siguiente;
+    }
+    return tiempo;
+}
+
+float SumarTiempoDeEspera(Fila fila)//
+{
+    float tiempo = 0;
+    nodo2 * aux=fila.inicio;
+    while(aux!=NULL)
+    {
+        tiempo=tiempo+aux->cliente.tiempoDeEspera;
+        aux=aux->siguiente;
+    }
+    return tiempo;
+}
+
+float PromedioDeEspera (Fila filita)//
+{
+    float suma = SumarTiempoDeEspera(filita);
+    int cant=0;
+    float promedio=0;
+    nodo2*auxiliar=filita.inicio;
+
+    while(auxiliar!=NULL)
+    {
+        cant++;
+        auxiliar=auxiliar->siguiente;
+    }
+
+    promedio=suma/cant;
+    return promedio;
+}
+
+
+float PromedioDeEjecucion (Fila  fila)//
+{
+    float suma = SumarTiempoDeEjecucion (fila);
+    int cant=0;
+    float promedio = 0;
+    nodo2 * auxiliar = fila.inicio;
+
+    while(auxiliar != NULL)
+    {
+        cant++;
+        auxiliar = auxiliar->siguiente;
+    }
+
+    promedio = suma / cant;
+    return promedio;
+}
+/*
+void PlanFIFO (Caja cajas[], int pos, nodo2 * nuevo)
+{
+    agregar(cajas[pos].filita,nuevo);
+    nodo2 * ultimo = buscarUltimo(cajas[pos].filita.inicio);
+    cajas[pos].filita.final = ultimo;
+    tiempoDeEspera(cajas[pos].filita);
+}
+
+void PlanSRTF (Caja cajas[],int pos, nodo2 * nuevo)
+{
+    Fila aux = cajas[pos].filita;
+    nodo2 * aux2 = aux.inicio;
+    cajas[pos].filita.inicio = agregarEnOrdenPorCant(aux2,nuevo);
+    nodo2 * ultimo = buscarUltimo(cajas[pos].filita.inicio);
+    cajas[pos].filita.final = ultimo;
+    tiempoDeEspera(&cajas[pos].filita);
+}
+
+
+
+
+
+
+void InsertarFIFO (Caja cajas[], int pos, nodo2 * nuevo, int tiempo)
+{
+    nodo2 * aux = cajas[pos].filita.inicio;
+    nodo2 * ultimo = cajas[pos].filita.final;
+
+    while (aux != NULL)
+    {
+        if (aux->cliente.cantArticulos < tiempo)
+        {
+            aux->cliente.tiempoProcesado = aux->cliente.cantArticulos;
+            tiempo = tiempo - aux->cliente.cantArticulos;
+            aux->cliente.cantArticulos = 0;
+        }
+        else
+        {
+            aux->cliente.cantArticulos = aux->cliente.cantArticulos - tiempo;
+            aux->cliente.tiempoProcesado = tiempo;
+            tiempo = 0;
+        }
+        aux = aux->siguiente;
+    }
+    PlanFIFO(cajas,pos,nuevo);
+}
+
+/*
+void planificacionFIFO (Caja cajas[], int pos, nodo2 * nuevo) //puede ir puntero
+{
+    cajas[pos].filita=agregar(cajas[pos].filita, nuevo);
+    nodo2 * ultimo = BuscarUltimo(cajas[pos].filita.inicio);
+    cajas[pos].filita.final = ultimo;
+    tiempoDeEspera(&cajas[pos].filita);
+}
+*/
+/*
+void planificacionSRTF (Caja cajas[],int pos, nodo2 * nuevo)
+{
+    Fila  aux = cajas[pos].filita;
+    nodo2 * aux2 = aux.inicio;
+    cajas[pos].filita.inicio = agregarEnOrdenPorCant(aux2,nuevo);
+    nodo2 * ultimo = buscarUltimo(cajas[pos].filita.inicio);
+    cajas[pos].filita.final = ultimo;
+    tiempoDeEspera(&cajas[pos].filita);
+}
+
+void PlanPrioridades(Caja cajas[],int pos, nodo2 * nuevo)
+{
+    Fila  aux = cajas[pos].filita;
+    nodo2*  aux2 = aux.inicio;
+    cajas[pos].filita.inicio = agregarEnOrdenTipoCli(aux2,nuevo);
+    Fila*  ultimo = buscarUltimo(cajas[pos].filita.inicio);
+    cajas[pos].filita.final = ultimo;
+    tiempoDeEspera(&cajas[pos].filita);
+
+}
+
+void PlanRR (Caja cajas[],int pos, nodo2 * nuevo)
+{
+    Fila aux = cajas[pos].filita;
+    nodo2* aux2 = aux.inicio;
+    aux=agregar(cajas[pos].filita, nuevo);
+    Fila * ultimo = buscarUltimo(cajas[pos].filita.inicio);
+    cajas[pos].filita.final = ultimo;
+
+}
+
+void tiempoDeEspera (Fila filita)
+{
+    nodo2* aux = filita.inicio;
+    int tiempo=0;
+
+    while (aux->siguiente != NULL)
+    {
+        tiempo = aux->cliente.cantArticulos + tiempo;
+        nodo2 * seg = aux->siguiente;
+        seg->cliente.tiempoDeEspera = tiempo ;
+        aux = aux->siguiente;
+    }
+}
+*/
+void atender(Caja cajas[],int dato)
+{
+    float promedioEjecucion = PromedioDeEjecucion(cajas[dato].filita);
+    float PromedioEspera = PromedioDeEspera(cajas[dato].filita);
+    printf("\n\tPromedio Ejecucion: %.2f\n",promedioEjecucion);
+    printf("\n\tPromedio Espera: %.2f\n",PromedioEspera);
+}
+
 Caja AtenderAlgoritmos(Caja cajas)
 {
     while(cajas.filita.inicio!=NULL)
@@ -319,10 +533,11 @@ Caja AlgoritmoRR(Caja cajas)
 }
 
 
-void antenderClientes(Caja cajas[], int validos)
+void antenderClientes(Caja cajas[], int validos, int dato)
 {
     int i=0;
     char RR[]={'RR'};
+    atender(cajas, dato);
     while(i<validos)
     {
 
@@ -338,314 +553,127 @@ void antenderClientes(Caja cajas[], int validos)
 
 }
 
+
+
+
+
+
+
+
+
+
+
+//////////////////// PASAR DE ARBOL A CAJAS. NUEVA FUNCION //////////////////
+
+/*
+nodo2* nodoArbolAnodoLista(nodoArbol* a)
+{
+    nodo2* aux=(nodo2*)malloc(sizeof(nodo2));
+    aux->cliente=a->p;
+    aux->ant=NULL;
+    aux->sig=NULL;
+    return aux;
+}
+
+nodo2 pasarDeArbolALineaDeCajas(nodoArbol arbol, nodo2 lista, int metodo)
+{
+    if(modo==1)
+    {
+        if(arbol)
+        {
+            lista=pasarDeArbolALineaDeCajas(arbol-izq, lista, modo);
+            lista=agregarAlFinal(lista, nodoArbolAnodoLista(arbol));
+            lista=pasarDeArbolALineaDeCajas(arbol-der, lista, modo);
+        }
+    }
+    else if(modo==2)
+    {
+        if(arbol)
+        {
+            lista=pasarDeArbolALineaDeCajas(arbol-izq, lista, modo);
+            lista=pasarDeArbolALineaDeCajas(arbol-der, lista, modo);
+            lista=agregarAlFinal(lista, nodoArbolAnodoLista(arbol));
+        }
+    }
+    else if(modo==3)
+    {
+        if(arbol)
+        {
+            lista=agregarAlFinal(lista, nodoArbolAnodoLista(arbol));
+            lista=pasarDeArbolALineaDeCajas(arbol-izq, lista, modo);
+            lista=pasarDeArbolALineaDeCajas(arbol-der, lista, modo);
+        }
+    }
+    return lista;
+}
 */
 
-void TiempoDeEsperaRoundRobin (Fila * fila)
+
+
+void abrirCaja (Caja cajas[], int numeroDeCaja)
 {
-    nodo2 * aux = fila->inicio;
-    int tiempo = 0;
-    int quantum = 8;
-
-    aux->cliente.tiempoDeEspera = 0;
-
-    while (aux->siguiente != NULL)
+    if(numeroDeCaja>8 || numeroDeCaja<0)
     {
-
-        if (aux->cliente.cantArticulos < 8 && aux->cliente.cantArticulos >= 0)
-        {
-            tiempo = aux->cliente.cantArticulos + tiempo;
-        }
-        else
-        {
-            tiempo = quantum + tiempo;
-        }
-
-        nodo2 * seg = aux->siguiente;
-        seg->cliente.tiempoDeEspera = tiempo;
-        aux = aux-> siguiente;
-    }
-}
-
-
-void TiempoDeEjecucion (Fila * fila)
-{
-    nodo2 * aux = fila->inicio;
-    while (aux != NULL)
-    {
-        if(aux->cliente.cantArticulos > 0)
-        {
-            aux->cliente.tiempoProcesado = aux->cliente.tiempoProcesado + aux->cliente.cantArticulos;
-        }
-        aux->cliente.cantArticulos = 0;
-        aux = aux->siguiente;
-    }
-}
-
-
-void AplicarTiemposDeEjecucion (Caja cajas[])
-{
-    int x = 0;
-    while (x<8)
-    {
-        TiempoDeEjecucion(&cajas[x].filita);
-        x++;
-    }
-}
-
-float SumaTiempoDeEjecucion (Fila * fila)
-{
-    float suma = 0;
-    nodo2 * aux = fila->inicio;
-    while (aux != NULL)
-    {
-        suma = suma + aux->cliente.tiempoProcesado;
-        aux = aux->siguiente;
-    }
-    return suma;
-}
-
-float SumaTiempoDeEspera(Fila * fila)
-{
-    float suma = 0;
-    nodo2 * aux=fila->inicio;
-    while(aux!=NULL)
-    {
-        suma = suma + aux->cliente.tiempoDeEspera;
-        aux = aux->siguiente;
-    }
-    return suma;
-}
-
-float PromedioDeEspera (Fila * fila)
-{
-    float suma = SumaTiempoDeEspera (fila);
-    int cant=0;
-    float promedio = 0;
-    nodo2 * auxiliar = fila->inicio;
-
-    while(auxiliar != NULL)
-    {
-        cant++;
-        auxiliar = auxiliar->siguiente;
-    }
-
-    promedio = suma / cant;
-    return promedio;
-}
-
-
-float PromedioDeEjecucion (Fila * fila)
-{
-    float suma = SumaTiempoDeEjecucion (fila);
-    int cant=0;
-    float promedio = 0;
-    nodo2 * auxiliar = fila->inicio;
-
-    while(auxiliar != NULL)
-    {
-        cant++;
-        auxiliar = auxiliar->siguiente;
-    }
-
-    promedio = suma / cant;
-    return promedio;
-}
-int FilaVacia(Fila  fila)
-{
-    int flag = 0;
-    if (fila.inicio == NULL && fila.final == NULL)
-    {
-        flag=1;
-    }
-    return flag;
-}
-
-void Agregar (Fila * fila, nodo2 * nuevo)
-{
-    if(FilaVacia(*fila))
-    {
-        fila->inicio = nuevo;
+        printf("\nEsa caja no existe.");
     }
     else
     {
-        fila->inicio = agregarAlFinal(fila->inicio,nuevo);
-    }
-    fila->final = nuevo;
-
-}
-void PlanFIFO (Caja cajas[], int pos, nodo2 * nuevo)
-{
-    Agregar(&cajas[pos].filita,nuevo);
-    nodo2 * ultimo = buscarUltimo(cajas[pos].filita.inicio);
-    cajas[pos].filita.final = ultimo;
-    tiempoDeEspera(&cajas[pos].filita);
-}
-
-void PlanSRTF (Caja cajas[],int pos, nodo2 * nuevo)
-{
-    Fila aux = cajas[pos].filita;
-    nodo2 * aux2 = aux.inicio;
-    cajas[pos].filita.inicio = agregarEnOrdenPorCant(aux2,nuevo);
-    nodo2 * ultimo = buscarUltimo(cajas[pos].filita.inicio);
-    cajas[pos].filita.final = ultimo;
-    tiempoDeEspera(&cajas[pos].filita);
-}
-
-
-/*
-void CargarPreOrden (nodoArbol * arbol, Caja cajas[])
-{
-    abrirTodasLasCajas(cajas);
-    char FIFO [] = {"Fifo"};
-    char RR [] = {"Round Robin"};
-    char Prioridades [] = {"Prioridades"};
-    char SRTF [] = {"Srtf"};
-
-    if (arbol != NULL)
-    {
-        persona p = arbol->p;
-        nodo2 * aux = crearNodoLista (p);
-        int pos = buscarCaja(cajas,p.tipo_pago);
-
-        if (strcmp(cajas[pos].algoritmoPlanificacion,FIFO)==0)
+        if(cajas[numeroDeCaja-1].abiertaOcerrada==1)
         {
-            PlanFIFO (cajas,pos,aux);   //algoritmo de fifo
+            printf("\nLa caja ya estaba abierta.");
         }
-        if (strcmp(cajas[pos].algoritmoPlanificacion,SRTF)==0)
+        if(cajas[numeroDeCaja-1].abiertaOcerrada==0)
         {
-            PlanSRTF(cajas,pos,aux);   //algoritmo de srtf
+            cajas[numeroDeCaja-1].abiertaOcerrada=1;
         }
-        if (strcmp(cajas[pos].algoritmoPlanificacion,Prioridades)==0)
-        {
-            PlanPrioridades(cajas,pos,aux);      //algoritmo prioridades
-        }
-        if (strcmp(cajas[pos].algoritmoPlanificacion,RR)==0)
-        {
-            PlanRR(cajas,pos,aux); //algoritmo de round robin
-        }
-
-
-        CargarPreOrden(arbol->izq,cajas);
-        CargarPreOrden(arbol->der,cajas);
-    }
-
-}
-*/
-
-void atenderCliente(Caja cajas[],int pos)
-{
-    float promedioEjecucion = PromedioDeEjecucion(&cajas[pos].filita);
-    float PromedioEspera = PromedioDeEspera(&cajas[pos].filita);
-
-    printf("\n\tPromedio Ejecucion: %.2f\n",promedioEjecucion);
-    printf("\n\tPromedio Espera: %.2f\n",PromedioEspera);
-}
-
-/*
-void MostrarPromedios (Caja cajas[])
-{
-    int pos = 0;
-    printf("\n\n\tPromedio de que caja quiere calcular? ");
-    fflush(stdin);
-    scanf("%d",&pos);
-
-    if (pos <= 0 || pos >= 9)
-    {
-        printf("\n Esa caja no existe");
-        system("pause");
-    }
-
-    if (pos < 6 && pos > 0)
-    {
-        printf("\n\nPromedios de Caja\n\n");
-        printf("\n");
-        printf("\n\tNumero de Caja: %d\n",cajas[pos-1].numero_de_cajas);
-        TiempoDeEjecucion(&cajas[pos-1].filita);
-        atenderCliente(cajas,pos-1);
-        printf("--------------------------------------\n");
-        system("pause");
-    }
-    if(pos == 7 || pos ==  8)
-    {
-        ProcesarRR(cajas,pos-1);
     }
 }
-*/
 
-void InsertarFIFO (Caja cajas[], int pos, nodo2 * nuevo, int tiempo)
+void abrirTodasLasCajas (Caja cajas[])
 {
-    nodo2 * aux = cajas[pos].filita.inicio;
-    nodo2 * ultimo = cajas[pos].filita.final;
+    int i = 0;
 
-    while (aux != NULL)
+    while (i < 8)
     {
-        if (aux->cliente.cantArticulos < tiempo)
+        if (cajas[i].abiertaOcerrada == 0)
         {
-            aux->cliente.tiempoProcesado = aux->cliente.cantArticulos;
-            tiempo = tiempo - aux->cliente.cantArticulos;
-            aux->cliente.cantArticulos = 0;
+            cajas[i].abiertaOcerrada = 1;
         }
-        else
-        {
-            aux->cliente.cantArticulos = aux->cliente.cantArticulos - tiempo;
-            aux->cliente.tiempoProcesado = tiempo;
-            tiempo = 0;
-        }
-        aux = aux->siguiente;
+        i++;
     }
-    PlanFIFO(cajas,pos,nuevo);
 }
 
-/*
-void planificacionFIFO (Caja cajas[], int pos, nodo2 * nuevo) //puede ir puntero
+
+void cerrarCaja(Caja cajas[], int numeroDeCaja)
 {
-    cajas[pos].filita=agregar(cajas[pos].filita, nuevo);
-    nodo2 * ultimo = BuscarUltimo(cajas[pos].filita.inicio);
-    cajas[pos].filita.final = ultimo;
-    tiempoDeEspera(&cajas[pos].filita);
-}
-*/
-void planificacionSRTF (Caja cajas[],int pos, nodo2 * nuevo)
-{
-    Fila  aux = cajas[pos].filita;
-    nodo2 * aux2 = aux.inicio;
-    cajas[pos].filita.inicio = agregarEnOrdenPorCant(aux2,nuevo);
-    nodo2 * ultimo = buscarUltimo(cajas[pos].filita.inicio);
-    cajas[pos].filita.final = ultimo;
-    tiempoDeEspera(&cajas[pos].filita);
-}
-
-void PlanPrioridades(Caja cajas[],int pos, nodo2 * nuevo)
-{
-    Fila  aux = cajas[pos].filita;
-    nodo2*  aux2 = aux.inicio;
-    cajas[pos].filita.inicio = agregarEnOrdenTipoCli(aux2,nuevo);
-    Fila*  ultimo = buscarUltimo(cajas[pos].filita.inicio);
-    cajas[pos].filita.final = ultimo;
-    tiempoDeEspera(&cajas[pos].filita);
-
-}
-
-void PlanRR (Caja cajas[],int pos, nodo2 * nuevo)
-{
-    Fila aux = cajas[pos].filita;
-    nodo2* aux2 = aux.inicio;
-   // aux=agregar(cajas[pos].filita, nuevo);  //lo iguale a aux
-    Fila * ultimo = buscarUltimo(cajas[pos].filita.inicio);
-    cajas[pos].filita.final = ultimo;
-
-}
-
-void tiempoDeEspera (Fila * A)
-{
-    nodo2 * aux = A->inicio;
-    int tiempo=0;
-
-    while (aux->siguiente != NULL)
+    if(numeroDeCaja>8 || numeroDeCaja<0)
     {
-        tiempo = aux->cliente.cantArticulos + tiempo;
-        nodo2 * seg = aux->siguiente;
-        seg->cliente.tiempoDeEspera = tiempo ;
-        aux = aux->siguiente;
+        printf("\nEsa caja no existe.");
+    }
+    else
+    {
+        if(cajas[numeroDeCaja-1].abiertaOcerrada==0)
+        {
+            printf("\nLa caja ya estaba cerrada.");
+        }
+        if(cajas[numeroDeCaja-1].abiertaOcerrada==1)
+        {
+            cajas[numeroDeCaja-1].abiertaOcerrada=0;
+        }
+    }
+}
+
+
+void cerrarTodasLasCajas(Caja cajas[])
+{
+    int i = 0;
+
+    while (i < 8)
+    {
+        if (cajas[i].abiertaOcerrada == 1)
+        {
+            cajas[i].abiertaOcerrada = 0;
+        }
+        i++;
     }
 }

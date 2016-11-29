@@ -26,8 +26,23 @@ Caja ingresarEnCajas(Caja cajas, nodo2*lista);
 void agregarClienteACaja(Caja cajas[], nodo2*lista);
 Caja agregarTiempo(Caja cajas, persona nuevo, int tiempo);
 Caja agregarClienteACajaEnTiempoDeterminado(Caja cajas[], int validos, persona nuevo, int tiempo);
+float SumarTiempoDeEjecucion (Fila  filitaa);
+float SumarTiempoDeEspera(Fila fila);
+float PromedioDeEspera (Fila filita);
+float PromedioDeEjecucion (Fila  fila);
+void atender(Caja cajas[],int dato);
 Caja AtenderAlgoritmos(Caja cajas);
 Caja AlgoritmoRR(Caja cajas);
-void antenderClientes(Caja cajas[], int validos);
+void antenderClientes(Caja cajas[], int validos, int dato);
+
+
+////////// AGREGADAS ULTIMAMENTE ///////////////
+
+//nodo2 pasarDeArbolALineaDeCajas(nodoArbol arbol, nodo2 lista, int metodo);
+
+void abrirCaja (Caja cajas[], int numeroDeCaja);
+void abrirTodasLasCajas (Caja cajas[]);
+void cerrarCaja(Caja cajas[], int numeroDeCaja);
+void cerrarTodasLasCajas(Caja cajas[]);
 
 #endif // CAJA_H_INCLUDED
