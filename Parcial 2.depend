@@ -194,3 +194,101 @@
 
 1479380808 gin/master
 
+1479759066 source:c:\users\matias\desktop\la-orden-del-pollo-master\trabajo practico - parcial 2\arbol.c
+	<stdio.h>
+	<stdlib.h>
+	"Arbol.h"
+	"string.h"
+	"Archivo.h"
+
+1479759066 c:\users\matias\desktop\la-orden-del-pollo-master\trabajo practico - parcial 2\arbol.h
+	"Archivo.h"
+	"Caja.h"
+
+1479759066 c:\users\matias\desktop\la-orden-del-pollo-master\trabajo practico - parcial 2\archivo.h
+
+1479779586 c:\users\matias\desktop\la-orden-del-pollo-master\trabajo practico - parcial 2\caja.h
+	"Listas Dobles.h"
+	"Archivo.h"
+
+1479759066 c:\users\matias\desktop\la-orden-del-pollo-master\trabajo practico - parcial 2\listas dobles.h
+	"Archivo.h"
+
+1479759066 source:c:\users\matias\desktop\la-orden-del-pollo-master\trabajo practico - parcial 2\archivo.c
+	<stdio.h>
+	<stdlib.h>
+	"string.h"
+	"Archivo.h"
+
+1479759066 source:c:\users\matias\desktop\la-orden-del-pollo-master\trabajo practico - parcial 2\listas dobles.c
+	<stdio.h>
+	<stdlib.h>
+	"Listas Dobles.h"
+
+1479779717 source:c:\users\matias\desktop\la-orden-del-pollo-master\trabajo practico - parcial 2\caja.c
+	<stdio.h>
+	<stdlib.h>
+	"Caja.h"
+	"Listas Dobles.h"
+	"Archivo.h"
+	"string.h"
+
+1479779623 source:c:\users\matias\desktop\la-orden-del-pollo-master\trabajo practico - parcial 2\main.c
+	<stdio.h>
+	<stdlib.h>
+	<dos.h>
+	<conio.h>
+	"Archivo.h"
+	"Caja.h"
+	"Listas Dobles.h"
+	"Arbol.h"
+
+1479799460 source:d:\mis cosas\descargas\la-orden-del-pollo-master\trabajo practico - parcial 2\arbol.c
+	<stdio.h>
+	<stdlib.h>
+	"Arbol.h"
+	"string.h"
+	"Archivo.h"
+
+1480377718 d:\mis cosas\descargas\la-orden-del-pollo-master\trabajo practico - parcial 2\arbol.h
+	"Archivo.h"
+	"Caja.h"
+
+1479799460 d:\mis cosas\descargas\la-orden-del-pollo-master\trabajo practico - parcial 2\archivo.h
+
+1480380314 d:\mis cosas\descargas\la-orden-del-pollo-master\trabajo practico - parcial 2\caja.h
+	"Listas Dobles.h"
+	"Archivo.h"
+
+1479799460 d:\mis cosas\descargas\la-orden-del-pollo-master\trabajo practico - parcial 2\listas dobles.h
+	"Archivo.h"
+
+1479799460 source:d:\mis cosas\descargas\la-orden-del-pollo-master\trabajo practico - parcial 2\archivo.c
+	<stdio.h>
+	<stdlib.h>
+	"string.h"
+	"Archivo.h"
+
+1480380314 source:d:\mis cosas\descargas\la-orden-del-pollo-master\trabajo practico - parcial 2\caja.c
+	<stdio.h>
+	<stdlib.h>
+	"Caja.h"
+	"Listas Dobles.h"
+	"Archivo.h"
+	"string.h"
+
+1479799460 source:d:\mis cosas\descargas\la-orden-del-pollo-master\trabajo practico - parcial 2\listas dobles.c
+	<stdio.h>
+	<stdlib.h>
+	"Listas Dobles.h"
+
+1480378304 source:d:\mis cosas\descargas\la-orden-del-pollo-master\trabajo practico - parcial 2\main.c
+	<stdio.h>
+	<stdlib.h>
+	<dos.h>
+	<conio.h>
+	"Archivo.h"
+	"Caja.h"
+	"Listas Dobles.h"
+	"Arbol.h"
+

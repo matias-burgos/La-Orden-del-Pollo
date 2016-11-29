@@ -51,7 +51,7 @@ nodoArbol* menu_de_arbol(nodoArbol* arbol)
         printf("\n||1_Pasar personas del archivo al arbol||");
         printf("\n||2_Mostrar arbol||");
         printf("\n||3_Borrar una persona del arbol ||");
-        printf("\n\n||0_Volver||");
+        printf("\n\n||4_Volver||");
         printf("\n \n Ingrese el numero de la opcion que desea llevar a cabo: ||");
         fflush(stdin);
         scanf("%d", &opciones_arbol);
@@ -89,7 +89,7 @@ nodoArbol* menu_de_arbol(nodoArbol* arbol)
                     printf("\n||1_Preorder||");
                     printf("\n||2_Inorder||");
                     printf("\n||3_Postorder||");
-                    printf("\n\n||0_Volver||");
+                    printf("\n\n||4_Volver||");
                     printf("\n Elija una opcion: ");
                     fflush(stdin);
                     scanf("%d", &opciones_de_muestreo);
@@ -134,7 +134,7 @@ nodoArbol* menu_de_arbol(nodoArbol* arbol)
                         fflush(stdin);
                         scanf("%s", &nombre);
                         arbol=borrarUnNodoArbol(arbol, nombre);
-                        printf("\n ¿Desea mostrar el arbol para ver como quedo?");
+                        printf("\n ¿Desea mostrar el arbol para ver como quedo? s/n: ");
                         char letra;
                         fflush(stdin);
                         scanf("%s", &letra);
@@ -156,7 +156,7 @@ nodoArbol* menu_de_arbol(nodoArbol* arbol)
                                     printf("\n||1_Preorder||");
                                     printf("\n||2_Inorder||");
                                     printf("\n||3_Postorder||");
-                                    printf("\n\n||0_Volver||");
+                                    printf("\n\n||5_Volver||");
                                     printf("\n Elija una opcion: ");
                                     fflush(stdin);
                                     scanf("%d", &opciones_de_muestreo);
@@ -225,13 +225,13 @@ void menu_de_cajas(nodoArbol* arbol, Caja cajas[])
         printf("\n||1_Antes de trabajar, desea abrir/cerrar cajas?||");
         printf("\n||2_Pasar de arbol a cajas||");
         printf("\n||3_Mostrar cajas||");
-        printf("\n||4_Añadir un cliente a la caja\n||");
+        printf("\n||4_Agregar un cliente a la caja||");
         printf("\n||5_Atender clientes. (elija una caja)");
-        printf("\n\n||0_Volver||");
+        printf("\n\n||6_Volver||");
         printf("\nElija un numero correspondiente a la opcion que desea llevar a cabo: ");
         fflush(stdin);
         scanf("%d", &opciones);
-
+        int cual=0;
         switch(opciones)
         {
         case 1:
@@ -243,7 +243,8 @@ void menu_de_cajas(nodoArbol* arbol, Caja cajas[])
                menu_arbol_a_cajas(cajas, arbol);
             }
             else{
-                printf("\n El arbol esta vacio, debe ingresarle valores");
+                printf("\nEl arbol esta vacio, debe ingresarle valores\n\n");
+                system("pause");
             }
             break;
 
@@ -258,11 +259,20 @@ void menu_de_cajas(nodoArbol* arbol, Caja cajas[])
             agregarClienteACaja(cajas,nuevo);
 
         case 5:
-           // int cual=0;
-            printf("\nIngrese el numero de la caja que desea que atienda");
+
+            printf("\nIngrese el numero de la caja que desea que atienda: ");
             fflush(stdin);
             scanf("%d", &cual);
-            atenderCliente(cajas,cual);
+            if(cajas[cual].filita.inicio==NULL)
+            {
+                printf("\nNo se pudo atender porque no hay nadie.\n");
+                system("pause");
+            }
+            else
+            {
+                antenderClientes(cajas,8, cual);
+            }
+            break;
         }
     }
 }
@@ -300,19 +310,24 @@ void menu_abrir_cerrar_cajas(Caja cajas[])
             }
             else
             {
-                abrirOcerrarCaja(cajas,opciones);
+                abrirCaja(cajas, opciones);
+                printf("\nLa caja %d ahora se encuentra abierta");
+                //abrirOcerrarCaja(cajas,opciones);
 
             }
+            printf("\n");
             system("pause");
             break;
 
         case 2:
-            abrirOcerrarTodasLasCajas(cajas, 8);
+            abrirTodasLasCajas(cajas);
+            printf("\nTodas las cajas estan abiertas");
+            //abrirOcerrarTodasLasCajas(cajas, 8);
+            printf("\n");
             system("pause");
             break;
 
         case 3:
-
             printf("\n Ingrese el numero de la caja que desea cerrar: ");
             fflush(stdin);
             scanf("%d", &opciones);
@@ -323,14 +338,18 @@ void menu_abrir_cerrar_cajas(Caja cajas[])
             }
             else
             {
-                abrirOcerrarCaja(cajas,opciones);
-
+                cerrarCaja(cajas, opciones);
+                printf("\nLa caja %d ahora esta cerrada", opciones);
             }
+            printf("\n");
             system("pause");
             break;
 
         case 4:
-            abrirOcerrarTodasLasCajas(cajas, 8);
+            cerrarTodasLasCajas(cajas);
+            printf("\nTodas las cajas estan cerradas");
+            //abrirOcerrarTodasLasCajas(cajas, 8);
+            printf("\n");
             system("pause");
             break;
 
@@ -394,8 +413,8 @@ void Menu ()
         printf("\n||1_ Archivo||");
         printf("\n||2_ Administracion de Arbol||");
         printf("\n||3_ Administracion de Cajas||\n");
-        printf("\n||0_ Salir.||");
-        printf("\nElija un numero correspondiente a la opcion que desea llevar a cabo: ");
+        printf("\n||4_ Salir.||");
+        printf("\nElija un numero correspondiente a la opcion que desea llevar a cabo:  ");
         fflush(stdin);
         scanf("%d", &opciones);
 
