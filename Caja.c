@@ -193,7 +193,10 @@ void agregarClienteACaja(Caja cajas[], nodo2*lista)
 
     if(i<8)
     {
+
         cajas[i]=ingresarEnCajas(cajas[i], lista);
+
+
     }
     else{
         printf("\n No hay caja que acepte ese tipo de pago.");

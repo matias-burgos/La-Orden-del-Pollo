@@ -12,7 +12,7 @@ nodoArbol * inicArbol()
 /////////////CREA UN NODO DE UNA ARBOL///////////////////////////////////////
 nodoArbol * crearNodoArbol(persona p)
 {
-    nodoArbol * aux = (nodoArbol *) malloc(sizeof(nodoArbol));
+    nodoArbol * aux =  malloc(sizeof(nodoArbol));
 
     aux->p=p;
     aux->izq=NULL;
@@ -30,7 +30,7 @@ nodoArbol * insertar (nodoArbol * arbol, persona p)
     }
     else
     {
-        if(p.nombreApellido>arbol->p.nombreApellido)
+        if(strcmp(arbol->p.nombreApellido, nuevo->p.nombreApellido)>0)
         {
             arbol->der=insertar(arbol->der, p);
         }
@@ -47,7 +47,7 @@ nodoArbol* IngresarPersonas(nodoArbol*arbol, char nombre[])
 {
     FILE*archi=fopen(nombre, "r+b");
     persona p;
-    while(fread(&p, sizeof(persona), 1, archi)!=NULL)
+    while(fread(&p, sizeof(persona), 1, archi)> 0)
     {
         arbol=insertar(arbol, p);
     }
@@ -169,28 +169,24 @@ nodoArbol* borrarUnNodoArbol(nodoArbol* arbol, char nombre[])//Bien.
 {
     if(arbol!=NULL)
     {
-        if(strcmp(arbol->p.nombreApellido, nombre)<0)
-            {
+        if(strcmp(arbol->p.nombreApellido, nombre)<0){
                 arbol->der= borrarUnNodoArbol(arbol->der , nombre);
-            }
-        else if(strcmp( arbol->p.nombreApellido, nombre)>0)
-            {
+        }
+        else {
+            if(strcmp( arbol->p.nombreApellido, nombre)>0){
                 arbol->izq = borrarUnNodoArbol(arbol->izq, nombre);
-            }
-            else
-                {
-                    if(arbol->izq!=NULL)
+            }else{
+
+                if(arbol->izq!=NULL)
                 {
                     arbol->p= (nodoMasDerecho(arbol->izq))->p;
                     arbol->izq= borrarUnNodoArbol(arbol->izq, arbol->p.nombreApellido);
                 }
-
                 else if(arbol->der!=NULL)
                 {
                     arbol->p= (nodoMasIzquierdo(arbol->der))->p;
                     arbol->der= borrarUnNodoArbol(arbol->der, arbol->p.nombreApellido);
                 }
-
                 else
                 {
                     free(arbol);
@@ -198,9 +194,10 @@ nodoArbol* borrarUnNodoArbol(nodoArbol* arbol, char nombre[])//Bien.
                 }
             }
         }
-        return arbol;
-    }
 
+    }
+    return arbol;
+}
 
 /////////////PASA UN NODO DE UN ARBOL A UN NODO LISTA///////////////////////////////////////
 nodo2* pasarARbolALista(nodoArbol*arbol)
@@ -256,16 +253,20 @@ void PasajeArbolCaja(nodoArbol*arbol, int metodo, Caja cajas[])
 {
     nodo2*aux=inicArbol();
     nodo2*nuevo=inicArbol();
-
-    aux=pasarDeArbolToLineaDeCajas(arbol, metodo, cajas, aux);
-
-    while(aux!=NULL)
+    if(arbol!=NULL)
     {
-        nuevo=PasarUnNodo(aux);
-        agregarClienteACaja(cajas, nuevo);
-        aux=aux->siguiente;
+        aux=pasarDeArbolToLineaDeCajas(arbol, metodo, cajas, aux);
 
+        while(aux!=NULL)
+        {
+            nuevo=PasarUnNodo(aux);
+            agregarClienteACaja(cajas, nuevo);
+            aux=aux->siguiente;
+
+        }
     }
-
+    else{
+        printf("\n La operacion no puede realizarse, el arbol esta vacio");
+    }
 
 }
