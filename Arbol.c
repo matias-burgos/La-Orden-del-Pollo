@@ -22,7 +22,7 @@ nodoArbol * crearNodoArbol(persona p)
 }
 
 /////////////INGRESA LA PERSONA MEDIANTE UN NODO AL ARBOL///////////////////////////////////////
-nodoArbol * insertar (nodoArbol * arbol, persona p)
+nodoArbol*insertar(nodoArbol*arbol, persona p)
 {
     if(arbol==NULL)
     {
@@ -30,7 +30,7 @@ nodoArbol * insertar (nodoArbol * arbol, persona p)
     }
     else
     {
-        if(p.nombreApellido>arbol->p.nombreApellido)
+        if(strcmp(arbol->p.nombreApellido, p.nombreApellido)>0)
         {
             arbol->der=insertar(arbol->der, p);
         }
@@ -45,9 +45,9 @@ nodoArbol * insertar (nodoArbol * arbol, persona p)
 /////////////PASA UNA PERSONA DEL ARCHIVO LO PASA AL ARBOL///////////////////////////////////////
 nodoArbol* IngresarPersonas(nodoArbol*arbol, char nombre[])
 {
-    FILE*archi=fopen(nombre, "r+b");
+    FILE*archi=fopen(nombre, "rb");
     persona p;
-    while(fread(&p, sizeof(persona), 1, archi)!=NULL)
+    while(fread(&p, sizeof(persona), 1, archi)> 0)
     {
         arbol=insertar(arbol, p);
     }
@@ -138,7 +138,14 @@ nodoArbol *buscarPorNombre(nodoArbol *arbol, persona p)//Bien.
 
 nodoArbol *nodoMasDerecho(nodoArbol *arbol)//Bien.
 {
-    nodoArbol *aux;
+    nodoArbol* aux;
+
+    if(!arbol->der) aux = arbol;
+
+    else aux = nodoMasDerecho(arbol->der);
+
+    return aux;
+    /*nodoArbol *aux;
     if(arbol->der==NULL)
     {
         aux=arbol;
@@ -146,14 +153,21 @@ nodoArbol *nodoMasDerecho(nodoArbol *arbol)//Bien.
     else
     {
         aux=nodoMasDerecho(arbol->der);
-    }
+    }*/
     return aux;
 }
 
 
 nodoArbol *nodoMasIzquierdo(nodoArbol *arbol)//Bien.
 {
-    nodoArbol *aux;
+    nodoArbol* aux;
+
+    if(!arbol->izq) aux = arbol;
+
+    else aux = nodoMasIzquierdo(arbol->izq);
+
+    return aux;
+    /*nodoArbol *aux;
     if(arbol->izq==NULL)
     {
         aux=arbol;
@@ -161,13 +175,42 @@ nodoArbol *nodoMasIzquierdo(nodoArbol *arbol)//Bien.
     else
     {
         aux=nodoMasIzquierdo(arbol->izq);
-    }
+    }*/
     return aux;
 }
 /////////////BORRA UN NODO DE UN ARBOL CON RECURSION///////////////////////////////////////
 nodoArbol* borrarUnNodoArbol(nodoArbol* arbol, char nombre[])//Bien.
 {
-    if(arbol!=NULL)
+    if(arbol)
+    {
+        if(strcmp(nombre, arbol->p.nombreApellido)>0)
+        {
+            arbol->der= borrarUnNodoArbol(arbol->der, nombre);
+        }
+        else if(strcmp(nombre, arbol->p.nombreApellido)<0)
+        {
+            arbol->izq = borrarUnNodoArbol(arbol->izq, nombre);
+        }
+        else
+        {
+            if(arbol->izq)
+            {
+                arbol->p= (nodoMasDerecho(arbol->izq))->p;
+                arbol->izq= borrarUnNodoArbol(arbol->izq, arbol->p.nombreApellido);
+            }
+            else if(arbol->der)
+            {
+                arbol->p= (nodoMasIzquierdo(arbol->der))->p;
+                arbol->der= borrarUnNodoArbol(arbol->der, arbol->p.nombreApellido);
+            }
+            else
+            {
+                free(arbol);
+                arbol= NULL;
+            }
+        }
+    }
+   /* if(arbol!=NULL)
     {
         if(strcmp(arbol->p.nombreApellido, nombre)<0)
             {
@@ -197,15 +240,16 @@ nodoArbol* borrarUnNodoArbol(nodoArbol* arbol, char nombre[])//Bien.
                     arbol= NULL;
                 }
             }
-        }
-        return arbol;
-    }
+        }*/
 
+    return arbol;
+
+}
 
 /////////////PASA UN NODO DE UN ARBOL A UN NODO LISTA///////////////////////////////////////
 nodo2* pasarARbolALista(nodoArbol*arbol)
 {
-    nodo2*aux=malloc(sizeof(nodo2));
+    nodo2* aux=(nodo2*)malloc(sizeof(nodo2));
     aux->cliente=arbol->p;
     aux->anterior=NULL;
     aux->siguiente=NULL;
@@ -216,28 +260,33 @@ nodo2* pasarDeArbolToLineaDeCajas(nodoArbol* arbol, int metodo, Caja cajas[],nod
 {
     if(arbol!=NULL && metodo==1)
     {
-        nodo2*aux=pasarARbolALista(arbol);
-        lista=agregarAlFinal(lista, aux);
+       // nodo2*aux=pasarARbolALista(arbol);
+
+        lista=agregarAlFinal(lista, pasarARbolALista(arbol));
         lista=pasarDeArbolToLineaDeCajas(arbol->izq, metodo, cajas, lista);
         lista=pasarDeArbolToLineaDeCajas(arbol->der, metodo, cajas, lista);
     }
-    if(arbol!=NULL && metodo==2)
-    {
-        lista=pasarDeArbolToLineaDeCajas(arbol->izq, metodo, cajas, lista);
-        nodo2*aux=pasarARbolALista(arbol);
-        lista=agregarAlFinal(lista, aux);
-        lista=pasarDeArbolToLineaDeCajas(arbol->der, metodo, cajas, lista);
+    else
+            if(arbol!=NULL && metodo==2)
+        {
 
-    }
-    if(arbol!=NULL && metodo==3)
-    {
+            lista=pasarDeArbolToLineaDeCajas(arbol->izq, metodo, cajas, lista);
+        //  nodo2*aux=pasarARbolALista(arbol);
+            lista=agregarAlFinal(lista, pasarARbolALista(arbol));
+            lista=pasarDeArbolToLineaDeCajas(arbol->der, metodo, cajas, lista);
 
-        lista=pasarDeArbolToLineaDeCajas(arbol->izq, metodo, cajas, lista);
-        lista=pasarDeArbolToLineaDeCajas(arbol->der, metodo, cajas, lista);
-        nodo2*aux=pasarARbolALista(arbol);
-        lista=agregarAlFinal(lista, aux);
+        }
 
-    }
+
+    else   if(arbol!=NULL && metodo==3)
+        {
+
+            lista=pasarDeArbolToLineaDeCajas(arbol->izq, metodo, cajas, lista);
+            lista=pasarDeArbolToLineaDeCajas(arbol->der, metodo, cajas, lista);
+        // nodo2*aux=pasarARbolALista(arbol);
+            lista=agregarAlFinal(lista, pasarARbolALista(arbol));
+
+        }
 
     return lista;
 
@@ -254,17 +303,24 @@ nodo2* PasarUnNodo(nodo2*lista)
 /////////////PASA UN NODO DE PERSONA DE LA LISTA AL ARCHIVO///////////////////////////////////////
 void PasajeArbolCaja(nodoArbol*arbol, int metodo, Caja cajas[])
 {
+
     nodo2*aux=inicArbol();
     nodo2*nuevo=inicArbol();
-
-    aux=pasarDeArbolToLineaDeCajas(arbol, metodo, cajas, aux);
-
-    while(aux!=NULL)
+    if(arbol!=NULL)
     {
-        nuevo=PasarUnNodo(aux);
-        agregarClienteACaja(cajas, nuevo);
-        aux=aux->siguiente;
+        aux=pasarDeArbolToLineaDeCajas(arbol, metodo, cajas, aux);
 
+        while(aux!=NULL)
+        {
+            nuevo=PasarUnNodo(aux);
+            //Hasta aca todo bien
+            agregarClienteACaja(cajas, nuevo);
+            aux=aux->siguiente;
+
+        }
+    }
+    else{
+        printf("\n No se puede realizar la operacion, el arbol esta vacio");
     }
 
 

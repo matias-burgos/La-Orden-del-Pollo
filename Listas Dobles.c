@@ -33,6 +33,22 @@ nodo2 * agregarAlPrincipio(nodo2 * lista, nodo2 * nuevo)//Bien.
 
     return lista;
 }
+void mostrarNodo(nodo2 * aux)//Bien.//Muestra un solo nodo.
+{
+    mostrar_persona(aux->cliente);
+}
+
+void mostrarLista(nodo2 * lista)//Bien.//Muestra todos los nodos de la lista.
+{
+    printf("\n Contenido de la lista: ");
+    nodo2 * seg = lista;
+    while (seg != NULL)
+    {
+        mostrarNodo(seg);
+        seg= seg->siguiente;
+    }
+    printf("\n");
+}
 
 
 nodo2 * buscarUltimo(nodo2 * lista)//Bien.
@@ -53,11 +69,27 @@ nodo2 * agregarAlFinal(nodo2 * lista, nodo2 * nuevo)//Bien.
     }
     else
     {
-        nodo2 * ultimo = buscarUltimo(lista);
-        ultimo->siguiente = nuevo;
-        nuevo->anterior = ultimo;
+
+        nodo2* ult=buscarUltimo(lista);
+        ult->siguiente=nuevo;
+        nuevo->anterior=ult;
     }
+
     return lista;
+    /*nodo2* aux=lista;
+    if(lista==NULL)
+    {
+        lista=nuevo;
+    }
+    else
+    {
+        aux= buscarUltimo(aux);
+        aux->siguiente = nuevo;
+        nuevo->anterior = aux;
+        nuevo->siguiente=NULL;
+
+    }
+    return lista;*/
 }
 /*
 nodo2 * insertarNodo(nodo2 * lista, nodo2 * nuevoNodo)
@@ -97,14 +129,14 @@ nodo2 * insertarNodo(nodo2 * lista, nodo2 * nuevoNodo)
 */
 nodo2* agregarEnOrdenTipoCli (nodo2* lista, nodo2* nuevo)//Bien.//se ordena por tipo de cliente desde el inicio hasta el final.
 {
-    nodo2*aux=lista;
+    /*nodo2*aux=lista;
     if(lista==NULL)
     {
         lista=nuevo;
     }
     else{
 
-        while(aux->cliente.tipo_cliente<nuevo->cliente.tipo_cliente && aux!=NULL)
+        while(aux!=NULL && aux->cliente.tipo_cliente<nuevo->cliente.tipo_cliente)
         {
             aux=aux->siguiente;
         }
@@ -120,8 +152,34 @@ nodo2* agregarEnOrdenTipoCli (nodo2* lista, nodo2* nuevo)//Bien.//se ordena por 
         else{
             lista=agregarAlFinal(lista, nuevo);
         }
+    }*/
+    if(!lista)
+    {
+        lista=nuevo;
     }
-
+    else
+    {
+        if(lista->cliente.tipo_cliente>nuevo->cliente.tipo_cliente){
+            lista=agregarAlPrincipio(lista, nuevo);
+        }
+        else{
+            nodo2* ante=lista;
+            nodo2* seg=lista->siguiente;
+            while((seg)&&(seg->cliente.tipo_cliente<=nuevo->cliente.tipo_cliente))
+            {
+                seg=seg->siguiente;
+            }
+            nuevo->siguiente=seg;
+            ante->siguiente=nuevo;
+            nuevo->anterior=ante;
+            if(seg)
+            {
+                seg->anterior=nuevo;
+            }
+        }
+    }
+    /*mostrarLista(lista);
+    system("pause");*/
     return lista;
 }
 nodo2* agregarEnOrdenPorCant (nodo2*lista, nodo2*nuevo)//Bien.//se ordena por cantidad de articulos del cliente desde el inicio hasta el final.
@@ -147,28 +205,16 @@ nodo2* agregarEnOrdenPorCant (nodo2*lista, nodo2*nuevo)//Bien.//se ordena por ca
         }
         else{
             lista=agregarAlFinal(lista, nuevo);
+
         }
     }
-
+    /*mostrarLista(lista);
+    system("pause");*/
     return lista;
 }
 
-void mostrarNodo(nodo2 * aux)//Bien.//Muestra un solo nodo.
-{
-    mostrar_persona(aux->cliente);
-}
 
-void mostrarLista(nodo2 * lista)//Bien.//Muestra todos los nodos de la lista.
-{
-    printf("\n Contenido de la lista: ");
-    nodo2 * seg = lista;
-    while (seg != NULL)
-    {
-        mostrarNodo(seg);
-        seg= seg->siguiente;
-    }
-    printf("\n");
-}
+
 
 nodo2 * borrarNodo(nodo2 * lista,char nombre[])//Bien.
 {
@@ -229,11 +275,12 @@ Fila inicFila(Fila nuevo)//Bien.
     return nuevo;
 }
 
-Fila agregar(Fila fila, nodo2*lista)//Bien.
+Fila agregar(Fila filita, nodo2*lista)//Bien.
 {
+    Fila fila=filita;
     fila.inicio=agregarAlFinal(fila.inicio, lista);
     fila.final=buscarUltimo(fila.inicio);
-    return fila;
+    return filita;
 }
 
 Fila quitar(Fila filas)//Bien.

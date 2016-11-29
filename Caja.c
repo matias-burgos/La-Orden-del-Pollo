@@ -123,6 +123,8 @@ void mostrarIndividual(Caja caja)
 
 
         printf("\n La caja se encuentra cerrada ");
+        system("\n pause");
+        system("cls");
 
     }else{
         printf("\n La caja se encuentra abierta ");
@@ -132,11 +134,13 @@ void mostrarIndividual(Caja caja)
         system("\n pause");
         system("cls");
     }
+
 }
 
 /////////////MUESTRA UNA SOLA CAJA ENVIADA POR PARAMETROS////////////////////////////////////////
 void mostrarCaja(Caja cajas[])
 {
+
     int i=0;
     while(i<8)
     {
@@ -165,7 +169,10 @@ Caja ingresarEnCajas(Caja cajas, nodo2*lista)
 {
     if(strcmp(cajas.algoritmoPlanificacion, "FIFO")==0)
     {
-        cajas.filita=agregar(cajas.filita, lista);
+        cajas.filita.inicio=agregarAlFinal(cajas.filita.inicio, lista);
+        cajas.filita.final=buscarUltimo(cajas.filita.inicio);
+
+
     }
 
     if(strcmp(cajas.algoritmoPlanificacion, "SRTF")==0)
@@ -174,6 +181,7 @@ Caja ingresarEnCajas(Caja cajas, nodo2*lista)
 
         nodo2* ultimo=buscarUltimo(cajas.filita.inicio);
         cajas.filita.final=ultimo;
+
     }
 
     if((strcmp(cajas.algoritmoPlanificacion, "Prioridades")==0)|| strcmp(cajas.algoritmoPlanificacion, "RR")==0)
@@ -181,6 +189,7 @@ Caja ingresarEnCajas(Caja cajas, nodo2*lista)
         cajas.filita.inicio=agregarEnOrdenTipoCli(cajas.filita.inicio, lista);
         nodo2* ultimo=buscarUltimo(cajas.filita.inicio);
         cajas.filita.final=ultimo;
+
     }
 
     return cajas;
@@ -546,58 +555,6 @@ void antenderClientes(Caja cajas[], int validos, int dato)
 
 
 
-
-
-
-
-
-
-
-
-//////////////////// PASAR DE ARBOL A CAJAS. NUEVA FUNCION //////////////////
-
-/*
-nodo2* nodoArbolAnodoLista(nodoArbol* a)
-{
-    nodo2* aux=(nodo2*)malloc(sizeof(nodo2));
-    aux->cliente=a->p;
-    aux->ant=NULL;
-    aux->sig=NULL;
-    return aux;
-}
-
-nodo2 pasarDeArbolALineaDeCajas(nodoArbol arbol, nodo2 lista, int metodo)
-{
-    if(modo==1)
-    {
-        if(arbol)
-        {
-            lista=pasarDeArbolALineaDeCajas(arbol-izq, lista, modo);
-            lista=agregarAlFinal(lista, nodoArbolAnodoLista(arbol));
-            lista=pasarDeArbolALineaDeCajas(arbol-der, lista, modo);
-        }
-    }
-    else if(modo==2)
-    {
-        if(arbol)
-        {
-            lista=pasarDeArbolALineaDeCajas(arbol-izq, lista, modo);
-            lista=pasarDeArbolALineaDeCajas(arbol-der, lista, modo);
-            lista=agregarAlFinal(lista, nodoArbolAnodoLista(arbol));
-        }
-    }
-    else if(modo==3)
-    {
-        if(arbol)
-        {
-            lista=agregarAlFinal(lista, nodoArbolAnodoLista(arbol));
-            lista=pasarDeArbolALineaDeCajas(arbol-izq, lista, modo);
-            lista=pasarDeArbolALineaDeCajas(arbol-der, lista, modo);
-        }
-    }
-    return lista;
-}
-*/
 
 
 

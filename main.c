@@ -38,6 +38,46 @@ void menu_de_archivos()
 }
 
 
+void menu_arbol_a_cajas (Caja cajas[],nodoArbol * arbol)
+{
+    int opciones=0;
+    nodoArbol * aux = arbol;
+    while (opciones != 4)
+    {
+        int validos=30;
+        opciones=0;
+        system("cls");
+        printf("\n1_ Pasar a Cajas con PreOrder");
+        printf("\n2_ Pasar a Cajas con InOrder");
+        printf("\n3_ Pasar a Cajas con PostOrder");
+        printf("\n4_ Volver");
+        printf("\nElija un numero correspondiente a la opcion que desea llevar a cabo: ");
+        fflush(stdin);
+        scanf("%d", &opciones);
+        printf("\n");
+
+        switch (opciones)
+        {
+        case 1:
+            PasajeArbolCaja(arbol, opciones, cajas);
+            mostrarCaja(cajas);
+            system("pause");
+            break;
+        case 2:
+
+            PasajeArbolCaja(arbol, opciones, cajas);
+            mostrarCaja(cajas);
+            system("pause");
+            break;
+        case 3:
+
+            PasajeArbolCaja(arbol, opciones, cajas);
+            mostrarCaja(cajas);
+            system("pause");
+            break;
+        }
+    }
+}
 nodoArbol* menu_de_arbol(nodoArbol* arbol)
 {
     char nombre[20];
@@ -358,46 +398,6 @@ void menu_abrir_cerrar_cajas(Caja cajas[])
     }
 }
 
-void menu_arbol_a_cajas (Caja cajas[],nodoArbol * arbol)
-{
-    int opciones=0;
-    nodoArbol * aux = arbol;
-    while (opciones != 4)
-    {
-        int validos=30;
-        opciones=0;
-        system("cls");
-        printf("\n1_ Pasar a Cajas con PreOrder");
-        printf("\n2_ Pasar a Cajas con InOrder");
-        printf("\n3_ Pasar a Cajas con PostOrder");
-        printf("\n4_ Volver");
-        printf("\nElija un numero correspondiente a la opcion que desea llevar a cabo: ");
-        fflush(stdin);
-        scanf("%d", &opciones);
-        printf("\n");
-
-        switch (opciones)
-        {
-        case 1:
-            PasajeArbolCaja(arbol, opciones, cajas);
-            mostrarCaja(cajas);
-            system("pause");
-            break;
-        case 2:
-
-            PasajeArbolCaja(arbol, opciones, cajas);
-            mostrarCaja(cajas);
-            system("pause");
-            break;
-        case 3:
-
-            PasajeArbolCaja(arbol, opciones, cajas);
-            mostrarCaja(cajas);
-            system("pause");
-            break;
-        }
-    }
-}
 
 void Menu ()
 {
