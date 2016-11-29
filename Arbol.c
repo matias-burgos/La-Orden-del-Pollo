@@ -169,24 +169,28 @@ nodoArbol* borrarUnNodoArbol(nodoArbol* arbol, char nombre[])//Bien.
 {
     if(arbol!=NULL)
     {
-        if(strcmp(arbol->p.nombreApellido, nombre)<0){
+        if(strcmp(arbol->p.nombreApellido, nombre)<0)
+            {
                 arbol->der= borrarUnNodoArbol(arbol->der , nombre);
-        }
-        else {
-            if(strcmp( arbol->p.nombreApellido, nombre)>0){
+            }
+        else if(strcmp( arbol->p.nombreApellido, nombre)>0)
+            {
                 arbol->izq = borrarUnNodoArbol(arbol->izq, nombre);
-            }else{
-
-                if(arbol->izq!=NULL)
+            }
+            else
+                {
+                    if(arbol->izq!=NULL)
                 {
                     arbol->p= (nodoMasDerecho(arbol->izq))->p;
                     arbol->izq= borrarUnNodoArbol(arbol->izq, arbol->p.nombreApellido);
                 }
+
                 else if(arbol->der!=NULL)
                 {
                     arbol->p= (nodoMasIzquierdo(arbol->der))->p;
                     arbol->der= borrarUnNodoArbol(arbol->der, arbol->p.nombreApellido);
                 }
+
                 else
                 {
                     free(arbol);
@@ -194,10 +198,9 @@ nodoArbol* borrarUnNodoArbol(nodoArbol* arbol, char nombre[])//Bien.
                 }
             }
         }
-
+        return arbol;
     }
-    return arbol;
-}
+
 
 /////////////PASA UN NODO DE UN ARBOL A UN NODO LISTA///////////////////////////////////////
 nodo2* pasarARbolALista(nodoArbol*arbol)

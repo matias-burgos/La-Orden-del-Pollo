@@ -31,33 +31,49 @@ void mostrar_archivo(char Personas[])//Bien.
 }
 persona cargar()
 {
-    int nota;
+    char nota;
     persona p;
+
     printf("Ingrese Nombre y Apellido: ");
     fflush(stdin);
     scanf("%s",p.nombreApellido);
+
     printf("Ingrese la cantidad de articulos: ");
     fflush(stdin);
     scanf("%d",&p.cantArticulos);
+
     p.tiempoDeEspera = 0;
     p.tiempoProcesado = 0;
-    printf("Ingrese tipo de cliente \n(1.Embarazada/2.Jubilado/3.Comun: ");
+
+    printf("Ingrese tipo de cliente \n(1.Embarazada/2.Jubilado/3.Comun): ");
     fflush(stdin);
     scanf("%d",&p.tipo_cliente);
-    printf("\n¿Desea saber los tipos de pago disponibles?: s/n");
+
+    printf("\nDesea saber los tipos de pago disponibles? s/n: ");
     fflush(stdin);
-    scanf("%d", &nota);
+    scanf("%c", &nota);
     if(nota=='s')
     {
         printf("\nEl codigo para cada tipo de pago disponible es el siguiente: ");
-        printf("\n1_Efectivo.");
-        printf("\n2_Credito o Debito.");
-        printf("\n3_Todos.");
+        printf("\n  1_Efectivo.");
+        printf("\n  2_Credito o Debito.");
+        printf("\n  3_Todos.\n");
     }
-    printf("Ingrese tipo de pago: ");
+
+
+    printf("\nIngrese tipo de pago: ");
     fflush(stdin);
     scanf("%d",&p.tipo_pago);
-    return p;
+
+    while(p.tipo_pago > 3 || p.tipo_pago < 1)
+    {
+        printf("\nEse codigo no corresponde a ningun medio de pago.");
+        printf("\nIngrese tipo de pago: ");
+        fflush(stdin);
+        scanf("%d",&p.tipo_pago);
+    }
+
+   return p;
 }
 
 void cargarPersonas(char nombre[])

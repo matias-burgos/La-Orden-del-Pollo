@@ -243,7 +243,7 @@
 	"Listas Dobles.h"
 	"Arbol.h"
 
-1479799460 source:d:\mis cosas\descargas\la-orden-del-pollo-master\trabajo practico - parcial 2\arbol.c
+1480445186 source:d:\mis cosas\descargas\la-orden-del-pollo-master\trabajo practico - parcial 2\arbol.c
 	<stdio.h>
 	<stdlib.h>
 	"Arbol.h"
@@ -263,13 +263,13 @@
 1479799460 d:\mis cosas\descargas\la-orden-del-pollo-master\trabajo practico - parcial 2\listas dobles.h
 	"Archivo.h"
 
-1479799460 source:d:\mis cosas\descargas\la-orden-del-pollo-master\trabajo practico - parcial 2\archivo.c
+1480444120 source:d:\mis cosas\descargas\la-orden-del-pollo-master\trabajo practico - parcial 2\archivo.c
 	<stdio.h>
 	<stdlib.h>
 	"string.h"
 	"Archivo.h"
 
-1480380314 source:d:\mis cosas\descargas\la-orden-del-pollo-master\trabajo practico - parcial 2\caja.c
+1480441834 source:d:\mis cosas\descargas\la-orden-del-pollo-master\trabajo practico - parcial 2\caja.c
 	<stdio.h>
 	<stdlib.h>
 	"Caja.h"
@@ -282,7 +282,7 @@
 	<stdlib.h>
 	"Listas Dobles.h"
 
-1480378304 source:d:\mis cosas\descargas\la-orden-del-pollo-master\trabajo practico - parcial 2\main.c
+1480445112 source:d:\mis cosas\descargas\la-orden-del-pollo-master\trabajo practico - parcial 2\main.c
 	<stdio.h>
 	<stdlib.h>
 	<dos.h>

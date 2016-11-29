@@ -165,25 +165,19 @@ Caja ingresarEnCajas(Caja cajas, nodo2*lista)
 {
     if(strcmp(cajas.algoritmoPlanificacion, "FIFO")==0)
     {
-
         cajas.filita=agregar(cajas.filita, lista);
-
-
     }
+
     if(strcmp(cajas.algoritmoPlanificacion, "SRTF")==0)
     {
-
-
         cajas.filita.inicio=agregarEnOrdenPorCant(cajas.filita.inicio, lista);
 
         nodo2* ultimo=buscarUltimo(cajas.filita.inicio);
         cajas.filita.final=ultimo;
-
     }
+
     if((strcmp(cajas.algoritmoPlanificacion, "Prioridades")==0)|| strcmp(cajas.algoritmoPlanificacion, "RR")==0)
     {
-
-
         cajas.filita.inicio=agregarEnOrdenTipoCli(cajas.filita.inicio, lista);
         nodo2* ultimo=buscarUltimo(cajas.filita.inicio);
         cajas.filita.final=ultimo;
@@ -199,10 +193,7 @@ void agregarClienteACaja(Caja cajas[], nodo2*lista)
 
     if(i<8)
     {
-
         cajas[i]=ingresarEnCajas(cajas[i], lista);
-
-
     }
     else{
         printf("\n No hay caja que acepte ese tipo de pago.");

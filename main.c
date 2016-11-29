@@ -52,7 +52,7 @@ nodoArbol* menu_de_arbol(nodoArbol* arbol)
         printf("\n||2_Mostrar arbol||");
         printf("\n||3_Borrar una persona del arbol ||");
         printf("\n\n||4_Volver||");
-        printf("\n \n Ingrese el numero de la opcion que desea llevar a cabo: ||");
+        printf("\n \n Ingrese el numero de la opcion que desea llevar a cabo: ");
         fflush(stdin);
         scanf("%d", &opciones_arbol);
 
@@ -257,6 +257,7 @@ void menu_de_cajas(nodoArbol* arbol, Caja cajas[])
             cliente=cargar();
             nodo2* nuevo=crearNodoLista(cliente);
             agregarClienteACaja(cajas,nuevo);
+            break;
 
         case 5:
 
