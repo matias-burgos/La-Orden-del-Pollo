@@ -32,7 +32,7 @@ Fila agregar(Fila fila, nodo2*lista);
 Fila quitar(Fila fila);
 void mostrar(Fila fila);
 int filavacia(Fila fila);
-
+Fila procesarFila(Fila fila);
 
 
 

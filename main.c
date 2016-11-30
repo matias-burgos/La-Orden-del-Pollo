@@ -206,7 +206,7 @@ nodoArbol* menu_de_arbol(nodoArbol* arbol)
                                         case 1:
                                             if(arbol==NULL)
                                             {
-                                                printf("\nTampoco hay datos aqui!");
+                                                printf("\nNo hay datos en el arbol");
                                             }
                                             else{
                                                 preorder(arbol);
@@ -218,7 +218,7 @@ nodoArbol* menu_de_arbol(nodoArbol* arbol)
                                         case 2:
                                             if(arbol==NULL)
                                             {
-                                                printf("\nNo hay nada");
+                                                printf("\nNo hay datos en el arbol");
                                             }
                                             else{
                                                 inorder(arbol);
@@ -230,16 +230,13 @@ nodoArbol* menu_de_arbol(nodoArbol* arbol)
                                         case 3:
                                             if(arbol==NULL)
                                             {
-                                                printf("\nNada...");
+                                                printf("\nNo hay datos en el arbol");
                                             }
                                             else{
                                                 postorder(arbol);
                                                 system("\n pause");
                                             }
                                             break;
-                                        case 4:
-
-                                        break;
                                     }
                                 }
                                 break;
@@ -300,10 +297,17 @@ void menu_de_cajas(nodoArbol* arbol, Caja cajas[])
             break;
 
         case 5:
+            printf("\n Atender los clientes de todas las cajas \n ");
+            procesarTodasLasColas(cajas);
 
-            printf("\nIngrese el numero de la caja que desea que atienda: ");
+            system("pause");
+            printf("Cajas procesadas\n");
+            system("pause");
+
+            printf("\nIngrese el numero de la caja que desea obtener los promedios: ");
             fflush(stdin);
             scanf("%d", &cual);
+            cual--;
             if(cajas[cual].filita.inicio==NULL)
             {
                 printf("\nNo se pudo atender porque no hay nadie.\n");
@@ -311,7 +315,15 @@ void menu_de_cajas(nodoArbol* arbol, Caja cajas[])
             }
             else
             {
-                antenderClientes(cajas,8, cual);
+                int tRta = obtenerTiempoRespuesta(cajas[cual]);
+                printf("\nPromedio de respuesta: %d", tRta);
+
+
+                int tEje = obtenerTiempoProcesamiento(cajas[cual]);
+                printf("\nPromedio de ejecucion: %d", tEje);
+                system("pause");
+
+                break;
             }
             break;
         }

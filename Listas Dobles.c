@@ -312,3 +312,20 @@ int filavacia(Fila fila)//Bien.
     }
    return i;
 }
+
+Fila procesarFila(Fila fila)
+{
+    nodo2* lista = fila.inicio;
+
+    int contArticulos = 0;
+    while (lista != NULL)
+    {
+        lista->cliente.tiempoDeEspera = contArticulos;
+        contArticulos = contArticulos + lista->cliente.cantArticulos;
+
+        lista->cliente.tiempoProcesado = lista->cliente.cantArticulos;
+
+        lista = lista->siguiente;
+    }
+    return fila;
+}

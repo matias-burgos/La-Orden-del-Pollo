@@ -36,13 +36,16 @@ Caja AlgoritmoRR(Caja cajas);
 void antenderClientes(Caja cajas[], int validos, int dato);
 
 
-////////// AGREGADAS ULTIMAMENTE ///////////////
 
-//nodo2 pasarDeArbolALineaDeCajas(nodoArbol arbol, nodo2 lista, int metodo);
+
 
 void abrirCaja (Caja cajas[], int numeroDeCaja);
 void abrirTodasLasCajas (Caja cajas[]);
 void cerrarCaja(Caja cajas[], int numeroDeCaja);
 void cerrarTodasLasCajas(Caja cajas[]);
+void procesarCola(Caja caja);
+void procesarTodasLasColas(Caja cajas[]);
+float obtenerTiempoProcesamiento(Caja caja);
+float obtenerTiempoRespuesta(Caja caja);
 
 #endif // CAJA_H_INCLUDED
