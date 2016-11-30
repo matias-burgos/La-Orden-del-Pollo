@@ -351,9 +351,14 @@ void menu_abrir_cerrar_cajas(Caja cajas[])
             }
             else
             {
-                abrirCaja(cajas, opciones);
-                printf("\nLa caja %d ahora se encuentra abierta");
-                //abrirOcerrarCaja(cajas,opciones);
+                if(cajas[opciones].abiertaOcerrada==0)
+                {
+                    abrirCaja(cajas, opciones);
+                    printf("\nLa caja %d ahora se encuentra abierta");
+                }
+                else{
+                    printf("\n La caja ya se encuentra abierta");
+                }
 
             }
             printf("\n");
@@ -361,9 +366,17 @@ void menu_abrir_cerrar_cajas(Caja cajas[])
             break;
 
         case 2:
-            abrirTodasLasCajas(cajas);
-            printf("\nTodas las cajas estan abiertas");
-            //abrirOcerrarTodasLasCajas(cajas, 8);
+            if(cajas[0].abiertaOcerrada==0 && cajas[1].abiertaOcerrada==0 && cajas[2].abiertaOcerrada==0 && cajas[3].abiertaOcerrada==0 && cajas[4].abiertaOcerrada==0 && cajas[5].abiertaOcerrada==0 && cajas[6].abiertaOcerrada==0 && cajas[7].abiertaOcerrada==0 )
+            {
+                abrirTodasLasCajas(cajas);
+                printf("\nTodas las cajas estan abiertas");
+
+            }
+            else{
+                printf("\n No se pueden abrir todas las cajas, ya estan abiertas o hay solo algunas abiertas");
+            }
+
+
             printf("\n");
             system("pause");
             break;
@@ -379,17 +392,30 @@ void menu_abrir_cerrar_cajas(Caja cajas[])
             }
             else
             {
-                cerrarCaja(cajas, opciones);
-                printf("\nLa caja %d ahora esta cerrada", opciones);
+                if(cajas[opciones].abiertaOcerrada==1)
+                {
+                    cerrarCaja(cajas, opciones);
+                    printf("\nLa caja %d ahora esta cerrada", opciones);
+                }
+                else{
+                    printf("\n La caja ya esta cerrada");
+                }
+
             }
             printf("\n");
             system("pause");
             break;
 
         case 4:
-            cerrarTodasLasCajas(cajas);
-            printf("\nTodas las cajas estan cerradas");
-            //abrirOcerrarTodasLasCajas(cajas, 8);
+            if(cajas[0].abiertaOcerrada==1 && cajas[1].abiertaOcerrada==1 && cajas[2].abiertaOcerrada==1 && cajas[3].abiertaOcerrada==1 && cajas[4].abiertaOcerrada==1 && cajas[5].abiertaOcerrada==1 && cajas[6].abiertaOcerrada==1 && cajas[7].abiertaOcerrada==1 )
+            {
+                cerrarTodasLasCajas(cajas);
+                printf("\nTodas las cajas estan cerradas");
+            }
+            else{
+                printf("\n No se pueden cerrar todas las cajas, ya estan cerradas o hay algunas cerradas");
+            }
+
             printf("\n");
             system("pause");
             break;

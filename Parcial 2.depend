@@ -292,7 +292,7 @@
 	"Listas Dobles.h"
 	"Arbol.h"
 
-1480454677 source:c:\users\matias\desktop\nueva carpeta\arbol.c
+1480466506 source:c:\users\matias\desktop\nueva carpeta\arbol.c
 	<stdio.h>
 	<stdlib.h>
 	"Arbol.h"
@@ -305,11 +305,11 @@
 
 1480449812 c:\users\matias\desktop\nueva carpeta\archivo.h
 
-1480449812 c:\users\matias\desktop\nueva carpeta\caja.h
+1480467343 c:\users\matias\desktop\nueva carpeta\caja.h
 	"Listas Dobles.h"
 	"Archivo.h"
 
-1480449812 c:\users\matias\desktop\nueva carpeta\listas dobles.h
+1480467344 c:\users\matias\desktop\nueva carpeta\listas dobles.h
 	"Archivo.h"
 
 1480453995 source:c:\users\matias\desktop\nueva carpeta\archivo.c
@@ -318,7 +318,7 @@
 	"string.h"
 	"Archivo.h"
 
-1480462280 source:c:\users\matias\desktop\nueva carpeta\caja.c
+1480464384 source:c:\users\matias\desktop\nueva carpeta\caja.c
 	<stdio.h>
 	<stdlib.h>
 	"Caja.h"
@@ -326,12 +326,12 @@
 	"Archivo.h"
 	"string.h"
 
-1480459042 source:c:\users\matias\desktop\nueva carpeta\listas dobles.c
+1480462706 source:c:\users\matias\desktop\nueva carpeta\listas dobles.c
 	<stdio.h>
 	<stdlib.h>
 	"Listas Dobles.h"
 
-1480453015 source:c:\users\matias\desktop\nueva carpeta\main.c
+1480466506 source:c:\users\matias\desktop\nueva carpeta\main.c
 	<stdio.h>
 	<stdlib.h>
 	<dos.h>

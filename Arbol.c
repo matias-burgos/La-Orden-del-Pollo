@@ -260,9 +260,10 @@ nodo2* pasarDeArbolToLineaDeCajas(nodoArbol* arbol, int metodo, Caja cajas[],nod
 {
     if(arbol!=NULL && metodo==1)
     {
-       // nodo2*aux=pasarARbolALista(arbol);
+
 
         lista=agregarAlFinal(lista, pasarARbolALista(arbol));
+        arbol=borrarUnNodoArbol(arbol, lista->cliente.nombreApellido);
         lista=pasarDeArbolToLineaDeCajas(arbol->izq, metodo, cajas, lista);
         lista=pasarDeArbolToLineaDeCajas(arbol->der, metodo, cajas, lista);
     }
@@ -271,8 +272,9 @@ nodo2* pasarDeArbolToLineaDeCajas(nodoArbol* arbol, int metodo, Caja cajas[],nod
         {
 
             lista=pasarDeArbolToLineaDeCajas(arbol->izq, metodo, cajas, lista);
-        //  nodo2*aux=pasarARbolALista(arbol);
+
             lista=agregarAlFinal(lista, pasarARbolALista(arbol));
+            arbol=borrarUnNodoArbol(arbol, lista->cliente.nombreApellido);
             lista=pasarDeArbolToLineaDeCajas(arbol->der, metodo, cajas, lista);
 
         }
@@ -283,8 +285,9 @@ nodo2* pasarDeArbolToLineaDeCajas(nodoArbol* arbol, int metodo, Caja cajas[],nod
 
             lista=pasarDeArbolToLineaDeCajas(arbol->izq, metodo, cajas, lista);
             lista=pasarDeArbolToLineaDeCajas(arbol->der, metodo, cajas, lista);
-        // nodo2*aux=pasarARbolALista(arbol);
+
             lista=agregarAlFinal(lista, pasarARbolALista(arbol));
+            arbol=borrarUnNodoArbol(arbol, lista->cliente.nombreApellido);
 
         }
 

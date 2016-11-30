@@ -128,7 +128,6 @@ void mostrarIndividual(Caja caja)
 
     }else{
         printf("\n La caja se encuentra abierta ");
-        printf("\n Clientes de la fila: ");
         mostrarLista(caja.filita.inicio);
         printf("\n \n");
         system("\n pause");
