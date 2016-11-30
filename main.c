@@ -61,18 +61,21 @@ void menu_arbol_a_cajas (Caja cajas[],nodoArbol * arbol)
         case 1:
             PasajeArbolCaja(arbol, opciones, cajas);
             mostrarCaja(cajas);
+            printf("\n ");
             system("pause");
             break;
         case 2:
 
             PasajeArbolCaja(arbol, opciones, cajas);
             mostrarCaja(cajas);
+            printf("\n ");
             system("pause");
             break;
         case 3:
 
             PasajeArbolCaja(arbol, opciones, cajas);
             mostrarCaja(cajas);
+            printf("\n ");
             system("pause");
             break;
         }
@@ -121,7 +124,7 @@ nodoArbol* menu_de_arbol(nodoArbol* arbol)
             {
 
                 opciones_de_muestreo=0;
-                while(opciones_de_muestreo<=4)
+                while(opciones_de_muestreo<4)
                 {
                     system("cls");
 
@@ -139,7 +142,7 @@ nodoArbol* menu_de_arbol(nodoArbol* arbol)
                     case 1:
                         if(arbol==NULL)
                         {
-                            printf("\nTampoco hay datos aqui!");
+                            printf("\nNo hay datos");
                         }
                         inorder(arbol);
                         system("pause");
@@ -148,7 +151,7 @@ nodoArbol* menu_de_arbol(nodoArbol* arbol)
                     case 2:
                         if(arbol==NULL)
                         {
-                            printf("\nNo hay nada");
+                            printf("\nNo hay datos");
                         }
                         postorder(arbol);
                         system("pause");
@@ -157,9 +160,10 @@ nodoArbol* menu_de_arbol(nodoArbol* arbol)
                     case 3:
                         if(arbol==NULL)
                         {
-                            printf("\nNada...");
+                            printf("\nNo hay datos");
                         }
                         preorder(arbol);
+                        printf("\n");
                         system("pause");
                         break;
 
@@ -234,7 +238,8 @@ nodoArbol* menu_de_arbol(nodoArbol* arbol)
                                             }
                                             else{
                                                 postorder(arbol);
-                                                system("\n pause");
+                                                printf("\n");
+                                                system(" pause");
                                             }
                                             break;
                                     }
@@ -320,7 +325,7 @@ void menu_de_cajas(nodoArbol* arbol, Caja cajas[])
 
 
                 int tEje = obtenerTiempoProcesamiento(cajas[cual]);
-                printf("\nPromedio de ejecucion: %d", tEje);
+                printf("\nPromedio de ejecucion: %d \n", tEje);
                 system("pause");
 
                 break;

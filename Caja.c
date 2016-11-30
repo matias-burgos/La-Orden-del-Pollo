@@ -305,7 +305,6 @@ float obtenerTiempoProcesamiento(Caja caja)
     float contArticulos = 0;
     int contPersonas = cantidadFila(caja.filita);;
     float promedio = 0;
-    printf("\n %d", contPersonas);
     nodo2* lista = caja.filita.inicio;
 
     if (lista != NULL)
@@ -327,7 +326,6 @@ float obtenerTiempoRespuesta(Caja caja)
     float tiempoDeEspera = 0;
     int contPersonas = cantidadFila(caja.filita);
     float promedio = 0;
-    printf("\n %d", contPersonas);
     nodo2* lista = caja.filita.inicio;
 
     if (lista != NULL) {

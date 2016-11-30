@@ -341,3 +341,42 @@
 	"Listas Dobles.h"
 	"Arbol.h"
 
+1480470721 source:c:\users\matias\documents\github\la-orden-del-pollo\arbol.c
+	<stdio.h>
+	<stdlib.h>
+	"Arbol.h"
+	"string.h"
+	"Archivo.h"
+
+1480449812 c:\users\matias\documents\github\la-orden-del-pollo\arbol.h
+	"Archivo.h"
+	"Caja.h"
+
+1480449812 c:\users\matias\documents\github\la-orden-del-pollo\archivo.h
+
+1480475604 c:\users\matias\documents\github\la-orden-del-pollo\caja.h
+	"Listas Dobles.h"
+	"Archivo.h"
+
+1480475738 c:\users\matias\documents\github\la-orden-del-pollo\listas dobles.h
+	"Archivo.h"
+
+1480453995 source:c:\users\matias\documents\github\la-orden-del-pollo\archivo.c
+	<stdio.h>
+	<stdlib.h>
+	"string.h"
+	"Archivo.h"
+
+1480477243 source:c:\users\matias\documents\github\la-orden-del-pollo\caja.c
+	<stdio.h>
+	<stdlib.h>
+	"Caja.h"
+	"Listas Dobles.h"
+	"Archivo.h"
+	"string.h"
+
+1480475757 source:c:\users\matias\documents\github\la-orden-del-pollo\listas dobles.c
+	<stdio.h>
+	<stdlib.h>
+	"Listas Dobles.h"
+

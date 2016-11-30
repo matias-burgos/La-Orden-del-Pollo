@@ -7,16 +7,6 @@
 			<Cursor1 position="8357" topLine="293" />
 		</Cursor>
 	</File>
-	<File name="Archivo.h" open="1" top="0" tabpos="7" split="0" active="1" splitpos="0" zoom_1="1" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="523" topLine="0" />
-		</Cursor>
-	</File>
-	<File name="Caja.c" open="1" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="-1" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="7922" topLine="301" />
-		</Cursor>
-	</File>
 	<File name="Arbol.h" open="0" top="0" tabpos="6" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
 			<Cursor1 position="187" topLine="0" />
@@ -27,9 +17,14 @@
 			<Cursor1 position="79" topLine="0" />
 		</Cursor>
 	</File>
-	<File name="Listas Dobles.h" open="1" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="Archivo.h" open="1" top="0" tabpos="7" split="0" active="1" splitpos="0" zoom_1="1" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="992" topLine="4" />
+			<Cursor1 position="523" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="Caja.c" open="1" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="-1" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="7886" topLine="221" />
 		</Cursor>
 	</File>
 	<File name="Caja.h" open="1" top="0" tabpos="6" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
@@ -37,14 +32,19 @@
 			<Cursor1 position="264" topLine="0" />
 		</Cursor>
 	</File>
-	<File name="main.c" open="1" top="1" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="10181" topLine="290" />
-		</Cursor>
-	</File>
 	<File name="Listas Dobles.c" open="1" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="-1" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="6269" topLine="291" />
+			<Cursor1 position="6269" topLine="294" />
+		</Cursor>
+	</File>
+	<File name="Listas Dobles.h" open="1" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="992" topLine="4" />
+		</Cursor>
+	</File>
+	<File name="main.c" open="1" top="1" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="1860" topLine="49" />
 		</Cursor>
 	</File>
 </CodeBlocks_layout_file>
